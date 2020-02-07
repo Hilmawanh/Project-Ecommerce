@@ -96,7 +96,7 @@ const Header = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav>
-            <NavItem style={{ marginLeft: "360px" }}>
+            <NavItem style={{ marginLeft: "320px" }}>
               <Link>
                 <MdNotifications
                   className="mr-1 ml-2  "

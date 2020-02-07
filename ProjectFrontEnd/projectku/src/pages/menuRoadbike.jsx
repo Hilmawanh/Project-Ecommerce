@@ -68,6 +68,63 @@ class MenuRoadbike extends Component {
             </div>
           </div>
         </div>
+
+        {/* Harusnya card */}
+        <div style={{ display: "flex" }}>
+          <div class="card">
+            <img
+              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/BEND_CT5_P_BLACK_.png"
+              style={{ width: "100%" }}
+            />
+            <div class="container">
+              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
+                <b>Helios LT9X</b>
+              </h4>
+              <center>
+                <p>nnononoono</p>
+              </center>
+              <center>
+                <h4>Rp. 75.000.000</h4>
+              </center>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/BEND_RV_BLUE_P.png"
+              style={{ width: "100%" }}
+            />
+            <div class="container">
+              <h4 style={{ textAlign: "center" }}>
+                <b>Helios LT9X</b>
+              </h4>
+              <center>
+                <p>nnononoono</p>
+              </center>
+              <center>
+                <h4>Rp. 75.000.000</h4>
+              </center>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://www.polygonbikes.com/wp-content/uploads/2018/08/STRATTOS-S3.png"
+              style={{ width: "100%" }}
+            />
+            <div class="container">
+              <h4 style={{ textAlign: "center" }}>
+                <b>Helios LT9X</b>
+              </h4>
+              <center>
+                <p>nnononoono</p>
+              </center>
+              <center>
+                <h4>Rp. 75.000.000</h4>
+              </center>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

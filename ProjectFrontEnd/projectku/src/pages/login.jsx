@@ -7,13 +7,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { loginUser } from "./../redux/actions";
+import { userLogin } from "./../redux/actions";
 
 class SignIn extends Component {
   btnLogin = () => {
     var email = this.refs.email.value;
     var password = this.refs.password.value;
-    this.props.loginUser({ email, password });
+    this.props.userLogin({ email, password });
   };
 
   renderError = () => {
@@ -124,4 +124,4 @@ const mapStatToProps = state => {
   };
 };
 
-export default connect(mapStatToProps, { loginUser })(SignIn);
+export default connect(mapStatToProps, { userLogin })(SignIn);

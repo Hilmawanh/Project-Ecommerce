@@ -1,5 +1,6 @@
 const cryptogenerate = require("../helper/crypto");
 const { mysqldb } = require("../connection");
+const { createJWTToken } = require("./../helper/jwt");
 
 module.exports = {
   userRegister: (req, res) => {
@@ -63,5 +64,30 @@ module.exports = {
     });
   },
 
-  userLogout: (req, res) => {}
+  userLoginn: (req, res) => {
+    const { id } = req.params;
+    const { email, password } = req.query;
+
+    if (email || password) {
+      console.log("Ini user Login", email);
+      var hashpassword = cryptogenerate(password);
+
+      var sql = `SELECT * FROM users WHERE username='${email}' AND password='${hashpassword}'`;
+
+      mysqldb.query(sql, (err, result) => {
+        if (err) res.status(500).send({ err });
+
+        if (result[0] !== undefined) {
+          if (result[0].status === "verified") {
+            console.log("ver");
+
+            let token = createJWTToken({
+              id: result[0].id,
+              email: result[0].email
+            });
+          }
+        }
+      });
+    }
+  }
 };

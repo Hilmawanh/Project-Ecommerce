@@ -44,7 +44,7 @@ export const userRegis = ({ username, email, password }) => {
   };
 };
 
-export const loginUser = ({ email, password }) => {
+export const userLogin = ({ email, password }) => {
   return dispatch => {
     dispatch({ type: AUTH_LOADING });
     if (email === "" || password === "") {
@@ -73,5 +73,3 @@ export const loginUser = ({ email, password }) => {
     }
   };
 };
-
-export const logutUser = ({}) => {};
