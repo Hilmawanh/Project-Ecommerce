@@ -1,0 +1,793 @@
+.navbar {
+  height: 8vh;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+  font-family: "Oswald";
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #3f4d71;
+}
+
+.dropbtn {
+  color: black;
+  border: none;
+  font-family: "Poppins";
+  font-weight: bolder;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 18px;
+  /* margin-left: 355px; */
+}
+
+.dropbtn2 {
+  color: black;
+  border: none;
+  font-family: "Poppins";
+  font-weight: bolder;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+.dropbtn3 {
+  color: black;
+  border: none;
+  font-family: "Poppins";
+  font-weight: bolder;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 18px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: "Raleway";
+  font-weight: bolder;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: "Raleway";
+  font-weight: bolder;
+}
+
+.dropdown-content3 {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: "Raleway";
+  font-weight: bolder;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content2 a {
+  color: black;
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content3 a {
+  color: black;
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  color: #1b262c;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropdown-content2 {
+  display: block;
+}
+.dropdown:hover .dropdown-content3 {
+  display: block;
+}
+
+.ButtonHeader {
+  border: 1px solid;
+  width: 70px;
+  margin-left: 10px;
+  font-family: "Poppins";
+  border-radius: 3px;
+}
+
+.ButtonHeader:hover {
+  background-color: #333333;
+  color: white;
+}
+
+/* Header Ended */
+
+/* MenuAwal started */
+.menuAwalText1 {
+  z-index: 2;
+  position: absolute;
+  left: 50px;
+  top: 260px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: white;
+  font-family: "Public Sans";
+  font-weight: bolder;
+}
+
+.menuAwalText2 {
+  z-index: 2;
+  position: absolute;
+  left: 50px;
+  color: whitesmoke;
+  top: 280px;
+  font-size: 50px;
+  font-family: "Bebas Neue";
+  letter-spacing: 3px;
+}
+
+.menuAwalButton {
+  z-index: 2;
+  position: absolute;
+  left: 206px;
+  top: 405px;
+  border: 1px;
+  width: 155px;
+  background-color: gray;
+  height: 50px;
+  color: white;
+  font-family: "Poppins";
+}
+
+.menuAwalButton:hover {
+  background-color: #333333;
+}
+
+.menuAwalButton2 {
+  z-index: 2;
+  position: absolute;
+  left: 50px;
+  top: 405px;
+  border: 1px;
+  height: 50px;
+  width: 155px;
+  background-color: #333333;
+  color: white;
+  font-family: "Poppins";
+}
+
+.menuAwalButton2:hover {
+  background-color: #1b262c;
+}
+/* MenuAwal ended */
+
+/* Home Started */
+.container {
+  margin-top: 10px;
+}
+
+.gambar1 {
+  width: "70%";
+  height: 100%;
+}
+
+.menu1 {
+  display: flex;
+  height: 400px;
+}
+
+.menu1flexgambar {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.menukiri1 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.menukiri1Text {
+  margin: auto;
+  margin-left: 40px;
+}
+
+.menukiri1TextButton {
+  border: 1px solid;
+  width: 30%;
+  margin-bottom: 10px;
+  background-color: #23374d;
+  color: white;
+  font-family: "Lato";
+}
+
+.menukiri1Text2 {
+  font-family: "Poppins";
+}
+
+.menukanan1 {
+  background-color: #d4d7dd;
+  width: 45%;
+  margin-left: 50px;
+}
+
+.menukanan1Text {
+  margin-top: 125px;
+  margin-left: 80px;
+  font-family: "Lato";
+  color: #23374d;
+}
+
+.menukanan1Text2 {
+  margin-left: 80px;
+  font-family: "Poppins";
+}
+
+.menukiri1Text2button {
+  border: 1px solid;
+  margin-left: 100px;
+  background-color: #015668;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+}
+
+/* Jumbotron 2 started */
+
+.menu2 {
+  display: flex;
+  height: 600px;
+  width: 100%;
+}
+
+.menu2flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.menu2gambarText1 {
+  z-index: 2;
+  position: absolute;
+  margin-top: 160px;
+  margin-left: 32px;
+  font-family: "Lato";
+  letter-spacing: 1px;
+}
+
+.menu2gambarText2 {
+  z-index: 2;
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 30px;
+  letter-spacing: 2px;
+  font-family: "Roboto";
+  font-weight: bolder;
+  color: #4d4646;
+  font-size: 37px;
+  /* color: #222831; */
+}
+
+.menu2gambarText3 {
+  z-index: 2;
+  position: absolute;
+  margin-top: 290px;
+  margin-left: 30px;
+  border: 1px;
+  width: 155px;
+  background-color: #333333;
+  height: 40px;
+  color: white;
+  font-family: "Roboto";
+}
+
+.menukanan2 {
+  height: 100%;
+  width: 100%;
+  width: 616px;
+  background-color: #f4f4f4;
+}
+.menukanan2product {
+  display: column;
+  height: 100%;
+}
+
+.menukanan2menuproduct1 {
+  background-color: white;
+  height: 47%;
+  width: 70%;
+  margin-left: 65px;
+  margin-top: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.menukanan2menuproduct2 {
+  background-color: white;
+  height: 47%;
+  width: 70%;
+  margin-left: 65px;
+  margin-top: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* Jumbotron 3 started */
+
+.menu3 {
+  display: flex;
+  height: 400px;
+  width: 100%;
+}
+
+.menukirimenu3 {
+  background-color: #f9f6f7;
+  width: 45%;
+}
+
+.menukirimenu3Text {
+  margin-top: 125px;
+  margin-left: 200px;
+  font-family: "Lato";
+  color: #23374d;
+}
+
+.menukirimenu3Text2 {
+  margin-left: 100px;
+  font-family: "Poppins";
+}
+
+.menukananmenu3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.menukanan3Text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menukanan3Text1 {
+  margin: auto;
+  margin-left: 50px;
+}
+
+.menukanan3TextButton {
+  border: 1px solid;
+  width: 35%;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  font-family: "Lato";
+}
+
+.menukananText2 {
+  font-family: "Poppins";
+  display: flex;
+}
+
+.button1 {
+  border: 1px solid;
+  background-color: #23374d;
+  margin-left: 90px;
+  color: white;
+  border-radius: 5px;
+  width: 95px;
+  font-family: "Poppins";
+}
+
+/* Jumbotron 3 ended */
+
+/* Most popular started */
+
+.textMostPopular {
+  text-align: center;
+  margin-top: 35px;
+  font-family: "Oswald";
+  color: #170a19;
+  margin-bottom: 20px;
+}
+
+.menu4MostPopular {
+  display: flex;
+  height: 300px;
+  width: 100%;
+}
+
+.menu4CategoryBmx {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("http://www.stows.co.uk/images/pre1800_1.jpg") no-repeat;
+  background-size: contain;
+  height: 300px;
+  width: 30%;
+  margin-left: 40px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.menu4CategoryBmx:hover {
+  transform: scale(1.1);
+}
+
+.menu4CategoryEbike {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://produktbilder.avr-zweirad.de/ebm2019/13/1tr.jpg") no-repeat;
+  background-size: contain;
+  height: 300px;
+  width: 30%;
+  margin-left: 40px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.menu4CategoryEbike:hover {
+  transform: scale(1.1);
+}
+
+.menu4CategoryDailyBike {
+  /* background-image: url("http://www.stows.co.uk/images/pre1800_1.jpg"); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrum_dN9iKiEQThYaw2_nLyJJkAsAFS8356CHC2M9Vi3MLlq6w")
+      no-repeat;
+  background-size: contain;
+  height: 300px;
+  width: 30%;
+  margin-left: 40px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.menu4CategoryDailyBike:hover {
+  transform: scale(1.1);
+}
+
+.menu4Text {
+  color: white;
+  margin-left: 177px;
+  margin-top: 120px;
+  font-family: "Alata";
+}
+
+.menu4Text2 {
+  color: white;
+  margin-left: 165px;
+  margin-top: 115px;
+  font-family: "Alata";
+}
+
+.menu4Text3 {
+  color: white;
+  margin-left: 120px;
+  margin-top: 115px;
+  font-family: "Alata";
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 25%;
+  height: 370px;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+/* Most popular ended */
+
+/* Jumbotron 5 started */
+
+.jombotron5Parent {
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.Jumbo5Menukiri {
+  width: 50%;
+  height: 40vh;
+  background-color: black;
+}
+
+.jumbo5TextMenuKiri {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.jumbo5Text1 {
+  color: white;
+  font-family: "Lato";
+}
+
+.jumbo5Text2 {
+  color: white;
+  font-family: "Lato";
+  margin-top: 10px;
+}
+
+.jumbo5Text3 {
+  border-radius: 20px;
+  width: 120px;
+  margin-top: 40px;
+  color: white;
+  background-color: black;
+  font-family: "Lato";
+}
+
+.jumbo5Text3:hover {
+  background-color: white;
+  color: black;
+}
+
+.jumbo5Gambar {
+  width: 50%;
+  cursor: pointer;
+}
+
+/* Jumbotron 5 ended  */
+
+/* Jumbotron 6 started */
+
+.jumbo6TextBuy {
+  border-radius: 20px;
+  width: 150px;
+  color: white;
+  background-color: black;
+  font-family: "Lato";
+  height: 40px;
+}
+
+/* Jumbotron 6 ended */
+
+/* Home Ended */
+
+/* Cart started */
+
+.tableCheckout {
+  width: 35%;
+  height: 300px;
+  background-color: #f3f3f3;
+  margin-top: 130px;
+  margin-left: 789px;
+  margin-bottom: 90px;
+}
+
+.Text-Checkout-1 {
+  margin-top: 30px;
+  margin-left: 47px;
+}
+
+.Text-Checkout-h4 {
+  font-family: "Poppins";
+  font-weight: bolder;
+}
+
+.Text-Checkout-2 {
+  margin-left: 48px;
+  margin-top: 25px;
+}
+
+.Text-Checkout-h7 {
+  font-family: "Roboto";
+  font-weight: bolder;
+  margin-top: 50px;
+}
+
+.Text-Checkout-3 {
+  margin-top: 25px;
+  margin-left: 48px;
+}
+
+.Text-Checkout-h5 {
+  font-family: "Roboto";
+  font-weight: bolder;
+}
+
+.button-Checkout {
+  border: 1px;
+  width: 400px;
+  margin-left: 50px;
+  margin-top: 40px;
+  height: 50px;
+  background-color: #333333;
+  color: white;
+  font-family: "Roboto";
+  font-weight: bolder;
+}
+
+/* Cart Ended */
+
+/* Footer started */
+
+.footer {
+  height: 45vh;
+  background-color: #f3f3f3;
+  margin-top: 40px;
+}
+
+.follow-us {
+  margin-right: 370px;
+  display: "column";
+  font-family: "Lato";
+}
+
+.footerAtribure {
+  display: flex;
+  font-family: "Lato";
+  margin-top: 20px;
+}
+
+.footerText2 {
+  margin-left: 50px;
+}
+
+.footer .footer-icon {
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  margin-top: 50px;
+}
+
+.facebook {
+  color: #3b5998;
+  font-size: 25px;
+}
+
+.twitter {
+  color: #1da1f2;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.instagram {
+  color: #dd2a7b;
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.footer .footer-icon .instagram:hover {
+  color: #dd2a7b;
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.email {
+  color: #fd1d1d;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.linked {
+  color: #0077b5;
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.footer .footer-text {
+  margin-top: 100px;
+  display: flex;
+}
+
+.footer-text-2 {
+  margin-left: 240px;
+  cursor: pointer;
+}
+
+.footer-text-3 {
+  margin-left: 20px;
+}
+
+.footer-text-4 {
+  margin-left: 20px;
+}
+.footer-text-5 {
+  margin-left: 20px;
+}
+/* Footer ended */
+
+/* Login */
+.input-loginn {
+  font-family: Ubuntu-Bold;
+  color: #403866;
+  line-height: 1.2;
+  font-size: 18px;
+  display: block;
+  width: 30%;
+  margin-top: 20px;
+  background: transparent;
+  height: 62px;
+  padding: 0 20px 0 38px;
+  margin-left: 400px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.input-login {
+  font-family: Ubuntu-Bold;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  font-size: 18px;
+  display: block;
+  width: 30%;
+  background: transparent;
+  height: 62px;
+  padding: 0 20px 0 38px;
+  margin-left: 400px;
+  margin-bottom: 20px;
+}
+
+.login100-form-btn {
+  font-family: Ubuntu-Bold;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 30%;
+  height: 62px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 3px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  margin-top: 30px;
+  margin-left: 400px;
+  margin-bottom: 30px;
+}
+
+/* Login ended */
+/* @import url("https://fonts.googleapis.com/css?family=Merriweather|PT+Sans|Roboto&display=swap"); */
+
+/* Font Biasa */
+@import url("https://fonts.googleapis.com/css?family=Lato|Open+Sans|Poppins|Public+Sans|Raleway|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Alata|Bebas+Neue|Fjalla+One|Maven+Pro|Oswald|Questrial|Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+/* Font Miring */
+@import url("https://fonts.googleapis.com/css?family=Allan|Bangers|Kaushan+Script|Knewave|Lemonada|Vast+Shadow&display=swap");
