@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FaRegWindowMinimize } from "react-icons/fa";
 
 class MenuMountain extends Component {
   state = {};
@@ -11,58 +12,86 @@ class MenuMountain extends Component {
         />
 
         {/* Harusnya card */}
-        <div style={{ display: "flex" }}>
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/COLLOSUS_DH-LITE_P.png"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                <b>XQUARONE DH9</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h4>Rp. 75.000.000</h4>
-              </center>
+        <div style={{ display: "column" }}>
+          <h2
+            style={{
+              marginLeft: "70px",
+              marginTop: "20px",
+              fontFamily: "Alata",
+              fontWeight: "bolder",
+              letterSpacing: "1px",
+              color: "#333333"
+            }}
+          >
+            HELIOS LT
+          </h2>
+          <FaRegWindowMinimize
+            style={{
+              zIndex: "2",
+              position: "absolute",
+              top: "465px",
+              left: "70px",
+              color: "red",
+              width: "50px",
+              height: "100px"
+            }}
+          />
+          <div style={{ display: "flex" }}>
+            <div class="card">
+              <img
+                src="https://www.polygonbikes.com/wp-content/uploads/2018/03/COLLOSUS_DH-LITE_P.png"
+                style={{ width: "100%" }}
+              />
+              <div class="container">
+                <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
+                  <b style={{ fontFamily: "Poppins" }}>Helios LT9X</b>
+                </h4>
+                <center>
+                  <p>
+                    Road Performance bike built with a UCI approved ACX frame
+                    that is astonishingly responsice, smooth and fast.
+                  </p>
+                </center>
+                <center>
+                  <h4>Rp. 75.000.000</h4>
+                </center>
+              </div>
             </div>
-          </div>
 
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/COLLOSUS_DH9_TOSCA_P.png"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h4>Rp. 75.000.000</h4>
-              </center>
+            <div class="card">
+              <img
+                src="https://www.polygonbikes.com/wp-content/uploads/2018/03/COLLOSUS_DH9_TOSCA_P.png"
+                style={{ width: "100%" }}
+              />
+              <div class="container">
+                <h4 style={{ textAlign: "center" }}>
+                  <b>Helios LT9X</b>
+                </h4>
+                <center>
+                  <p>nnononoono</p>
+                </center>
+                <center>
+                  <h4>Rp. 75.000.000</h4>
+                </center>
+              </div>
             </div>
-          </div>
 
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/08/XQUARONE_EX_DH_P.png"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h4>Rp. 75.000.000</h4>
-              </center>
+            <div class="card">
+              <img
+                src="https://www.polygonbikes.com/wp-content/uploads/2018/08/XQUARONE_EX_DH_P.png"
+                style={{ width: "100%" }}
+              />
+              <div class="container">
+                <h4 style={{ textAlign: "center" }}>
+                  <b>Helios LT9X</b>
+                </h4>
+                <center>
+                  <p>nnononoono</p>
+                </center>
+                <center>
+                  <h4>Rp. 75.000.000</h4>
+                </center>
+              </div>
             </div>
           </div>
         </div>

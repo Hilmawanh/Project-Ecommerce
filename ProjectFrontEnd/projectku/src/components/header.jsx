@@ -23,7 +23,7 @@ const Header = props => {
       <Navbar className="top" light expand="md">
         <NavbarBrand
           href="/"
-          style={{ fontSize: "28px", color: "#333333", marginRight: "370px" }}
+          style={{ fontSize: "28px", color: "#333333", marginRight: "415px" }}
         >
           BROMEYO
         </NavbarBrand>
@@ -70,7 +70,7 @@ const Header = props => {
         </div>
 
         <div class="dropdown">
-          <button className="dropbtn3">MERCHENDISE</button>
+          <button className="dropbtn3">STORE</button>
           <div class="dropdown-content3">
             <a style={{ color: "white" }} href="#">
               Link 1
@@ -96,7 +96,7 @@ const Header = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav>
-            <NavItem style={{ marginLeft: "320px" }}>
+            <NavItem style={{ marginLeft: "355px" }}>
               <Link>
                 <MdNotifications
                   className="mr-1 ml-2  "
