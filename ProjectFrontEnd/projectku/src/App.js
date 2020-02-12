@@ -1,16 +1,17 @@
-import React from "react";
+// import React from "react";
+import React, { Component } from "react";
 import Header from "./components/header";
 import "./App.css";
 import "./index.css";
 import { APIURL } from "../src/helper/apiurl";
+import { connect } from "react-redux";
+import { userLoginRepeat } from "./redux/actions";
 
 // Tampilan User //
 import Home from "./pages/home";
 import Footer from "./components/footer";
 import MenuAwal from "./components/menuawal";
 import NotFound from "./components/notfound";
-// import CategoryBike from "./pages/category-bike";
-import GearBike from "./pages/menuGear";
 import Marchendise from "./pages/marchendise";
 import { Switch, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ import MenuMountain from "./pages/menuMountain";
 import MenuBmx from "./pages/menuBmx";
 import MenuDaily from "./pages/menuDaily";
 import MenuEbike from "./pages/menuEbike";
+import GearBike from "./pages/menuGear";
 
 // User Controller //
 import Cart from "./pages/cart";
@@ -28,40 +30,71 @@ import ForgotPassword from "./pages/forgotpass";
 
 // Admin Controller //
 import ManageAdmin from "./pages/manageAdmin";
+import axios from "axios";
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route path={"/"} exact>
-          <MenuAwal />
-          <Home />
-        </Route>
+class App extends Component {
+  state = {
+    loading: true
+  };
 
-        {/* Tampilan User */}
-        <NotFound exact path={"/not-found"} component={NotFound} />
-        {/* <Route exact path={"/category-bike"} component={CategoryBike} /> */}
-        <Route exact path={"/gear-bike"} component={GearBike} />
-        <Route exact path={"/marchendise"} component={Marchendise} />
-        <Route exact path={"/menuroadbike"} component={MenuRoadbike} />
-        <Route exact path={"/menumountain"} component={MenuMountain} />
-        <Route exact path={"/menubmx"} component={MenuBmx} />
-        <Route exact path={"/menudaily"} component={MenuDaily} />
-        <Route exact path={"/menuebike"} component={MenuEbike} />
-        <Route exact path={"/cart"} component={Cart} />
+  componentDidMount() {
+    
+    var id = localStorage.getItem("userid");
+    if (id) {
+      axios
+      .get(`${APIURL}auth/userLoginn/${id}`)
+      .then(res => {
+          this.props.userLoginRepeat(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    this.setState({ loading: false });
+  }
 
-        {/* User Controller */}
-        <Route exact path={"/login"} component={SignIn} />
-        <Route exact path={"/register"} component={Register} />
-        <Route exact path={"/forgotpass"} component={ForgotPassword} />
+  render() {
+    if (this.state.loading) {
+      return <div>loading...</div>;
+    }
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route path={"/"} exact>
+            <MenuAwal />
+            <Home />
+          </Route>
 
-        {/* Admin Controller */}
-        <Route exact path={"/manageadmin"} component={ManageAdmin} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+          {/* Tampilan User */}
+          <NotFound exact path={"/not-found"} component={NotFound} />
+          <Route exact path={"/gear-bike"} component={GearBike} />
+          <Route exact path={"/marchendise"} component={Marchendise} />
+          <Route exact path={"/menuroadbike"} component={MenuRoadbike} />
+          <Route exact path={"/menumountain"} component={MenuMountain} />
+          <Route exact path={"/menubmx"} component={MenuBmx} />
+          <Route exact path={"/menudaily"} component={MenuDaily} />
+          <Route exact path={"/menuebike"} component={MenuEbike} />
+          <Route exact path={"/cart"} component={Cart} />
+
+          {/* User Controller */}
+          <Route exact path={"/login"} component={SignIn} />
+          <Route exact path={"/register"} component={Register} />
+          <Route exact path={"/forgotpass"} component={ForgotPassword} />
+
+          {/* Admin Controller */}
+          <Route exact path={"/manageadmin"} component={ManageAdmin} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;
+const MapStateToProps = state => {
+  return {
+    Login: state.auth.login
+  };
+};
+
+export default connect(MapStateToProps, { userLoginRepeat })(App);

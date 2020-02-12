@@ -7,22 +7,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { userLogin } from "./../redux/actions";
+import { userLoginn } from "./../redux/actions";
 
 class SignIn extends Component {
   btnLogin = () => {
     var email = this.refs.email.value;
     var password = this.refs.password.value;
-    this.props.userLogin({ email, password });
+    this.props.userLoginn({ email, password });
   };
 
   renderError = () => {
     if (this.props.error.length > 0) {
       return (
-        <p
-          className="alert alert-danger"
-          style={{ width: "30%", marginLeft: "400px" }}
-        >
+        <p className="alert alert-danger" style={{ width: "30%", marginLeft: "400px" }}>
           {this.props.error}
         </p>
       );
@@ -32,10 +29,7 @@ class SignIn extends Component {
   renderErrorLogin = () => {
     if (this.props.loginError.length > 0) {
       return (
-        <p
-          className="alert alert-danger"
-          style={{ width: "30%", marginLeft: "400px" }}
-        >
+        <p className="alert alert-danger" style={{ width: "30%", marginLeft: "400px" }}>
           {this.props.loginError}
         </p>
       );
@@ -44,23 +38,14 @@ class SignIn extends Component {
 
   renderButton = () => {
     if (this.props.loading) {
-      return (
-        <i className="fa fa-spinner fa-spin" style={{ fontSize: "54px" }} />
-      );
+      return <i className="fa fa-spinner fa-spin" style={{ fontSize: "54px" }} />;
     }
-    return (
-      <input
-        type="button"
-        name="submit"
-        id="submit"
-        className="login100-form-btn mt-2"
-        defaultValue="Login"
-        onClick={this.btnLogin}
-      />
-    );
+    return <input type="button" name="submit" id="submit" className="login100-form-btn mt-2" defaultValue="Login" onClick={this.btnLogin} />;
   };
 
   render() {
+    console.log(this.props.loginStatus);
+
     if (this.props.loginStatus) {
       return <Redirect to="/" />;
     }
@@ -71,29 +56,14 @@ class SignIn extends Component {
             backgroundColor: "rgba(0, 0, 0, 0.9)",
             marginLeft: "542px",
             marginTop: "25px"
-          }}
-        >
+          }}>
           <MdDirectionsBike />
         </Avatar>
         <div>
-          <input
-            className="input-loginn"
-            type="text"
-            ref="email"
-            placeholder="Email"
-          />
-          <input
-            className="input-login"
-            type="password"
-            ref="password"
-            placeholder="Password"
-          />
+          <input className="input-loginn" type="text" ref="email" placeholder="Email" />
+          <input className="input-login" type="password" ref="password" placeholder="Password" />
         </div>
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
-          style={{ marginLeft: "390px" }}
-        />
+        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" style={{ marginLeft: "390px" }} />
         <div>{this.renderError()}</div>
         <div>{this.renderErrorLogin()}</div>
         <div className="container-login100-form-btn">{this.renderButton()}</div>
@@ -124,4 +94,4 @@ const mapStatToProps = state => {
   };
 };
 
-export default connect(mapStatToProps, { userLogin })(SignIn);
+export default connect(mapStatToProps, { userLoginn })(SignIn);

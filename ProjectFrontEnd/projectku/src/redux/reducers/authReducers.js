@@ -8,6 +8,7 @@ import {
 } from "./../actions/types";
 
 const INITIAL_STATE = {
+  userid: 0,
   username: "",
   email: "",
   status: "",

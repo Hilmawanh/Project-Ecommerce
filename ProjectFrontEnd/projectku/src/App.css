@@ -18,7 +18,8 @@
   cursor: pointer;
   letter-spacing: 3px;
   font-size: 18px;
-  /* margin-left: 355px; */
+  margin-top: 7px;
+  margin-left: 50px;
 }
 
 .dropbtn2 {
@@ -29,6 +30,8 @@
   cursor: pointer;
   letter-spacing: 3px;
   font-size: 18px;
+  margin-top: 7px;
+  margin-left: 12px;
 }
 
 .dropbtn3 {
@@ -39,6 +42,8 @@
   cursor: pointer;
   letter-spacing: 3px;
   font-size: 18px;
+  margin-top: 7px;
+  margin-left: 12px;
 }
 
 .dropdown {

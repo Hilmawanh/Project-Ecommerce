@@ -23,15 +23,15 @@ const Header = props => {
       <Navbar className="top" light expand="md">
         <NavbarBrand
           href="/"
-          style={{ fontSize: "28px", color: "#333333", marginRight: "415px" }}
+          style={{ fontSize: "28px", color: "#333333", marginRight: "410px" }}
         >
           BROMEYO
         </NavbarBrand>
 
         <div className="dropdown">
-          <button className="dropbtn" to="/">
+          <h2 className="dropbtn" to="/">
             BIKES
-          </button>
+          </h2>
           <div className="dropdown-content">
             <a style={{ color: "white" }} href="/menuroadbike">
               Road Bike
@@ -52,7 +52,7 @@ const Header = props => {
         </div>
 
         <div class="dropdown">
-          <button className="dropbtn2">EQUIPMENT</button>
+          <h2 className="dropbtn2">GEAR</h2>
           <div class="dropdown-content2">
             <a style={{ color: "white" }} href="#">
               Helmet
@@ -70,7 +70,7 @@ const Header = props => {
         </div>
 
         <div class="dropdown">
-          <button className="dropbtn3">STORE</button>
+          <h2 className="dropbtn3">STORE</h2>
           <div class="dropdown-content3">
             <a style={{ color: "white" }} href="#">
               Link 1
@@ -84,19 +84,10 @@ const Header = props => {
           </div>
         </div>
 
-        {/* <div class="search-container" style={{ marginLeft: "225px" }}>
-          <form>
-            <input type="text" placeholder="Search Bike" name="search" />
-            <button type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-          </form>
-        </div> */}
-
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav>
-            <NavItem style={{ marginLeft: "355px" }}>
+            <NavItem style={{ marginLeft: "399px" }}>
               <Link>
                 <MdNotifications
                   className="mr-1 ml-2  "

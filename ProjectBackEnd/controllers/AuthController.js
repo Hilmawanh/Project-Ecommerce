@@ -14,9 +14,7 @@ module.exports = {
       }
       if (results.length > 0) {
         console.log(results);
-        return res
-          .status(200)
-          .send({ status: "error", message: "username has been taken" });
+        return res.status(200).send({ status: "error", message: "username has been taken" });
       } else {
         var hashpassword = cryptogenerate(password);
         var dataUser = {
@@ -72,15 +70,38 @@ module.exports = {
       var sql = `select * from users where id=${id}`;
       mysqldb.query(sql, (err, result) => {
         if (err) res.status(500).send({ status: "error", err });
+        const token = createJWTToken({
+          userid: result[0].id
+        });
+
+        return res.status(200).send({
+          email: result[0].email,
+          id: result[0].id,
+          status: "success",
+          token
+        });
+      });
+    } else {
+      var hasspasword = cryptogenerate(password);
+      let sql = `select * from users where email='${email}' and password='${hasspasword}'`;
+
+      mysqldb.query(sql, (err, result) => {
+        if (err) res.status(500).send({ status: "error", err });
         if (result.length === 0) {
-          return res
-            .status(200)
-            .send({
-              status: "notmatch",
-              error: "email dan password tidak sesuai"
-            });
+          return res.status(200).send({
+            status: "notmatch",
+            error: "email and password tidak sesuai!"
+          });
         }
-        const token = createJWTToken();
+        const token = createJWTToken({
+          userid: result[0].id
+        });
+        return res.send({
+          email: result[0].email,
+          id: result[0].id,
+          status: "success",
+          token
+        });
       });
     }
   }

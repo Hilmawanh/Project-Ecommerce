@@ -16,7 +16,9 @@ class Jumbotron6 extends Component {
             Compact and convenient.
           </p>
           <div>
-            <button className="jumbo6TextBuy">Discover</button>
+            <Link to="/menudaily">
+              <button className="jumbo6TextBuy">Discover</button>
+            </Link>
           </div>
         </div>
 
@@ -30,7 +32,9 @@ class Jumbotron6 extends Component {
             hills. See more. Do more.
           </p>
           <div>
-            <button className="jumbo6TextBuy">Discover</button>
+            <Link to="/menudaily">
+              <button className="jumbo6TextBuy">Discover</button>
+            </Link>
           </div>
         </div>
       </div>
