@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Jumbotron3 extends Component {
   state = {};
@@ -23,7 +24,10 @@ class Jumbotron3 extends Component {
               </p>
 
               <p className="menukananText2">
-                Price. $2000 <button className="button1">Buy Now</button>
+                Price. $2000{" "}
+                <Link to="/menuroadbike">
+                  <button className="button1">Buy Now</button>
+                </Link>
               </p>
             </div>
           </div>

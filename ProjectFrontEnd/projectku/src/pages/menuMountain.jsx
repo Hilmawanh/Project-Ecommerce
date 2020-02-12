@@ -13,23 +13,12 @@ class MenuMountain extends Component {
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
-          <h2
-            style={{
-              marginLeft: "70px",
-              marginTop: "20px",
-              fontFamily: "Alata",
-              fontWeight: "bolder",
-              letterSpacing: "1px",
-              color: "#333333"
-            }}
-          >
-            HELIOS LT
-          </h2>
+          <h2 className="CardTextHeader">XQUARONE</h2>
           <FaRegWindowMinimize
             style={{
               zIndex: "2",
               position: "absolute",
-              top: "465px",
+              top: "470px",
               left: "70px",
               color: "red",
               width: "50px",
@@ -53,7 +42,7 @@ class MenuMountain extends Component {
                   </p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -71,7 +60,7 @@ class MenuMountain extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -89,7 +78,7 @@ class MenuMountain extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -97,7 +86,7 @@ class MenuMountain extends Component {
         </div>
 
         {/* Harusnya card */}
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", marginTop: "40px" }}>
           <div class="card">
             <img
               src="https://www.polygonbikes.com/wp-content/uploads/2018/03/2018_XQUARONE_EX8_RED_1.png"
@@ -111,7 +100,7 @@ class MenuMountain extends Component {
                 <p>nnononoono</p>
               </center>
               <center>
-                <h4>Rp. 75.000.000</h4>
+                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
               </center>
             </div>
           </div>
@@ -129,7 +118,7 @@ class MenuMountain extends Component {
                 <p>nnononoono</p>
               </center>
               <center>
-                <h4>Rp. 75.000.000</h4>
+                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
               </center>
             </div>
           </div>
@@ -147,7 +136,27 @@ class MenuMountain extends Component {
                 <p>nnononoono</p>
               </center>
               <center>
-                <h4>Rp. 75.000.000</h4>
+                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
+              </center>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", marginTop: "40px" }}>
+          <div class="card">
+            <img
+              src="https://www.polygonbikes.com/wp-content/uploads/2018/08/XQUARONE_DH8_P.png"
+              style={{ width: "100%" }}
+            />
+            <div class="container">
+              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
+                <b>XQUARONE DH9</b>
+              </h4>
+              <center>
+                <p>nnononoono</p>
+              </center>
+              <center>
+                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
               </center>
             </div>
           </div>

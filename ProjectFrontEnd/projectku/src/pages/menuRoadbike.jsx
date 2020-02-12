@@ -15,18 +15,7 @@ class MenuRoadbike extends Component {
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
-          <h2
-            style={{
-              marginLeft: "70px",
-              marginTop: "20px",
-              fontFamily: "Alata",
-              fontWeight: "bolder",
-              letterSpacing: "1px",
-              color: "#333333"
-            }}
-          >
-            HELIOS LT
-          </h2>
+          <h2 className="CardTextHeader">HELIOS LT</h2>
           <FaRegWindowMinimize
             style={{
               zIndex: "2",
@@ -49,13 +38,13 @@ class MenuRoadbike extends Component {
                   <b style={{ fontFamily: "Poppins" }}>Helios LT9X</b>
                 </h4>
                 <center>
-                  <p>
+                  <p style={{ fontFamily: "Lato" }}>
                     Road Performance bike built with a UCI approved ACX frame
                     that is astonishingly responsice, smooth and fast.
                   </p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">IDR 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -70,10 +59,10 @@ class MenuRoadbike extends Component {
                   <b>Helios LT9X</b>
                 </h4>
                 <center>
-                  <p>nnononoono</p>
+                  <p style={{ fontFamily: "Lato" }}>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -88,10 +77,10 @@ class MenuRoadbike extends Component {
                   <b>Helios LT9X</b>
                 </h4>
                 <center>
-                  <p>nnononoono</p>
+                  <p style={{ fontFamily: "Lato" }}>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -100,18 +89,7 @@ class MenuRoadbike extends Component {
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
-          <h2
-            style={{
-              marginLeft: "70px",
-              marginTop: "40px",
-              fontFamily: "Alata",
-              fontWeight: "bolder",
-              letterSpacing: "1px",
-              color: "#333333"
-            }}
-          >
-            SPECIALIZED
-          </h2>
+          <h2 className="CardTextHeader2">SPECIALIZED</h2>
           <FaRegWindowMinimize
             style={{
               zIndex: "2",
@@ -137,7 +115,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -155,7 +133,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -173,7 +151,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -182,18 +160,7 @@ class MenuRoadbike extends Component {
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
-          <h2
-            style={{
-              marginLeft: "70px",
-              marginTop: "40px",
-              fontFamily: "Alata",
-              fontWeight: "bolder",
-              letterSpacing: "1px",
-              color: "#333333"
-            }}
-          >
-            DIVINE
-          </h2>
+          <h2 className="CardTextHeader2">DIVINE</h2>
           <FaRegWindowMinimize
             style={{
               zIndex: "2",
@@ -219,7 +186,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -237,7 +204,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -246,18 +213,7 @@ class MenuRoadbike extends Component {
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
-          <h2
-            style={{
-              marginLeft: "70px",
-              marginTop: "40px",
-              fontFamily: "Alata",
-              fontWeight: "bolder",
-              letterSpacing: "1px",
-              color: "#333333"
-            }}
-          >
-            BEND
-          </h2>
+          <h2 className="CardTextHeader2">BEND</h2>
           <FaRegWindowMinimize
             style={{
               zIndex: "2",
@@ -283,7 +239,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -301,7 +257,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 className="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -319,7 +275,7 @@ class MenuRoadbike extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h4>Rp. 75.000.000</h4>
+                  <h5 sclassName="CardTextPrice">Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>

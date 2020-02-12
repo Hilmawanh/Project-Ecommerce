@@ -68,25 +68,19 @@ module.exports = {
     const { id } = req.params;
     const { email, password } = req.query;
 
-    if (email || password) {
-      console.log("Ini user Login", email);
-      var hashpassword = cryptogenerate(password);
-
-      var sql = `SELECT * FROM users WHERE username='${email}' AND password='${hashpassword}'`;
-
+    if (id) {
+      var sql = `select * from users where id=${id}`;
       mysqldb.query(sql, (err, result) => {
-        if (err) res.status(500).send({ err });
-
-        if (result[0] !== undefined) {
-          if (result[0].status === "verified") {
-            console.log("ver");
-
-            let token = createJWTToken({
-              id: result[0].id,
-              email: result[0].email
+        if (err) res.status(500).send({ status: "error", err });
+        if (result.length === 0) {
+          return res
+            .status(200)
+            .send({
+              status: "notmatch",
+              error: "email dan password tidak sesuai"
             });
-          }
         }
+        const token = createJWTToken();
       });
     }
   }
