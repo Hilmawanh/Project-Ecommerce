@@ -84,7 +84,7 @@ class SignIn extends Component {
   }
 }
 
-const mapStatToProps = state => {
+const mapStateToProps = state => {
   return {
     email: state.auth.email,
     loading: state.auth.loading,
@@ -94,4 +94,4 @@ const mapStatToProps = state => {
   };
 };
 
-export default connect(mapStatToProps, { userLoginn })(SignIn);
+export default connect(mapStateToProps, { userLoginn })(SignIn);

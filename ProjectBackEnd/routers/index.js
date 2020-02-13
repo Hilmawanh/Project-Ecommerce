@@ -1,5 +1,5 @@
-const authRouter=require('./AuthRouter')
+const authRouter = require("./AuthRouter");
 
-module.exports={
-    authRouter
-}
+module.exports = {
+  authRouter
+};

@@ -20,7 +20,7 @@ import MenuMountain from "./pages/menuMountain";
 import MenuBmx from "./pages/menuBmx";
 import MenuDaily from "./pages/menuDaily";
 import MenuEbike from "./pages/menuEbike";
-import GearBike from "./pages/menuGear";
+import MenuApparels from "./pages/menuApparels";
 
 // User Controller //
 import Cart from "./pages/cart";
@@ -38,12 +38,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    
     var id = localStorage.getItem("userid");
     if (id) {
       axios
-      .get(`${APIURL}auth/userLoginn/${id}`)
-      .then(res => {
+        .get(`${APIURL}auth/userLoginn/${id}`)
+        .then(res => {
           this.props.userLoginRepeat(res.data);
         })
         .catch(err => {
@@ -68,13 +67,13 @@ class App extends Component {
 
           {/* Tampilan User */}
           <NotFound exact path={"/not-found"} component={NotFound} />
-          <Route exact path={"/gear-bike"} component={GearBike} />
           <Route exact path={"/marchendise"} component={Marchendise} />
           <Route exact path={"/menuroadbike"} component={MenuRoadbike} />
           <Route exact path={"/menumountain"} component={MenuMountain} />
           <Route exact path={"/menubmx"} component={MenuBmx} />
           <Route exact path={"/menudaily"} component={MenuDaily} />
           <Route exact path={"/menuebike"} component={MenuEbike} />
+          <Route exact path={"/menuapparels"} component={MenuApparels} />
           <Route exact path={"/cart"} component={Cart} />
 
           {/* User Controller */}

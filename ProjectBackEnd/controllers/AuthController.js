@@ -41,26 +41,26 @@ module.exports = {
     });
   },
 
-  userLogin: (req, res) => {
-    var { email, password } = req.body;
-    var hashpassword = cryptogenerate(password);
-    var sql = `select * from users where email='${email}' and password='${hashpassword}'`;
+  // userLogin: (req, res) => {
+  //   var { email, password } = req.body;
+  //   var hashpassword = cryptogenerate(password);
+  //   var sql = `select * from users where email='${email}' and password='${hashpassword}'`;
 
-    mysqldb.query(sql, (err, result) => {
-      if (err) {
-        throw err;
-      }
-      if (result.length > 0) {
-        return res.status(200).send({ result, status: "login berhasil" });
-      } else {
-        return res.status(500).send({
-          status: "error",
-          message: "email atau password salah",
-          err
-        });
-      }
-    });
-  },
+  //   mysqldb.query(sql, (err, result) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     if (result.length > 0) {
+  //       return res.status(200).send({ result, status: "login berhasil" });
+  //     } else {
+  //       return res.status(500).send({
+  //         status: "error",
+  //         message: "email atau password salah",
+  //         err
+  //       });
+  //     }
+  //   });
+  // },
 
   userLoginn: (req, res) => {
     const { id } = req.params;

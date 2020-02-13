@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { MdNotifications } from "react-icons/md";
 import { Link, Redirect } from "react-router-dom";
+
+const LogoutSuccess=()=>{
+  localStorage.clear()
+  
+}
 
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,10 +18,7 @@ const Header = props => {
   return (
     <div>
       <Navbar className="top" light expand="md">
-        <NavbarBrand
-          href="/"
-          style={{ fontSize: "28px", color: "#333333", marginRight: "410px" }}
-        >
+        <NavbarBrand href="/" style={{ fontSize: "28px", color: "#333333", marginRight: "410px" }}>
           BROMEYO
         </NavbarBrand>
 
@@ -54,18 +48,13 @@ const Header = props => {
         <div class="dropdown">
           <h2 className="dropbtn2">GEAR</h2>
           <div class="dropdown-content2">
-            <a style={{ color: "white" }} href="#">
-              Helmet
+            <a style={{ color: "white" }} href="/menuapparels">
+              Apparels
             </a>
             <a style={{ color: "white" }} href="#">
-              Shoes
+              Spare Parts
             </a>
-            <a style={{ color: "white" }} href="#">
-              Shirt
-            </a>
-            <a style={{ color: "white" }} href="#">
-              Gloves
-            </a>
+        
           </div>
         </div>
 
@@ -101,12 +90,15 @@ const Header = props => {
 
             <NavItem>
               <Link to="/cart">
-                <FaShoppingCart
-                  className="mr-1 ml-2 tampilan"
-                  style={{ color: "#333333", fontSize: 22 }}
-                />
+                <FaShoppingCart className="mr-1 ml-2 tampilan" style={{ color: "#333333", fontSize: 22 }} />
               </Link>
             </NavItem>
+
+            {/* <NavItem>
+              <Link to="/">
+                <button className="">Logout</button>
+              </Link>
+            </NavItem> */}
 
             <NavItem>
               <Link to="/login">

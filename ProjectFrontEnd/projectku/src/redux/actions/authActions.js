@@ -37,40 +37,10 @@ export const userRegis = ({ username, email, password }) => {
   };
 };
 
-export const userLogin = ({ email, password }) => {
-  return dispatch => {
-    dispatch({ type: AUTH_LOADING });
-    if (email === "" || password === "") {
-      dispatch({
-        type: AUTH_LOGIN_ERROR,
-        payload: "Email dan Password tidak boleh kosong"
-      });
-    } else {
-      axios
-        .post(APIURL + "auth/loginUser", { email, password })
-        .then(res => {
-          // console.log(res);
-          if (res.data.status === "error") {
-            dispatch({ type: AUTH_SYSTEM_ERROR, payload: res.data.message });
-          } else {
-            localStorage.setItem("email", email);
-            dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
-          }
-        })
-        .catch(err => {
-          dispatch({
-            type: AUTH_SYSTEM_ERROR,
-            payload: { error: "System error" }
-          });
-        });
-    }
-  };
-};
-
 export const userLoginn = ({ email, password }) => {
   return dispatch => {
     console.log(email);
-    
+
     dispatch({ type: AUTH_LOADING });
     if (email === "" || password === "") {
       dispatch({
@@ -105,9 +75,11 @@ export const userLoginn = ({ email, password }) => {
 export const userLoginRepeat = resdata => {
   return dispatch => {
     console.log("resdata");
-    
+
     localStorage.setItem("token", resdata.token);
     localStorage.setItem("userid", resdata.id);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: resdata });
   };
 };
+
+// export const userLogout 
