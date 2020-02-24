@@ -9,28 +9,20 @@ class MenuRoadbike extends Component {
         <div>
           <img
             src="https://cdn.mos.cms.futurecdn.net/EWXBvRyu3ZEhV2vuayNwMZ.jpg"
-            style={{ width: "100%", height: "25pc" }}
+            alt="co"
+            style={{ width: "100%", height: "30pc" }}
           />
         </div>
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader">HELIOS LT</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "465px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripRoadbike1" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -39,8 +31,8 @@ class MenuRoadbike extends Component {
                 </h4>
                 <center>
                   <p style={{ fontFamily: "Lato" }}>
-                    Road Performance bike built with a UCI approved ACX frame
-                    that is astonishingly responsice, smooth and fast.
+                    Road Performance bike built with a UCI approved ACX frame that is astonishingly responsice, smooth
+                    and fast.
                   </p>
                 </center>
                 <center>
@@ -52,6 +44,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -70,6 +63,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -90,21 +84,12 @@ class MenuRoadbike extends Component {
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader2">SPECIALIZED</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "1010px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripRoadbike2" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
                 src="https://img.pngio.com/your-complete-guide-to-specializeds-2018-road-bike-range-roadcc-road-biking-png-880_546.jpg"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -123,6 +108,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -141,6 +127,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -161,21 +148,12 @@ class MenuRoadbike extends Component {
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader2">DIVINE</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "1555px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripRoadbike3" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -194,6 +172,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -214,21 +193,12 @@ class MenuRoadbike extends Component {
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader2">BEND</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "2100px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripRoadbike4" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -247,6 +217,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">
@@ -265,6 +236,7 @@ class MenuRoadbike extends Component {
             <div class="card">
               <img
                 src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
+                alt="co"
                 style={{ width: "100%" }}
               />
               <div class="container">

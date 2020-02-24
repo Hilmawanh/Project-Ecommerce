@@ -1,5 +1,12 @@
 import axios from "axios";
-import { USER_LOGIN_SUCCESS, USER_LOGOUT, AUTH_LOADING, AUTH_SYSTEM_ERROR, AUTH_LOGIN_ERROR, AUTH_REGISTER } from "./types";
+import {
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
+  AUTH_LOADING,
+  AUTH_SYSTEM_ERROR,
+  AUTH_LOGIN_ERROR,
+  AUTH_REGISTER
+} from "./types";
 import { APIURL } from "./../../helper/apiurl";
 
 export const userRegis = ({ username, email, password }) => {
@@ -82,4 +89,10 @@ export const userLoginRepeat = resdata => {
   };
 };
 
-// export const userLogout 
+export const userLogout = () => {
+  return {
+    type: USER_LOGOUT
+  };
+};
+
+export const userChangePass = () => {};

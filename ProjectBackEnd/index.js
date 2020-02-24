@@ -15,8 +15,9 @@ app.get("/", (req, res) => {
   return res.status(200).send("<h1>Welcome to Backend</h1>");
 });
 
-const { authRouter } = require("./routers");
+const { authRouter, adminRouter } = require("./routers");
 
 app.use("/auth", authRouter);
+app.use("/admin", adminRouter);
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

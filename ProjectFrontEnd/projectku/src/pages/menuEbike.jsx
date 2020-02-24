@@ -8,23 +8,13 @@ class MenuEbike extends Component {
       <div>
         <img
           src="https://media-cdn.canyon.com/dw/image/v2/BCML_PRD/on/demandware.static/-/Sites-canyon-storefront/default/dwdfa4c984/category-landing/ebikes/world_hero_canyon_e-bikes_2019.jpg?sw=737&sfrm=jpg&q=80"
-          style={{ width: "100%", height: "25pc" }}
+          style={{ width: "100%", height: "30pc" }}
         />
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader">TRID</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "465px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripEbike" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img

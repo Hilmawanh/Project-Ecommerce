@@ -8,7 +8,7 @@ class MenuBmx extends Component {
       <div>
         <img
           src="https://images.pexels.com/photos/1580234/pexels-photo-1580234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          style={{ width: "100%", height: "25pc" }}
+          style={{ width: "100%", height: "30pc" }}
         />
         {/* <h2 className="menuBmxText">BMX</h2> */}
         {/* <h1 className="menuBmxText2">___</h1> */}
@@ -16,17 +16,7 @@ class MenuBmx extends Component {
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader">RAZOR</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "465px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripBmx1" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
@@ -41,9 +31,7 @@ class MenuBmx extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>
-                    Rp. 75.000.000
-                  </h5>
+                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -61,9 +49,7 @@ class MenuBmx extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>
-                    Rp. 75.000.000
-                  </h5>
+                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>
@@ -81,9 +67,7 @@ class MenuBmx extends Component {
                   <p>nnononoono</p>
                 </center>
                 <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>
-                    Rp. 75.000.000
-                  </h5>
+                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
                 </center>
               </div>
             </div>

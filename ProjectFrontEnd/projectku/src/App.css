@@ -1,5 +1,6 @@
 .navbar {
-  height: 8vh;
+  height: 9vh;
+  background-color: #212529;
 }
 
 .navbar-brand {
@@ -11,36 +12,36 @@
 }
 
 .dropbtn {
-  color: black;
+  color: white;
   border: none;
-  font-family: "Poppins";
+  font-family: "Nunito Sans";
   font-weight: bolder;
   cursor: pointer;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-size: 18px;
   margin-top: 7px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 .dropbtn2 {
-  color: black;
+  color: white;
   border: none;
-  font-family: "Poppins";
+  font-family: "Nunito Sans";
   font-weight: bolder;
   cursor: pointer;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-size: 18px;
   margin-top: 7px;
   margin-left: 12px;
 }
 
 .dropbtn3 {
-  color: black;
+  color: white;
   border: none;
-  font-family: "Poppins";
+  font-family: "Nunito Sans";
   font-weight: bolder;
   cursor: pointer;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-size: 18px;
   margin-top: 7px;
   margin-left: 12px;
@@ -54,39 +55,45 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #323232;
   min-width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.2);
+  /* box-shadow: rgba(0, 0, 0, 0.2); */
   z-index: 1;
   font-family: "Raleway";
   font-weight: bolder;
+  /* margin-right: 400px; */
 }
 
 .dropdown-content2 {
   display: none;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #323232;
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   font-family: "Raleway";
   font-weight: bolder;
+  margin-left: 10px;
 }
 
 .dropdown-content3 {
   display: none;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #323232;
   min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   font-family: "Raleway";
   font-weight: bolder;
+  margin-left: 10px;
 }
 
 .dropdown-content a {
   color: black;
-  padding: 16px 16px;
+  padding: 20px 16px;
   text-decoration: none;
   display: block;
 }
@@ -120,16 +127,17 @@
 }
 
 .ButtonHeader {
-  border: 1px solid;
+  border: 1px solid gray;
   width: 70px;
   margin-left: 10px;
   font-family: "Poppins";
   border-radius: 3px;
+  color: #1a1a11;
 }
 
 .ButtonHeader:hover {
-  background-color: #333333;
-  color: white;
+  background-color: #1a1a11;
+  color: black;
 }
 
 /* Header Ended */
@@ -161,7 +169,7 @@
 .menuAwalButton {
   z-index: 2;
   position: absolute;
-  left: 206px;
+  left: 204px;
   top: 405px;
   border: 1px;
   width: 155px;
@@ -172,7 +180,7 @@
 }
 
 .menuAwalButton:hover {
-  background-color: #333333;
+  background-color: #1a1a1a;
 }
 
 .menuAwalButton2 {
@@ -183,13 +191,13 @@
   border: 1px;
   height: 50px;
   width: 155px;
-  background-color: #333333;
+  background-color: #212529;
   color: white;
   font-family: "Poppins";
 }
 
 .menuAwalButton2:hover {
-  background-color: #1b262c;
+  background-color: #1a1a1a;
 }
 /* MenuAwal ended */
 
@@ -531,9 +539,10 @@
   font-weight: bolder;
 }
 
-/* .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-} */
+.card:hover {
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 8px 16px 0 #212529;
+}
 
 .container {
   padding: 2px 16px;
@@ -609,6 +618,86 @@
 /* Home Ended */
 
 /* Menu Sepeda Started */
+
+.StripRoadbike1 {
+  z-index: 2;
+  position: absolute;
+  top: 480px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripRoadbike2 {
+  z-index: 2;
+  position: absolute;
+  top: 1025px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripRoadbike3 {
+  z-index: 2;
+  position: absolute;
+  top: 1570px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripRoadbike4 {
+  z-index: 2;
+  position: absolute;
+  top: 2115px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripMountain1 {
+  z-index: 2;
+  position: absolute;
+  top: 482px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripBmx1 {
+  z-index: 2;
+  position: absolute;
+  top: 482px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripDaily {
+  z-index: 2;
+  position: absolute;
+  top: 482px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.StripEbike {
+  z-index: 2;
+  position: absolute;
+  top: 482px;
+  left: 70px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
 
 .menuBmxText {
   z-index: 2;
@@ -835,6 +924,17 @@
   margin-top: 30px;
   margin-left: 400px;
   margin-bottom: 30px;
+}
+
+
+.ButtonManageProduct{
+  border: 1px solid;
+}
+
+.ButtonManageProduct:hover{
+  background-color: #212529;
+  color: white;
+  
 }
 
 /* Login ended */

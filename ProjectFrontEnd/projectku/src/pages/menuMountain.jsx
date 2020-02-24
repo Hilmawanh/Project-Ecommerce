@@ -8,23 +8,13 @@ class MenuMountain extends Component {
       <div>
         <img
           src="https://images.unsplash.com/photo-1536244881128-90b1d3d2549f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1993&q=80"
-          style={{ width: "100%", height: "25pc" }}
+          style={{ width: "100%", height: "30pc" }}
         />
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
           <h2 className="CardTextHeader">XQUARONE</h2>
-          <FaRegWindowMinimize
-            style={{
-              zIndex: "2",
-              position: "absolute",
-              top: "470px",
-              left: "70px",
-              color: "red",
-              width: "50px",
-              height: "100px"
-            }}
-          />
+          <FaRegWindowMinimize className="StripMountain1" />
           <div style={{ display: "flex" }}>
             <div class="card">
               <img
@@ -37,8 +27,8 @@ class MenuMountain extends Component {
                 </h4>
                 <center>
                   <p>
-                    Road Performance bike built with a UCI approved ACX frame
-                    that is astonishingly responsice, smooth and fast.
+                    Road Performance bike built with a UCI approved ACX frame that is astonishingly responsice, smooth
+                    and fast.
                   </p>
                 </center>
                 <center>

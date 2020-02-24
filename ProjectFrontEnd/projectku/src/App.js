@@ -22,6 +22,8 @@ import MenuDaily from "./pages/menuDaily";
 import MenuEbike from "./pages/menuEbike";
 import MenuApparels from "./pages/menuApparels";
 
+import MenuDetails from "./pages/menuDetails";
+
 // User Controller //
 import Cart from "./pages/cart";
 import SignIn from "./pages/login";
@@ -67,6 +69,7 @@ class App extends Component {
 
           {/* Tampilan User */}
           <NotFound exact path={"/not-found"} component={NotFound} />
+          <Route exact path={"/cart"} component={Cart} />
           <Route exact path={"/marchendise"} component={Marchendise} />
           <Route exact path={"/menuroadbike"} component={MenuRoadbike} />
           <Route exact path={"/menumountain"} component={MenuMountain} />
@@ -74,7 +77,7 @@ class App extends Component {
           <Route exact path={"/menudaily"} component={MenuDaily} />
           <Route exact path={"/menuebike"} component={MenuEbike} />
           <Route exact path={"/menuapparels"} component={MenuApparels} />
-          <Route exact path={"/cart"} component={Cart} />
+          <Route exact path={"/menu-details"} component={MenuDetails} />
 
           {/* User Controller */}
           <Route exact path={"/login"} component={SignIn} />

@@ -9,12 +9,12 @@ import {
 
 const INITIAL_STATE = {
   userid: 0,
+  roleid: 0,
   username: "",
   email: "",
   status: "",
   error: "",
   loginError: "",
-  token: "",
   authchecked: false,
   loading: false,
   registerStatus: false,
@@ -56,7 +56,7 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case USER_LOGOUT:
-      return { ...INITIAL_STATE, authchecked: true };
+      return INITIAL_STATE;
 
     default:
       return state;

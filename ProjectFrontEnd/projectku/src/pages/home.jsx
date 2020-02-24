@@ -5,12 +5,14 @@ import Jumbotron3 from "./jumbotron3";
 import Jumbotron4 from "./jumbotron4";
 import Jumbotron5 from "./jumbotron5";
 import Jumbotron6 from "./jumbotron6";
+import Jumbotron7 from "./jumbotron7";
 
 class Home extends Component {
   state = {};
   render() {
     return (
       <div>
+        <Jumbotron7 />
         <Jumbotron3 />
         <Jumbotron2 />
         <Jumbotron1 />

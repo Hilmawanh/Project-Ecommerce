@@ -55,7 +55,7 @@ class SignIn extends Component {
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.9)",
             marginLeft: "542px",
-            marginTop: "25px"
+            marginTop: "110px"
           }}>
           <MdDirectionsBike />
         </Avatar>

@@ -1,9 +1,9 @@
 import React from "react";
 import { Table } from "reactstrap";
 
-const Example = props => {
+const Cart = props => {
   return (
-    <div>
+    <div style={{ marginTop: "110px" }}>
       <Table hover className="container">
         <thead>
           <tr>
@@ -62,4 +62,4 @@ const Example = props => {
   );
 };
 
-export default Example;
+export default Cart;

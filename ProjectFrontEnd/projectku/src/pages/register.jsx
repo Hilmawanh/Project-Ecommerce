@@ -69,7 +69,7 @@ class Register extends Component {
           style={{
             backgroundColor: "#33313b",
             marginLeft: "542px",
-            marginTop: "25px",
+            marginTop: "110px",
             marginBottom: "20px"
           }}
         >
