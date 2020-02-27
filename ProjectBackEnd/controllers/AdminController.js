@@ -6,7 +6,7 @@ module.exports = {
   addNewProduk: (req, res) => {
     try {
       const path = "/product/image";
-      const upload = uploader(path, "Product").fields([{ name: "Image" }]);
+      const upload = uploader(path, "Product").fields([{ name: "image" }]);
 
       upload(req, res, err => {
         if (err) {
@@ -21,12 +21,14 @@ module.exports = {
 
         const data = JSON.parse(req.body.data);
 
-        data.image = imagePath;
+        data.gambar = imagePath;
 
         var sql = `INSERT INTO product SET ?`;
         mysqldb.query(sql, data, (err, results) => {
+          console.log('berhasil add')
           if (err) {
             console.log(err.message);
+            console.log('gagal add')
             fs.unlinkSync("./public" + imagePath);
             return res.status(500).json({ message: "Error on the server", error: err.message });
           }
@@ -45,12 +47,59 @@ module.exports = {
         });
       });
     } catch (err) {
-      return res.status(500).json({ message: "There's error on the server", error: err.message });
+      return res.status(500).json({ message: "There's error on the server. Please contact the administrator.", error: err.message });
     }
 
   },
 
   deleteProduk: (req, res) => { },
+
+  editProduk: (req, res) => {
+    const productId = req.params.id
+    let sql = `select * from product where id=${productId}`
+    mysqldb.query(sql, (err, results) => {
+      if (err) throw (err)
+
+      if (results.length) {
+        const path = "/product/image";
+        const upload = uploader(path, "Product").fields([{ name: "image" }]);
+        upload(req, res, err => {
+          if (err) {
+            return res.status(500).json({ message: "Upload post picture Failde", error: err.message })
+          }
+          const { image } = req.files;
+          const imagePath = image ? path + "/" + image[0].filename : null;
+          const data = JSON.parse(req.body.data);
+
+          try {
+            if (imagePath) {
+              data.gambar = imagePath
+            }
+
+            sql = `UPDATE product SET ? where id=${productId}`
+            mysqldb.query(sql, data, (err1, results1) => {
+              if (err1) {
+                if (imagePath) {
+                  fs.unlinkSync("./public" + imagePath)
+                }
+                return res.status(500).json({ message: "There's Error on the server. Asshole", error: err1.message })
+              }
+              if (imagePath) {
+                if (results[0].gambar) {
+                  fs.unlinkSync('./public' + results[0].gambar)
+                }
+              }
+              
+            })
+
+          } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ message: "There's an error on the server. Please contact the administrator.", error: err.message });
+          }
+        })
+      }
+    })
+  },
 
   getProdukSepeda: (req, res) => {
     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=1`, (err, result1) => {
@@ -67,7 +116,7 @@ module.exports = {
                 if (err) res.status(500).send(err)
                 mysqldb.query(`select * from category`, (err, result7) => {
                   if (err) res.status(500).send(err)
-
+                  res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7 })
                 })
               })
             })
@@ -79,5 +128,7 @@ module.exports = {
 
   getProdukEquipment: (req, res) => {
     let sql = ``;
-  }
+  },
+
+
 };

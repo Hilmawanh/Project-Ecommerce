@@ -938,6 +938,33 @@
 }
 
 /* Login ended */
+
+.DeskipsiProduct{
+  text-align: justify;
+}
+
+.EditManage{
+  margin-right: 12px;
+  border: 1px solid black;
+
+}
+
+.EditManage:hover{
+  background-color: #1b262c;
+  color: white;
+}
+
+.DeleteManage{
+  border: 1px solid ;
+}
+
+.DeleteManage:hover{
+  background-color: #c81912;
+  color: white;
+}
+
+
+
 /* @import url("https://fonts.googleapis.com/css?family=Merriweather|PT+Sans|Roboto&display=swap"); */
 
 /* Font Biasa */

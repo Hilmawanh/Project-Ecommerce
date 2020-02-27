@@ -75,7 +75,7 @@ class SignIn extends Component {
           </Grid>
           <Grid style={{ marginLeft: "20px" }}>
             <Link href="/register" variant="body2">
-              {"Don't have an account? Sign Up"}
+              {"Don't have an account? Join"}
             </Link>
           </Grid>
         </Grid>
