@@ -9,6 +9,7 @@ import { FiLogIn, FiLogOut, FiUser } from "react-icons/fi";
 import { Link, Redirect } from "react-router-dom";
 // import { userLogout } from "../redux/actions";
 import { connect, useSelector } from "react-redux";
+import { Badge } from '@material-ui/core'
 
 import Logo from "../image/LogoBromeyo2.png";
 
@@ -27,7 +28,7 @@ const Header = props => {
   return (
     <div>
       <Navbar fixed="top" light expand="md">
-        <NavbarBrand href="/" style={{ fontSize: "28px", color: "white", marginRight: "447px" }}>
+        <NavbarBrand href="/" style={{ fontSize: "28px", color: "white", marginRight: "450px" }}>
           BROMEYO
         </NavbarBrand>
 
@@ -70,13 +71,13 @@ const Header = props => {
           <h2 className="dropbtn3">STORE</h2>
           <div class="dropdown-content3">
             <a style={{ color: "white" }} href="#">
-              Link 1
+              Jakarata
             </a>
             <a style={{ color: "white" }} href="#">
-              Link 2
+              Bogor
             </a>
             <a style={{ color: "white" }} href="#">
-              Link 3
+              Yogyakarta
             </a>
           </div>
         </div>
@@ -84,9 +85,11 @@ const Header = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {Login ? (
-            <NavItem style={{ marginLeft: "435px" }}>
+            <NavItem style={{ marginLeft: "430px" }}>
               <NavLink href="/cart">
+                <Badge badgeContent={1} color="secondary">
                 <FiShoppingCart className="" style={{ color: "white", fontSize: 23, marginBottom: "25px" }} />
+                </Badge>
               </NavLink>
             </NavItem>
           ) : null}
@@ -98,18 +101,18 @@ const Header = props => {
                 <FiUser style={{ color: "white", fontSize: 23, marginTop: "8px" }} />
               </NavItem>
             ) : (
-              <NavItem style={{ marginLeft: "470px" }}>
-                <Link>
-                  <MdNotificationsNone
-                    className="mr-1 ml-2  "
-                    style={{
-                      color: "white",
-                      fontSize: 25
-                    }}
-                  />
-                </Link>
-              </NavItem>
-            )}
+                <NavItem style={{ marginLeft: "470px" }}>
+                  <Link>
+                    <MdNotificationsNone
+                      className="mr-1 ml-2  "
+                      style={{
+                        color: "white",
+                        fontSize: 25
+                      }}
+                    />
+                  </Link>
+                </NavItem>
+              )}
 
             {Login ? (
               <NavItem>
@@ -118,12 +121,12 @@ const Header = props => {
                 </NavLink>
               </NavItem>
             ) : (
-              <NavItem>
-                <Link to="/login">
-                  <FiLogIn className="mr-1 ml-3 tampilan" style={{ color: "white", fontSize: 24 }} />
-                </Link>
-              </NavItem>
-            )}
+                <NavItem>
+                  <Link to="/login">
+                    <FiLogIn className="mr-1 ml-3 tampilan" style={{ color: "white", fontSize: 24 }} />
+                  </Link>
+                </NavItem>
+              )}
           </Nav>
         </Collapse>
       </Navbar>

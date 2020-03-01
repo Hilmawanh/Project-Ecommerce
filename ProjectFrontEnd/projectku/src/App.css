@@ -1,6 +1,7 @@
 .navbar {
   height: 9vh;
-  background-color: #212529;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: black;
 }
 
 .navbar-brand {
@@ -946,7 +947,7 @@
 .EditManage{
   margin-right: 12px;
   border: 1px solid black;
-
+  border-radius: 3px;
 }
 
 .EditManage:hover{
@@ -956,10 +957,11 @@
 
 .DeleteManage{
   border: 1px solid ;
+  border-radius: 3px;
 }
 
 .DeleteManage:hover{
-  background-color: #c81912;
+  background-color: #801336;
   color: white;
 }
 

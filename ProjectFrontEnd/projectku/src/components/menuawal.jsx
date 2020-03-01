@@ -7,7 +7,7 @@ class MenuAwal extends Component {
     return (
       <div>
         <img
-          src="https://pbs.twimg.com/media/EP6rj9JXUAEO-B_?format=jpg&name=large"
+          src="https://scontent.fcgk21-1.fna.fbcdn.net/v/t1.0-9/84895119_2781158178619952_3101043177432285184_o.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_ohc=WY4lIUgWMaAAX-Xnbpb&_nc_ht=scontent.fcgk21-1.fna&oh=7f690e8f6b7a19d920b90cca593e3ad3&oe=5F00737C"
           style={{ width: "100%", height: "95vh" }}
         />
 

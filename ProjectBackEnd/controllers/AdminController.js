@@ -52,8 +52,6 @@ module.exports = {
 
   },
 
-  deleteProduk: (req, res) => { },
-
   editProduk: (req, res) => {
     const productId = req.params.id
     let sql = `select * from product where id=${productId}`
@@ -85,11 +83,19 @@ module.exports = {
                 return res.status(500).json({ message: "There's Error on the server. Asshole", error: err1.message })
               }
               if (imagePath) {
+                //===== Hapus Foto Lama =====\\
                 if (results[0].gambar) {
                   fs.unlinkSync('./public' + results[0].gambar)
                 }
               }
-              
+
+              mysqldb.query(`select p.*,c.category as categoryBike from product p left join category c on p.categoryid=c.id order by c.id`, (err, result1) => {
+                if (err) res.status(500).send(err)
+                mysqldb.query(`select * from category`, (err, result2) => {
+                  if (err) res.status(500).send(err);
+                  res.status(200).send({ dataProduk: result1, dataCategory: result2 })
+                })
+              })
             })
 
           } catch (err) {
@@ -99,6 +105,10 @@ module.exports = {
         })
       }
     })
+  },
+
+  deleteProduk: (req, res) => {
+    let sql = `select * from product where id=${req.params.id}`
   },
 
   getProdukSepeda: (req, res) => {
@@ -112,11 +122,14 @@ module.exports = {
             if (err) res.status(500).send(err)
             mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=5`, (err, result5) => {
               if (err) res.status(500).send(err)
-              mysqldb.query(`select p.*,c.category as categoryBike from product p left join category c on p.categoryid=c.id order by c.id`, (err, result6) => {
+              mysqldb.query(`select p.*,c.category from product p left join category c on p.categoryid=c.id order by c.id`, (err, result6) => {
                 if (err) res.status(500).send(err)
                 mysqldb.query(`select * from category`, (err, result7) => {
                   if (err) res.status(500).send(err)
-                  res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7 })
+                  mysqldb.query(`select p.* from product p left join category c on p.categoryid=c.id order by c.id`, (err, result8 => {
+                    if (err) res.status(500).send(err)
+                    res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7, dataEdit: result8 })
+                  }))
                 })
               })
             })
@@ -127,8 +140,10 @@ module.exports = {
   },
 
   getProdukEquipment: (req, res) => {
-    let sql = ``;
+    let sql = `dsa`;
+
   },
 
 
 };
+

@@ -7,9 +7,9 @@ import ManageUsers from "./manageUsers";
 function ManageAdmin() {
   return (
     <Tabs>
-      <TabList style={{ marginTop: "95px" }}>
-        <Tab tabFor="horizontal-tab-one">Manage User</Tab>
-        <Tab tabFor="horizontal-tab-two">Manage Product</Tab>
+      <TabList style={{ marginTop: "70px" }}>
+        <Tab tabFor="horizontal-tab-one">Manage Product</Tab>
+        <Tab tabFor="horizontal-tab-two">Manage User</Tab>
       </TabList>
 
       <TabPanel tabId="horizontal-tab-one">
