@@ -10,7 +10,7 @@ function ManageProduct() {
   const [datacategory, setdatacategory] = useState([])
   const [editDataProduk, setEditDataProduk] = useState([]);
   const [editdatacategory, setEditCategory] = useState({})
-  const [setDataEditBackend] = useState([])
+  const [DataEditBackend, setDataEditBackend] = useState([])
   const [deletedataproduk, setdeletedataproduk] = useState([]);
   const [produk, setproduk] = useState([]);
   const [modaldelete, setModaldelete] = useState(false);
@@ -92,24 +92,32 @@ function ManageProduct() {
 
   // ===== Edit Data Produk ===== //
   const editData = () => {
+    console.log('editimagefile', editimagefile)
+    console.log('editDataProduk', editDataProduk);
+
     var formdata = new FormData()
     var Headers = {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     };
+
     formdata.append("image", editimagefile.editImageFile);
     formdata.append('data', JSON.stringify(editDataProduk));
+    formdata.append('category', JSON.stringify(editDataProduk));
+    console.log('aa', editDataProduk)
     Axios.put(`${APIURL}admin/edit-prod/${editDataProduk.id}`, formdata, Headers)
       .then(res => {
+        console.log("masuk", res)
         // setEditDataProduk(res.data.dataProduk)
         // setEditCategory(res.data.dataCategory)
-        // setdataproduct(res.data.dataProduk)
-        // setdatacategory(res.data.dataCategory)
-        // setModalEdit(!modalEdit)
+        setdataproduct(res.data.dataProduk)
+        setdatacategory(res.data.dataCategory)
+        setModalEdit(!modalEdit)
       })
       .catch(err => {
-        console.log(err)
+        console.log("error di axios", editDataProduk)
+
       })
   }
 
@@ -119,7 +127,7 @@ function ManageProduct() {
   }
 
   const openToggleEdit = index => {
-    setEditDataProduk(dataproduct[index])
+    setEditDataProduk(DataEditBackend[index])
     setModalEdit(true)
   }
 
@@ -141,7 +149,9 @@ function ManageProduct() {
 
 
   const renderProduct = () => {
-    console.log('data product', dataproduct)
+    console.log('DataEditBackend', DataEditBackend)
+    console.log('dataproduct', dataproduct);
+
     return dataproduct.map((val, index) => {
       return (
         <tr key={index}>

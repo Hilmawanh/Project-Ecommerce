@@ -37,19 +37,19 @@ const Header = props => {
             BIKES
           </h2>
           <div className="dropdown-content">
-            <a style={{ color: "white" }} href="/menuroadbike">
+            <a style={{ color: "black" }} href="/menuroadbike">
               Road Bike
             </a>
-            <a style={{ color: "white" }} href="/menumountain">
+            <a style={{ color: "black" }} href="/menumountain">
               Mountain
             </a>
-            <a style={{ color: "white" }} href="/menubmx">
+            <a style={{ color: "black" }} href="/menubmx">
               Bmx
             </a>
-            <a style={{ color: "white" }} href="/menudaily">
+            <a style={{ color: "black" }} href="/menudaily">
               Daily
             </a>
-            <a style={{ color: "white" }} href="/menuebike">
+            <a style={{ color: "black" }} href="/menuebike">
               Ebike
             </a>
           </div>
@@ -58,10 +58,10 @@ const Header = props => {
         <div class="dropdown">
           <h2 className="dropbtn2">GEAR</h2>
           <div class="dropdown-content2">
-            <a style={{ color: "white" }} href="/menuapparels">
+            <a style={{ color: "black" }} href="/menuapparels">
               Apparels
             </a>
-            <a style={{ color: "white" }} href="#">
+            <a style={{ color: "black" }} href="#">
               Spare Parts
             </a>
           </div>
@@ -70,13 +70,13 @@ const Header = props => {
         <div class="dropdown">
           <h2 className="dropbtn3">STORE</h2>
           <div class="dropdown-content3">
-            <a style={{ color: "white" }} href="#">
+            <a style={{ color: "black" }} href="#">
               Jakarata
             </a>
-            <a style={{ color: "white" }} href="#">
+            <a style={{ color: "black" }} href="#">
               Bogor
             </a>
-            <a style={{ color: "white" }} href="#">
+            <a style={{ color: "black" }} href="#">
               Yogyakarta
             </a>
           </div>
@@ -88,7 +88,7 @@ const Header = props => {
             <NavItem style={{ marginLeft: "430px" }}>
               <NavLink href="/cart">
                 <Badge badgeContent={1} color="secondary">
-                <FiShoppingCart className="" style={{ color: "white", fontSize: 23, marginBottom: "25px" }} />
+                  <FiShoppingCart className="" style={{ color: "white", fontSize: 23, marginBottom: "25px" }} />
                 </Badge>
               </NavLink>
             </NavItem>

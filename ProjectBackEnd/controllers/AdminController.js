@@ -57,19 +57,24 @@ module.exports = {
     let sql = `select * from product where id=${productId}`
 
     mysqldb.query(sql, (err, results) => {
-      if (err) throw (err)
-     
+      if (err) {
+        console.log('error server')
+        return res.status(500).send(err)
+      }
+
       if (results.length) {
+        console.log('length result masuk', productId)
         const path = "/product/image";
         const upload = uploader(path, "product").fields([{ name: "image" }]);
         upload(req, res, err => {
           if (err) {
+            console.log('error  server upload')
             return res.status(500).json({ message: "Upload post picture Failde", error: err.message })
           }
           const { image } = req.files;
           const imagePath = image ? path + "/" + image[0].filename : null;
           const data = JSON.parse(req.body.data);
-
+          console.log(data)
           try {
             if (imagePath) {
               data.gambar = imagePath
@@ -77,12 +82,20 @@ module.exports = {
 
             sql = `UPDATE product SET ? where id=${productId}`
             mysqldb.query(sql, data, (err1, results1) => {
+              console.log('masuk ke update');
+
               if (err1) {
+                console.log('update gagal');
+                console.log('isi result abis update', results1);
+
+
                 if (imagePath) {
                   fs.unlinkSync("./public" + imagePath)
                 }
                 return res.status(500).json({ message: "There's Error on the server. Asshole", error: err1.message })
               }
+              console.log('update berhasil');
+
               if (imagePath) {
                 //===== Hapus Foto Lama =====\\
                 if (results[0].gambar) {
@@ -91,9 +104,9 @@ module.exports = {
               }
 
               mysqldb.query(`select p.*,c.category as categoryBike from product p left join category c on p.categoryid=c.id order by c.id`, (err, result1) => {
-                if (err) res.status(500).send(err)
+                if (err) res.status(500).send(err, "error")
                 mysqldb.query(`select * from category`, (err, result2) => {
-                  if (err) res.status(500).send(err);
+                  if (err) res.status(500).send(err, 'error');
                   res.status(200).send({ dataProduk: result1, dataCategory: result2 })
                 })
               })
@@ -136,6 +149,36 @@ module.exports = {
 
   },
 
+  // getProdukSepeda: (req, res) => {
+  //   mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=1`, (err, result1) => {
+  //     if (err) res.status(500).send(err)
+  //     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=2`, (err, result2) => {
+  //       if (err) res.status(500).send(err)
+  //       mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=3`, (err, result3) => {
+  //         if (err) res.status(500).send(err)
+  //         mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=4`, (err, result4) => {
+  //           if (err) res.status(500).send(err)
+  //           mysqldb.query(`select * from product order by categoryid`, (err, result5) => {
+  //             if (err) res.status(500).send(err)
+  //             mysqldb.query(`select p.*,c.category from product p left join category c on p.categoryid=c.id order by c.id `, (err, result6) => {
+  //               if (err) res.status(500).send(err)
+  //               mysqldb.query(`select * from category`, (err, result7) => {
+  //                 if (err) res.status(500).send(err)
+  //                 mysqldb.query(` select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=5 `, (err, result8 => {
+  //                   if (err) res.status(500).send(err)
+  //                   console.log(result5)
+  //                   res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result8, dataProduk: result6, dataCategory: result7, dataEdit: result5 })
+  //                 }))
+  //               })
+  //             })
+  //           })
+  //         })
+  //       })
+  //     })
+  //   })
+  // },
+
+
   getProdukSepeda: (req, res) => {
     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=1`, (err, result1) => {
       if (err) res.status(500).send(err)
@@ -151,10 +194,14 @@ module.exports = {
                 if (err) res.status(500).send(err)
                 mysqldb.query(`select * from category`, (err, result7) => {
                   if (err) res.status(500).send(err)
-                  mysqldb.query(`select p.* from product p left join category c on p.categoryid=c.id order by c.id`, (err, result8 => {
+                  mysqldb.query(`select p.* from product p left join category c on p.categoryid=c.id order by c.id`, (err, result8) => {
                     if (err) res.status(500).send(err)
-                    res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7, dataEdit: result8 })
-                  }))
+                    mysqldb.query(`select * from product`, (err, result9 => {
+                      if (err) res.status(500).send(err)
+                      console.log(result2)
+                      res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7, dataEdit: result8, dataCoba: result9 })
+                    }))
+                  })
                 })
               })
             })
