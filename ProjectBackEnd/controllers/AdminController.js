@@ -55,12 +55,13 @@ module.exports = {
   editProduk: (req, res) => {
     const productId = req.params.id
     let sql = `select * from product where id=${productId}`
+
     mysqldb.query(sql, (err, results) => {
       if (err) throw (err)
-
+     
       if (results.length) {
         const path = "/product/image";
-        const upload = uploader(path, "Product").fields([{ name: "image" }]);
+        const upload = uploader(path, "product").fields([{ name: "image" }]);
         upload(req, res, err => {
           if (err) {
             return res.status(500).json({ message: "Upload post picture Failde", error: err.message })
@@ -108,7 +109,31 @@ module.exports = {
   },
 
   deleteProduk: (req, res) => {
-    let sql = `select * from product where id=${req.params.id}`
+    const deleteProdId = req.params.id;
+    let sql = `select * from product where id=${deleteProdId}`
+
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+
+      if (result.length) {
+        sql = `delete from product where id=${deleteProdId}`
+        mysqldb.query(sql, (err, result1) => {
+          console.log('Problem', err)
+          if (err) res.status(500).send(err)
+          if (result[0].gambar) {
+            fs.unlinkSync('./public' + results[0].gambar)
+          }
+          mysqldb.query(`select p.*,c.category as categoryBike from product p left join category c on p.categoryid=c.id order by c.id`, (err, result2) => {
+            if (err) res.status(500).send(err)
+            mysqldb.query(`select * from category`, (err, result3) => {
+              if (err) res.status(500).send(err)
+
+            })
+          })
+        })
+      }
+    })
+
   },
 
   getProdukSepeda: (req, res) => {
