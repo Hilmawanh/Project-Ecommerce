@@ -69,12 +69,12 @@ class SignIn extends Component {
         <div className="container-login100-form-btn">{this.renderButton()}</div>
         <Grid container style={{ marginBottom: "20px" }}>
           <Grid style={{ marginLeft: "400px" }}>
-            <Link href="#" variant="body2">
+            <Link href="/forgotpass" variant="body2" style={{ color: "black" }}>
               Forgot password?
             </Link>
           </Grid>
           <Grid style={{ marginLeft: "20px" }}>
-            <Link href="/register" variant="body2">
+            <Link href="/register" variant="body2" style={{ color: "black" }} >
               {"Don't have an account? Join"}
             </Link>
           </Grid>

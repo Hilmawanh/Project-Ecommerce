@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_CHANGE_PASSWORD,
   AUTH_LOADING,
   AUTH_SYSTEM_ERROR,
   AUTH_LOGIN_ERROR,
@@ -95,4 +96,8 @@ export const userLogout = () => {
   };
 };
 
-export const userChangePass = () => {};
+export const userChangePass = () => {
+  return {
+    type: USER_CHANGE_PASSWORD
+  }
+};

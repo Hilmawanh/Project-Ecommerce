@@ -61,7 +61,7 @@ const Header = props => {
             <a style={{ color: "black" }} href="/menuapparels">
               Apparels
             </a>
-            <a style={{ color: "black" }} href="#">
+            <a style={{ color: "black" }} href="/menuspareparts">
               Spare Parts
             </a>
           </div>

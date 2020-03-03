@@ -9,7 +9,7 @@ const MenuDetails = () => {
           style={{ height: "100%", width: "100%" }}
         />
       </div>
-      <div style={{ width: "40%", height: "540px", display: "column", marginTop: "100px", marginLeft: "90px" }}>
+      <div style={{ width: "40%", height: "540px", display: "column", marginTop: "100px", backgroundColor: "gray", marginLeft: "90px" }}>
         <h4>IDR. 51.000.000.00 </h4>
         <h6 style={{ marginTop: "30px" }}>
           Constructed to pull riders riding on fast road, <br />

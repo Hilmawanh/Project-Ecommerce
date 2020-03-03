@@ -10,11 +10,11 @@ const ModalExample = props => {
         <ModalHeader toggle={toggle}>{title}</ModalHeader>
         <ModalBody>{props.children}</ModalBody>
         <ModalFooter>
-          <Button style={{ backgroundColor: "#212529" }} onClick={actionfunc}>
+          <Button style={{ backgroundColor: "#042f4b" }} onClick={actionfunc}>
             {btnTitle}
           </Button>
           {/* onClick={actionfunc} ini ngebaca actionfunc dari modal yg ada di app.js */}
-          <Button color="danger" onClick={toggle}>
+          <Button style={{ backgroundColor: "#b22222" }} onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>

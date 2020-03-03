@@ -21,7 +21,7 @@ import MenuBmx from "./pages/menuBmx";
 import MenuDaily from "./pages/menuDaily";
 import MenuEbike from "./pages/menuEbike";
 import MenuApparels from "./pages/menuApparels";
-
+import MenuSpareParts from './pages/menuSpareParts'
 import MenuDetails from "./pages/menuDetails";
 
 // User Controller //
@@ -77,6 +77,7 @@ class App extends Component {
           <Route exact path={"/menudaily"} component={MenuDaily} />
           <Route exact path={"/menuebike"} component={MenuEbike} />
           <Route exact path={"/menuapparels"} component={MenuApparels} />
+          <Route exact path={"/menuspareparts"} component={MenuSpareParts} />
           <Route exact path={"/menu-details"} component={MenuDetails} />
 
           {/* User Controller */}

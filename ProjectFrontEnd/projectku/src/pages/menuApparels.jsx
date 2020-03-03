@@ -6,7 +6,7 @@ class MenuApparels extends Component {
   render() {
     return (
       <div>
-        <div style={{ width: "100%", height: "20pc", backgroundColor: "#ededed" }} />
+        <div style={{ width: "100%", height: "20pc", backgroundColor: "#eaeaea" }} />
 
         {/* Harusnya card */}
         <div style={{ display: "column" }}>
@@ -28,7 +28,7 @@ class MenuApparels extends Component {
               position: "absolute",
               top: "205px",
               left: "75px",
-              color: "red",
+              color: "#1c2938",
               width: "50px",
               height: "100px"
             }}

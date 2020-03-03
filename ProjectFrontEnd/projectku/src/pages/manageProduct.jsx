@@ -9,14 +9,11 @@ function ManageProduct() {
   const [addDataProduct, setAddDataProduct] = useState([])
   const [datacategory, setdatacategory] = useState([])
   const [editDataProduk, setEditDataProduk] = useState([]);
-  const [editdatacategory, setEditCategory] = useState({})
+  const [deleteDataProduk, setDeleteDataProduk] = useState([]);
   const [DataEditBackend, setDataEditBackend] = useState([])
-  const [deletedataproduk, setdeletedataproduk] = useState([]);
-  const [produk, setproduk] = useState([]);
   const [modaldelete, setModaldelete] = useState(false);
   const [modaladd, setmodaladd] = useState(false);
   const [modalEdit, setModalEdit] = useState(false)
-  const [modalDelete, setModalDelete] = useState(false)
   const [addimagefile, setaddimagefile] = useState({
     addImageFileName: "Select Image....",
     addImageFile: undefined
@@ -31,7 +28,7 @@ function ManageProduct() {
 
   const toggleedit = () => setModalEdit(!modalEdit)
 
-  const toggleDelete = () => setModalDelete(!modaldelete);
+  const toggleDelete = () => setModaldelete(!modaldelete);
 
   useEffect(() => {
     console.log('didmount')
@@ -92,9 +89,8 @@ function ManageProduct() {
 
   // ===== Edit Data Produk ===== //
   const editData = () => {
-    console.log('editimagefile', editimagefile)
-    console.log('editDataProduk', editDataProduk);
-
+    // console.log('editimagefile', editimagefile)
+    // console.log('editDataProduk', editDataProduk);
     var formdata = new FormData()
     var Headers = {
       headers: {
@@ -143,9 +139,29 @@ function ManageProduct() {
   };
 
   // ===== Delete Data Product ===== \\
+  const deleteData = () => {
+    var idProduk = deleteDataProduk.id
+    Axios.delete(`${APIURL}admin/delete-prod/${idProduk}`)
+      .then(() => {
+        Axios.get(`${APIURL}admin/get-prod`)
+          .then(res => {
+            setdataproduct(res.data.dataProduk)
+            setModaldelete(false)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      })
+      .catch(err1 => {
+        console.log(err1)
+      })
 
+  }
 
-
+  const openToggleDelete = index => {
+    setDeleteDataProduk(dataproduct[index])
+    setModaldelete(true)
+  }
 
 
   const renderProduct = () => {
@@ -167,7 +183,7 @@ function ManageProduct() {
           <td>{val.category}</td>
           <td>
             <button className='EditManage' onClick={() => openToggleEdit(index)}>Edit</button>
-            <button className='DeleteManage'>Delete</button>
+            <button className='DeleteManage' onClick={() => openToggleDelete(index)}>Delete</button>
           </td>
         </tr>
       )
@@ -230,6 +246,10 @@ function ManageProduct() {
             )
           })}
         </select>
+      </Modal>
+
+      <Modal title={"Delete Produk"} toggle={toggleDelete} modal={modaldelete} actionfunc={deleteData} btnTitle='Delete'  >
+        Delete Produk Ini ?????
       </Modal>
 
       <Table style={{ marginBottom: "170px", width: "90%", marginLeft: "80px" }} responsive >
