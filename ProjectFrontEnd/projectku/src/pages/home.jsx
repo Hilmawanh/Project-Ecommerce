@@ -13,9 +13,9 @@ class Home extends Component {
     return (
       <div>
         <Jumbotron7 />
+        <Jumbotron1 />
         <Jumbotron3 />
         <Jumbotron2 />
-        <Jumbotron1 />
         <Jumbotron6 />
         <Jumbotron5 />
         <Jumbotron4 />

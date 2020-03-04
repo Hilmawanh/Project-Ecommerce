@@ -24,6 +24,7 @@ class MenuApparels extends Component {
           </h2>
           <FaRegWindowMinimize
             style={{
+              
               zIndex: "2",
               position: "absolute",
               top: "205px",

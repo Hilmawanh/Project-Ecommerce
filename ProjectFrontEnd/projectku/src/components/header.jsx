@@ -28,7 +28,7 @@ const Header = props => {
   return (
     <div>
       <Navbar fixed="top" light expand="md">
-        <NavbarBrand href="/" style={{ fontSize: "28px", color: "white", marginRight: "450px" }}>
+        <NavbarBrand href="/" style={{ fontSize: "28px", color: "white", marginRight: "439px" }}>
           BROMEYO
         </NavbarBrand>
 
@@ -85,7 +85,7 @@ const Header = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {Login ? (
-            <NavItem style={{ marginLeft: "430px" }}>
+            <NavItem style={{ marginLeft: "442px" }}>
               <NavLink href="/cart">
                 <Badge badgeContent={1} color="secondary">
                   <FiShoppingCart className="" style={{ color: "white", fontSize: 23, marginBottom: "25px" }} />
