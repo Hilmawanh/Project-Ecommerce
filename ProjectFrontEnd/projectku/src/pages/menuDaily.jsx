@@ -1,8 +1,46 @@
 import React, { Component } from "react";
 import { FaRegWindowMinimize } from "react-icons/fa";
+import Axios from 'axios'
+import { APIURL, APIURLimage } from '../helper/apiurl'
 
 class MenuDaily extends Component {
-  state = {};
+  state = {
+    dataDaily: []
+  };
+
+  componentDidMount() {
+    Axios.get(`${APIURL}admin/get-prod`)
+      .then(res => {
+        this.setState({ dataDaily: res.data.dataDaily })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  renderProduk = () => {
+    return this.state.dataDaily.map((val, index) => {
+      return (
+        <div className="card">
+          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <div className="container">
+            <h4 className="MenuDailyNamaProduk">
+              <b>{val.produk}</b>
+            </h4>
+            <center>
+              <p>{val.deskripsi}</p>
+            </center>
+            <center>
+              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+            </center>
+          </div>
+        </div>
+      )
+    })
+  }
+
+
+
   render() {
     return (
       <div>
@@ -12,68 +50,13 @@ class MenuDaily extends Component {
         />
 
         {/* Harusnya card */}
-        <div style={{ display: "column" }}>
+        <div className="CardTextColumn">
           <h2 className="CardTextHeader">BROMPTON</h2>
           <FaRegWindowMinimize className="StripDaily" />
-          <div style={{ display: "flex" }}>
-            <div class="card">
-              <img
-                src="
-              https://www.brompton.com/~/media/2018/navigation/standard-638x445.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                  <b>Brompton Black Edition</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 className="CardTextPrice">Rp. 55.000.000</h5>
-                </center>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="https://www.brompton.com/~/media/2018/navigation/electric-638x445.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center" }}>
-                  <b>Brompton White Edition</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 className="CardTextPrice">Rp. 45.000.000</h5>
-                </center>
-              </div>
-            </div>
-
-            <div class="card">
-              <img
-                src="https://www.brompton.com/~/media/2018/navigation/b75-638x445-cut.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center" }}>
-                  <b>Brompton Superlight</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 className="CardTextPrice">Rp. 40.000.000</h5>
-                </center>
-              </div>
-            </div>
+          <div className="menuDailyFlex">
+            {this.renderProduk()}
           </div>
         </div>
-
-        {/* Harusnya card */}
       </div>
     );
   }

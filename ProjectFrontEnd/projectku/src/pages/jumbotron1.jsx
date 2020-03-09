@@ -41,9 +41,9 @@ class Jumbotron1 extends Component {
       <div className="Jumbotron1Parents">
         <div className="Jumbotron1Child1" style={{ display: "flex" }}>
           <div className="Jumbotron1ChildText">
-            <h4 style={{ fontFamily: "Oswald", letterSpacing: "1px" }}>MOUNTAIN</h4>
-            <h3 style={{ fontFamily: "Poppins", fontWeight: "bolder" }}>EPIC HARDTAIL</h3>
-            <h5 style={{ textAlign: "justify", width: "70%", letterSpacing: "1px" }}>The lightest production hardtail on earth is also now the most capable and comfortable racing machine ever created. Behold the game-changer—the Epic Hardtail. We refined every inch of this bike to create the world’s lightest, fastest, and most forgiving race machine, because you’re not reaching the podium if you’re getting pummeled by the trail.</h5>
+            <h5 style={{ fontFamily: "Oswald", fontWeight: "bolder", color: "#212529", letterSpacing: "1px" }}>MOUNTAIN</h5>
+            <h3 style={{ fontFamily: "Poppins", fontWeight: "bolder", color: "#313131" }}>EPIC HARDTAIL</h3>
+            <h5 style={{ textAlign: "justify", width: "70%", letterSpacing: "1px", color: "#313131" }}>The lightest production hardtail on earth is also now the most capable and comfortable racing machine ever created. Behold the game-changer—the Epic Hardtail. We refined every inch of this bike to create the world’s lightest, fastest, and most forgiving race machine, because you’re not reaching the podium if you’re getting pummeled by the trail.</h5>
             <button className="Jumbotron1Button">Buy Now</button>
 
           </div>

@@ -213,7 +213,7 @@ function ManageProduct() {
         <input style={{ marginBottom: "10px", marginTop: "10px" }} type='text' name='stock' placeholder='Jumlah Produk' className='form-control' onChange={onChangeAddData} />
         <input style={{ marginBottom: "10px" }} type='text' name='ukuranproduk' placeholder='Ukuran Product' className='form-control' onChange={onChangeAddData} />
         <select name='categoryid' className='form-control' onChange={onChangeAddData} >
-          <option hidden>Pilih Category Sepeda</option>
+          <option hidden>Pilih Category</option>
           {datacategory.map((val, index) => {
             return (
               <option key={index} value={val.id}>

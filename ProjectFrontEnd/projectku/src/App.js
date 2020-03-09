@@ -78,7 +78,8 @@ class App extends Component {
           <Route exact path={"/menuebike"} component={MenuEbike} />
           <Route exact path={"/menuapparels"} component={MenuApparels} />
           <Route exact path={"/menuspareparts"} component={MenuSpareParts} />
-          <Route exact path={"/menu-details"} component={MenuDetails} />
+          <Route exact path={"/menu-details/:detailId"} component={MenuDetails} />
+          {/* <Route exact path={"/menu-details"} component={MenuDetails} /> */}
 
           {/* User Controller */}
           <Route exact path={"/login"} component={SignIn} />

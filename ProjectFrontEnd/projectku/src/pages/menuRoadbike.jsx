@@ -2,21 +2,110 @@ import React, { useState, useEffect } from "react";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
+import { Link } from 'react-router-dom'
 
 
 function MenuRoadbike() {
   const [getDataProduct, setGetDataProduct] = useState([])
+  const [getDataProductStarttos, setGetDataProductStarttos] = useState([])
+  const [getDataProductBend, setGetDataProductBend] = useState([])
 
+  // Get data Produk Helios
   useEffect(() => {
     console.log('didmount')
     Axios.get(`${APIURL}admin/get-prod`)
       .then(res => {
-        setGetDataProduct(res.data.dataProduk)
+        setGetDataProduct(res.data.dataRoadbike)
       })
       .catch(err => {
         console.log(err)
       })
   }, [])
+
+  // Get data Produk Strattos
+  useEffect(() => {
+    Axios.get(`${APIURL}admin/get-prod-category`)
+      .then(res => {
+        setGetDataProductStarttos(res.data.dataStrattos)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  // Get data Produk Bend
+  useEffect(() => {
+    Axios.get(`${APIURL}admin/get-prod-category`)
+      .then(res => {
+        setGetDataProductBend(res.data.dataBend)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  const renderProduk = () => {
+    return getDataProduct.map((val, index) => {
+      return (
+        <div className="card">
+          <Link to={'/menu-details/' + val.id}>
+            <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+            <div className="container">
+              <h4 className="MenuDailyNamaProduk">
+                <h5>{val.produk}</h5>
+              </h4>
+              <center>
+                <p style={{ color: "black" }}>{val.deskripsi}</p>
+              </center>
+              <center>
+                <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+              </center>
+            </div>
+          </Link>
+        </div>
+      )
+    })
+  }
+
+  const renderProdukStrattos = () => {
+    return getDataProductStarttos.map((val, index) => {
+      return (
+        <div className="card">
+          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <div className="container">
+            <h4 className="MenuDailyNamaProduk">
+              <h5>{val.produk}</h5>
+            </h4>
+            <center>
+              <p>{val.deskripsi}</p>
+            </center>
+            <center>
+              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+            </center>
+          </div>
+        </div>
+      )
+    })
+  }
+
+  const renderProdukBend = () => {
+    return getDataProductBend.map((val, index) => {
+      return (
+        <div className="card">
+          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <div className="container">
+            <h4 className="MenuDailyNamaProduk">
+              <h5>{val.produk}</h5>
+            </h4>
+            <center>
+              <p>{val.deskripsi}</p>
+            </center>
+            <center>
+              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+            </center>
+          </div>
+        </div>
+      )
+    })
+  }
 
   return (
     <div>
@@ -33,238 +122,25 @@ function MenuRoadbike() {
         <h2 className="CardTextHeader">HELIOS LT</h2>
         <FaRegWindowMinimize className="StripRoadbike1" />
         <div style={{ display: "flex" }}>
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                <b style={{ fontFamily: "Poppins" }}>Helios LT9X</b>
-              </h4>
-              <center>
-                <p style={{ fontFamily: "Lato" }}>
-                  Road Performance bike built with a UCI approved ACX frame that is astonishingly responsice, smooth
-                  and fast.
-                </p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">IDR 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p style={{ fontFamily: "Lato" }}>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p style={{ fontFamily: "Lato" }}>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
+          {renderProduk()}
         </div>
       </div>
 
       {/* Harusnya card */}
       <div style={{ display: "column" }}>
-        <h2 className="CardTextHeader2">SPECIALIZED</h2>
+        <h2 className="CardTextHeader2">STRATTOS</h2>
         <FaRegWindowMinimize className="StripRoadbike2" />
         <div style={{ display: "flex" }}>
-          <div class="card">
-            <img
-              src="https://img.pngio.com/your-complete-guide-to-specializeds-2018-road-bike-range-roadcc-road-biking-png-880_546.jpg"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Harusnya card */}
-      <div style={{ display: "column" }}>
-        <h2 className="CardTextHeader2">DIVINE</h2>
-        <FaRegWindowMinimize className="StripRoadbike3" />
-        <div style={{ display: "flex" }}>
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
+          {renderProdukStrattos()}
         </div>
       </div>
 
       {/* Harusnya card */}
       <div style={{ display: "column" }}>
         <h2 className="CardTextHeader2">BEND</h2>
-        <FaRegWindowMinimize className="StripRoadbike4" />
+        <FaRegWindowMinimize className="StripRoadbike3" />
         <div style={{ display: "flex" }}>
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="https://www.polygonbikes.com/wp-content/uploads/2018/03/HELIOS_LT9_P.png"
-              alt="co"
-              style={{ width: "100%" }}
-            />
-            <div class="container">
-              <h4 style={{ textAlign: "center" }}>
-                <b>Helios LT9X</b>
-              </h4>
-              <center>
-                <p>nnononoono</p>
-              </center>
-              <center>
-                <h5 sclassName="CardTextPrice">Rp. 75.000.000</h5>
-              </center>
-            </div>
-          </div>
+          {renderProdukBend()}
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ module.exports = {
                     if (err) res.status(500).send(err)
                     mysqldb.query(`select * from product`, (err, result9 => {
                       if (err) res.status(500).send(err)
-                      console.log(result2)
+                      // console.log(result2)
                       res.status(200).send({ dataMountain: result1, dataRoadbike: result2, dataDaily: result3, dataBmx: result4, dataEbike: result5, dataProduk: result6, dataCategory: result7, dataEdit: result8, dataCoba: result9 })
                     }))
                   })
@@ -32,6 +32,25 @@ module.exports = {
           })
         })
       })
+    })
+  },
+
+  getProdukRoadbikeCategory: (req, res) => {
+    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=8`, (err, result1) => {
+      if (err) res.status(500).send(err)
+      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=9`, (err, result2) => {
+        if (err) res.status(500).send(err)
+        res.status(200).send({ dataStrattos: result1, dataBend: result2 })
+      })
+    })
+  },
+
+  ViewDetails: (req, res) => {
+    const getDetails = req.params.id
+    // console.log(getDetails)
+    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=2 AND p.id=${getDetails}`, (err, result1) => {
+      if (err) res.status(500).send(err)
+      res.status(200).send({ detailRoadbikeHelios: result1 })
     })
   },
 

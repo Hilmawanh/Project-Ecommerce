@@ -16,8 +16,8 @@ class Home extends Component {
         <Jumbotron1 />
         <Jumbotron3 />
         <Jumbotron2 />
-        <Jumbotron6 />
-        <Jumbotron5 />
+        {/* <Jumbotron6 /> */}
+        {/* <Jumbotron5 /> */}
         <Jumbotron4 />
       </div>
     );

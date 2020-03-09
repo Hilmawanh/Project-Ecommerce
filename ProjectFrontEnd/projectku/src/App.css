@@ -281,7 +281,7 @@
 .Jumbotron1Parents{
   width: 100%;
   height: 800px;
-  background-color: #f6f5f5;
+  background-color: #f8f8f8;
 }
 
 .Jumbotron1Child1{
@@ -299,7 +299,8 @@
   border: 1px;
   width: 125px;
   height: 45px;
-  background-color: #212529;
+  
+  background-color: #292929;
   color: white;
   margin-top: 20px;
 }
@@ -465,21 +466,22 @@
   display: flex;
   height: 300px;
   width: 100%;
+  margin-bottom: 160px;
 }
 
 .menu4CategoryBmx {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background:
     url("http://www.stows.co.uk/images/pre1800_1.jpg") no-repeat;
   background-size: contain;
   height: 300px;
   width: 30%;
   margin-left: 40px;
   cursor: pointer;
-  transition: transform 0.3s;
+  /* transition: transform 0.3s; */
 }
 
 .menu4CategoryBmx:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .menu4CategoryEbike {
@@ -515,9 +517,9 @@
 }
 
 .menu4Text {
-  color: white;
-  margin-left: 177px;
-  margin-top: 120px;
+  color: black;
+  margin-left: 193px;
+  margin-top: 310px;
   font-family: "Alata";
 }
 
@@ -566,6 +568,7 @@
 .CardTextPrice {
   font-family: "Roboto";
   font-weight: bolder;
+  color: black;
 }
 
 .card:hover {
@@ -807,13 +810,28 @@
   font-weight: bolder;
 }
 
+.CardTextColumn{
+  display: column;
+}
+
+.menuDailyFlex{
+  display: flex;
+}
+
+.MenuDailyNamaProduk{
+  text-align: center;
+  font-family: "Lato";
+  color: black;
+}
+
+
 /* Cart Ended */
 
 /* Footer started */
 
 .footer {
   height: 45vh;
-  background-color: #f3f3f3;
+  background-color: #f6f6f6;
   margin-top: 40px;
 }
 
@@ -993,7 +1011,73 @@
   color: white;
 }
 
+.MenuDetailsParents{
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
 
+.MenuDetailsParents2{
+  display: flex;
+  width: 100%;
+}
+
+.MenuDetailsChild1{
+  width: 100%;
+  height: 350px;
+  background-color: #f5f5f5;
+}
+
+.MenuDetailsChild2{
+  margin-top: 180px;
+  font-family: 'Lato';
+  font-weight: bolder;
+}
+
+.MenuDetailsChild3{
+  width: 70%;
+  height: 540px;
+}
+
+.MenuDetailsMenuKanan{
+  width: 40%;
+  height: 540px;
+  display: 'column';
+  margin-top: 90px;
+  /* background-color: blanchedalmond; */
+  margin-left: 130px;
+}
+
+.StripMenuDetails{
+  z-index: 2;
+  position: absolute;
+  top: 240px;
+  left: 165px;
+  color: #212529;
+  width: 50px;
+  height: 100px;
+}
+
+.MenuDetailsMenuKananSize{
+  display: flex;
+  margin-top: 30px;
+}
+
+.MenuDetailsMenuKananStock{
+  display: flex;
+  margin-top: 20px;
+}
+
+.MenuDetailsMenuKananSmile{
+  font-size: 18px;
+  margin-right: 5px;
+  color: green;
+}
+
+.MenuDetailsMenuKananButton{
+  color: #170a19;
+  border: 1px solid;
+  margin-top: 10px;
+}
 
 /* @import url("https://fonts.googleapis.com/css?family=Merriweather|PT+Sans|Roboto&display=swap"); */
 

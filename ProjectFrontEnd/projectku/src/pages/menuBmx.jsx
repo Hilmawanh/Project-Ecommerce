@@ -1,81 +1,62 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from 'react';
 import { FaRegWindowMinimize } from "react-icons/fa";
+import Axios from 'axios'
+import { APIURL, APIURLimage } from '../helper/apiurl'
+import { Link } from 'react-router-dom'
 
-class MenuBmx extends Component {
-  state = {};
-  render() {
-    return (
-      <div>
-        <img
-          src="https://images.pexels.com/photos/1580234/pexels-photo-1580234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          style={{ width: "100%", height: "30pc" }}
-        />
-        {/* <h2 className="menuBmxText">BMX</h2> */}
-        {/* <h1 className="menuBmxText2">___</h1> */}
+function MenuBmx() {
 
-        {/* Harusnya card */}
-        <div style={{ display: "column" }}>
-          <h2 className="CardTextHeader">RAZOR</h2>
-          <FaRegWindowMinimize className="StripBmx1" />
-          <div style={{ display: "flex" }}>
-            <div class="card">
-              <img
-                src="https://www.polygonbikes.com/wp-content/uploads/2018/03/RAZOR_ELITE_P_1.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center", fontFamily: "Lato" }}>
-                  <b>Helios LT9X</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
-                </center>
-              </div>
-            </div>
+  const [dataBmx, setGetDataProduk] = useState([])
 
-            <div class="card">
-              <img
-                src="https://www.polygonbikes.com/wp-content/uploads/2018/03/RAZOR_PRO.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center" }}>
-                  <b>Helios LT9X</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
-                </center>
-              </div>
-            </div>
+  useEffect(() => {
+    Axios.get(`${APIURL}admin/get-prod`)
+      .then(res => {
+        setGetDataProduk(res.data.dataBmx)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
-            <div class="card">
-              <img
-                src="https://www.polygonbikes.com/wp-content/uploads/2018/03/RUDGE_3_P_1-1.png"
-                style={{ width: "100%" }}
-              />
-              <div class="container">
-                <h4 style={{ textAlign: "center" }}>
-                  <b>Helios LT9X</b>
-                </h4>
-                <center>
-                  <p>nnononoono</p>
-                </center>
-                <center>
-                  <h5 style={{ fontFamily: "Roboto", fontWeight: "bolder" }}>Rp. 75.000.000</h5>
-                </center>
-              </div>
+  const renderProduk = () => {
+    return dataBmx.map((val, index) => {
+      return (
+        <Link to='/'>
+          <div className="card">
+            <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+            <div className="container">
+              <h4 className="MenuDailyNamaProduk">
+                <b>{val.produk}</b>
+              </h4>
+              <center>
+                <p>{val.deskripsi}</p>
+              </center>
+              <center>
+                <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+              </center>
             </div>
           </div>
+        </Link>
+      )
+    })
+  }
+
+
+  return (
+    <div>
+      <img
+        src="https://images.pexels.com/photos/1580234/pexels-photo-1580234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        style={{ width: "100%", height: "30pc" }}
+      />
+      <div style={{ display: "column" }}>
+        <h2 className="CardTextHeader">RAZOR</h2>
+        <FaRegWindowMinimize className="StripBmx1" />
+        <div style={{ display: "flex" }}>
+          {renderProduk()}
         </div>
       </div>
-    );
-  }
+    </div>
+  )
 }
 
 export default MenuBmx;
