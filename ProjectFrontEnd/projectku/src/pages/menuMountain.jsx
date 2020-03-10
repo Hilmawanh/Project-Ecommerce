@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const MenuMountain = () => {
@@ -22,10 +23,12 @@ const MenuMountain = () => {
     return getDataMountain.map((val, index) => {
       return (
         <div className="card">
-          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <Link to={'/menu-details/' + val.id}>
+            <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          </Link>
           <div className="container">
             <h4 className="MenuDailyNamaProduk">
-              <b>{val.produk}</b>
+              <h5 style={{ fontFamily: "Poppins", fontWeight: "bolder" }}>{val.produk}</h5>
             </h4>
             <center>
               <p>{val.deskripsi}</p>
@@ -51,7 +54,8 @@ const MenuMountain = () => {
       <div className='row' style={{ width: "100%", marginLeft: '1px' }}>
         {renderProduk()}
       </div>
-    </div>)
+    </div>
+    )
 }
 
 export default MenuMountain;

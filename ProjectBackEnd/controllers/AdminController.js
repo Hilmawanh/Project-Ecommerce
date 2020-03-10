@@ -45,12 +45,61 @@ module.exports = {
     })
   },
 
-  ViewDetails: (req, res) => {
+  getProdukGear: (req, res) => {
+    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=6`, (err, result1) => {
+      if (err) res.status(500).send(err)
+      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=7`, (err, result2) => {
+        if (err) res.status(500).send(err)
+        res.status(200).send({ dataApparels: result1, dataSpareParts: result2 })
+      })
+    })
+  },
+
+  ViewDetailsRoadbike: (req, res) => {
     const getDetails = req.params.id
-    // console.log(getDetails)
     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=2 AND p.id=${getDetails}`, (err, result1) => {
       if (err) res.status(500).send(err)
-      res.status(200).send({ detailRoadbikeHelios: result1 })
+      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=8 AND p.id=${getDetails}`, (err, result2) => {
+        if (err) res.status(500).send(err)
+        mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=9 AND p.id=${getDetails}`, (err, result3) => {
+          if (err) res.status(500).send(err)
+          res.status(200).send({ detailRoadbikeHelios: result1, detailRoadbikeStrattos: result2, detailRoadbikeBend: result3 })
+        })
+      })
+    })
+  },
+
+  ViewDetailsMountain: (req, res) => {
+    const getId = req.params.id
+    let sql = `select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=1 AND p.id=${getId}`
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      res.status(200).send({ detailMountain: result })
+    })
+  },
+
+  ViewDetailDailyBmxEbike: (req, res) => {
+    const getId = req.params.id
+    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=3 AND p.id=${getId}`, (err, result1) => {
+      if (err) res.status(500).send(err)
+      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=4 AND p.id=${getId}`, (err, result2) => {
+        if (err) res.status(500).send(err)
+        mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=5 AND p.id=${getId}`, (err, result3) => {
+          if (err) res.status(500).send(err)
+          res.status(200).send({ detailDaily: result1, detailBmx: result2, detailEbike: result3 })
+        })
+      })
+    })
+  },
+
+  ViewDetailGear: (req, res) => {
+    const getId = req.params.id
+    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=6 AND p.id=${getId}`, (err, result1) => {
+      if (err) res.status(500).send(err)
+      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=7 AND p.id=${getId}`, (err, result2) => {
+        if (err) res.status(500).send(err)
+        res.status(200).send({ detailApparels: result1, detailSpareParts: result2 })
+      })
     })
   },
 
@@ -100,7 +149,6 @@ module.exports = {
     } catch (err) {
       return res.status(500).json({ message: "There's error on the server. Please contact the administrator.", error: err.message });
     }
-
   },
 
   editProduk: (req, res) => {
@@ -197,12 +245,5 @@ module.exports = {
     })
 
   },
-
-  getProdukEquipment: (req, res) => {
-    let sql = `dsa`;
-
-  },
-
-
 };
 

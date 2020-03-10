@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
+import { Link } from 'react-router-dom'
+
 
 class MenuDaily extends Component {
   state = {
@@ -22,7 +24,9 @@ class MenuDaily extends Component {
     return this.state.dataDaily.map((val, index) => {
       return (
         <div className="card">
-          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <Link to={'/menu-details/' + val.id}>
+            <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          </Link>
           <div className="container">
             <h4 className="MenuDailyNamaProduk">
               <b>{val.produk}</b>

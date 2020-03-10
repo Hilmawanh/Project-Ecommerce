@@ -21,22 +21,22 @@ function MenuBmx() {
   const renderProduk = () => {
     return dataBmx.map((val, index) => {
       return (
-        <Link to='/'>
-          <div className="card">
+        <div className="card">
+          <Link to={'/menu-details/' + val.id}>
             <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
-            <div className="container">
-              <h4 className="MenuDailyNamaProduk">
-                <b>{val.produk}</b>
-              </h4>
-              <center>
-                <p>{val.deskripsi}</p>
-              </center>
-              <center>
-                <h5 className="CardTextPrice">Rp.{val.harga}</h5>
-              </center>
-            </div>
+          </Link>
+          <div className="container">
+            <h4 className="MenuDailyNamaProduk">
+              <b>{val.produk}</b>
+            </h4>
+            <center>
+              <p>{val.deskripsi}</p>
+            </center>
+            <center>
+              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+            </center>
           </div>
-        </Link>
+        </div>
       )
     })
   }

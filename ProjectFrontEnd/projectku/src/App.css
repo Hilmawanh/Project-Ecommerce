@@ -553,7 +553,23 @@
   font-family: "Alata";
   font-weight: bolder;
   letter-spacing: 1px;
-  color: #333333;
+  /* color: #333333;
+  z-index: 2;
+  position: absolute;
+  top: 200px;
+  left: 5px;
+  width: 50px;
+  height: 100px; */
+}
+
+.StripApparels{
+  z-index: 2;
+  position: absolute;
+  top: 205px;
+  left: 75px;
+  color: #1c2938;
+  width: 50px;
+  height: 100px;
 }
 
 .CardTextHeader2 {
@@ -1029,7 +1045,7 @@
 
 .MenuDetailsChild2{
   margin-top: 180px;
-  font-family: 'Lato';
+  font-family: 'Roboto';
   font-weight: bolder;
 }
 
@@ -1050,9 +1066,9 @@
 .StripMenuDetails{
   z-index: 2;
   position: absolute;
-  top: 240px;
+  top: 230px;
   left: 165px;
-  color: #212529;
+  color: #170a19;
   width: 50px;
   height: 100px;
 }

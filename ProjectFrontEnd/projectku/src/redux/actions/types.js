@@ -6,3 +6,8 @@ export const AUTH_REGISTER = "AUTH_REGISTER";
 export const AUTH_LOADING = "AUTH_LOADING";
 export const AUTH_SYSTEM_ERROR = "AUTH_SYSTEM_ERROR";
 export const AUTH_LOGIN_ERROR = "AUTH_LOGIN_ERROR";
+
+
+export const CART_SUCCESS = 'CART_SUCCESS'
+export const CART_FAILED = 'CART_FAILED'
+export const CART_LOADING = 'CART_LOADING'

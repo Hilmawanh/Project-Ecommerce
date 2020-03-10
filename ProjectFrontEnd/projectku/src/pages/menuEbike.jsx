@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 
 const MenuEbike = () => {
@@ -21,7 +22,9 @@ const MenuEbike = () => {
     return dataEbike.map((val, index) => {
       return (
         <div className="card">
-          <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          <Link to={'/menu-details/' + val.id}>
+            <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
+          </Link>
           <div className="container">
             <h4 className="MenuDailyNamaProduk">
               <b>{val.produk}</b>
