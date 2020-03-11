@@ -23,7 +23,7 @@ const MenuMountain = () => {
     return getDataMountain.map((val, index) => {
       return (
         <div className="card">
-          <Link to={'/menu-details/' + val.id}>
+          <Link to={'/menu-details2/' + val.id}>
             <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
           </Link>
           <div className="container">
@@ -55,7 +55,7 @@ const MenuMountain = () => {
         {renderProduk()}
       </div>
     </div>
-    )
+  )
 }
 
 export default MenuMountain;

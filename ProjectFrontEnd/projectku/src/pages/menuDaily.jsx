@@ -24,12 +24,12 @@ class MenuDaily extends Component {
     return this.state.dataDaily.map((val, index) => {
       return (
         <div className="card">
-          <Link to={'/menu-details/' + val.id}>
+          <Link to={'/menu-details3/' + val.id}>
             <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
           </Link>
           <div className="container">
             <h4 className="MenuDailyNamaProduk">
-              <b>{val.produk}</b>
+              <h5 style={{ fontFamily: "Poppins", fontWeight: "bolder" }}>{val.produk}</h5>
             </h4>
             <center>
               <p>{val.deskripsi}</p>
@@ -57,7 +57,7 @@ class MenuDaily extends Component {
         <div className="CardTextColumn">
           <h2 className="CardTextHeader">BROMPTON</h2>
           <FaRegWindowMinimize className="StripDaily" />
-          <div className="menuDailyFlex">
+          <div className='row' style={{ width: "100%", marginLeft: '1px' }}>
             {this.renderProduk()}
           </div>
         </div>

@@ -20,7 +20,7 @@ const MenuSpareParts = () => {
         return getMenuSpareParts.map((val, index) => {
             return (
                 <div className="card">
-                    <Link to={'/menu-details/' + val.id}>
+                    <Link to={'/menu-details7/' + val.id}>
                         <img src={APIURLimage + val.gambar} style={{ width: "100%", textAlign: "center", height: "43%" }} />
 
                         <div className="container">

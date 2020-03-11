@@ -1,14 +1,13 @@
 const multer=require('multer')
 const fs=require('fs')
 
-// Return multer object
-
 module.exports = {
     uploader(destination, fileNamePrefix){
         let defaultPath = './public';
-    
+        
         const storage = multer.diskStorage({
             destination: (req, file, cb) => {
+                console.log("object")
                 const dir = defaultPath + destination;
                 if (fs.existsSync(dir)) {
                     console.log(dir, "exists")

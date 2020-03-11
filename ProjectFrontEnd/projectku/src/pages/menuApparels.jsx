@@ -22,7 +22,7 @@ const MenuApparels = () => {
     return getMenuApparels.map((val, index) => {
       return (
         <div className="card">
-          <Link to={'/menu-details/' + val.id}>
+          <Link to={'/menu-details6/' + val.id}>
             <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
           </Link>
           <div className="container">

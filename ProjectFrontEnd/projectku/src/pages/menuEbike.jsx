@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 
 const MenuEbike = () => {
-
   const [dataEbike, setDataEbike] = useState([])
 
   useEffect(() => {
@@ -22,12 +21,12 @@ const MenuEbike = () => {
     return dataEbike.map((val, index) => {
       return (
         <div className="card">
-          <Link to={'/menu-details/' + val.id}>
+          <Link to={'/menu-details5/' + val.id}>
             <img src={APIURLimage + val.gambar} style={{ width: "100%" }} />
           </Link>
           <div className="container">
             <h4 className="MenuDailyNamaProduk">
-              <b>{val.produk}</b>
+              <h5 style={{ fontFamily: "Poppins", fontWeight: "bolder" }}>{val.produk}</h5>
             </h4>
             <center>
               <p>{val.deskripsi}</p>

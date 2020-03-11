@@ -480,10 +480,6 @@
   /* transition: transform 0.3s; */
 }
 
-.menu4CategoryBmx:hover {
-  /* transform: scale(1.1); */
-}
-
 .menu4CategoryEbike {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://produktbilder.avr-zweirad.de/ebm2019/13/1tr.jpg") no-repeat;
@@ -1095,6 +1091,15 @@
   margin-top: 10px;
 }
 
+.stripCart{
+   z-index: 2;
+   position: absolute;
+   top: 205px;
+   left: 75px;
+   color: red;
+   width: 50px;
+   height: 100px;
+}
 /* @import url("https://fonts.googleapis.com/css?family=Merriweather|PT+Sans|Roboto&display=swap"); */
 
 /* Font Biasa */

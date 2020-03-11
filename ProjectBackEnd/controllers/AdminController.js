@@ -112,7 +112,6 @@ module.exports = {
         if (err) {
           return res.status(500).json({ message: "Upload Foto Failed", err: err.message });
         }
-
         console.log("masuk");
         const { image } = req.files;
         console.log(image);

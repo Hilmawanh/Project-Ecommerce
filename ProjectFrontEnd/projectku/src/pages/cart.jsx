@@ -8,21 +8,36 @@ import { cartProduk } from '../redux/actions'
 
 
 const Cart = () => {
-
   const getCart = useSelector(state => state.cartReducers.getCart)
+  const UserIdRedux = useSelector(state => state.auth.id)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(cartProduk())
+    dispatch(cartProduk(UserIdRedux))
   }, [])
 
   const renderCart = () => {
-    return getCart.map((val, index) => {
-      
-    })
-  }
+    if (getCart) {
+      return getCart.map((val, index) => {
+        return (
+          <div>
+            <tr>
+              <td><img src={APIURLimage + val.gambar} style={{ width: "100%" }} /></td>
+              <td>{val.produk}</td>
+              <td>{val.harga}</td>
+              <td>{val.jumlah}</td>
+              <td>{val.total}</td>
+            </tr>
+          </div>
+        )
+      })
 
+    } else {
+     return <h2>load</h2>
+    }
+
+  }
 
   return (
     <div>
@@ -40,55 +55,21 @@ const Cart = () => {
           }}>
           CART
           </h2>
-        <FaRegWindowMinimize
-          style={{
-            zIndex: "2",
-            position: "absolute",
-            top: "205px",
-            left: "75px",
-            color: "red",
-            width: "50px",
-            height: "100px"
-          }}
-        />
+        <FaRegWindowMinimize className='stripCart' />
       </div>
       <div style={{ marginTop: "60px" }}>
-        <Table borderless className="container">
+        <Table className="container">
           <thead>
             <tr>
-              <th></th>
+              <th>image</th>
               <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUCT</th>
-              <th></th>
               <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRICE</th>
               <th style={{ fontFamily: "Roboto", color: "#535353" }}>QUANTITY</th>
               <th style={{ fontFamily: "Roboto", color: "#535353" }}>TOTAL</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {renderCart()}
           </tbody>
         </Table>
 

@@ -83,9 +83,8 @@ export const userLoginn = ({ email, password }) => {
 export const userLoginRepeat = resdata => {
   return dispatch => {
     console.log("resdata");
-
-    localStorage.setItem("token", resdata.token);
-    localStorage.setItem("userid", resdata.id);
+    // localStorage.setItem("token", resdata.token);
+    // localStorage.setItem("userid", resdata.id);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: resdata });
   };
 };

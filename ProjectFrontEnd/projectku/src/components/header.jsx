@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-
 import { FiShoppingCart } from "react-icons/fi";
-// import { MdNotifications } from "react-icons/md";
 import { MdNotificationsNone } from "react-icons/md";
-import { FaRegUserCircle } from "react-icons/fa";
+// import { FaRegUserCircle } from "react-icons/fa";
 import { FiLogIn, FiLogOut, FiUser } from "react-icons/fi";
 import { Link, Redirect } from "react-router-dom";
-// import { userLogout } from "../redux/actions";
 import { connect, useSelector } from "react-redux";
 import { Badge } from '@material-ui/core'
 
-import Logo from "../image/LogoBromeyo2.png";
 
 const LogoutSuccess = () => {
   localStorage.removeItem("userid");
@@ -87,7 +83,7 @@ const Header = props => {
           {Login ? (
             <NavItem style={{ marginLeft: "442px" }}>
               <NavLink href="/cart">
-                <Badge badgeContent={1} color="secondary">
+                <Badge badgeContent={0} color="secondary">
                   <FiShoppingCart className="" style={{ color: "white", fontSize: 23, marginBottom: "25px" }} />
                 </Badge>
               </NavLink>

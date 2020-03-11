@@ -44,7 +44,6 @@ module.exports = {
   userLoginn: (req, res) => {
     const { id } = req.params;
     const { email, password } = req.query;
-
     if (id) {
       var sql = `select * from users where id=${id}`;
       mysqldb.query(sql, (err, result) => {
@@ -52,7 +51,7 @@ module.exports = {
         const token = createJWTToken({
           userid: result[0].id
         });
-
+        console.log(result)
         return res.status(200).send({
           email: result[0].email,
           id: result[0].id,
@@ -86,12 +85,28 @@ module.exports = {
   },
 
   userGetCart: (req, res) => {
-    let sql = `select tr.*,p.gambar from transactions tr left join product p on tr.productId=p.id`
+    const UserIdRedux = req.params.id
+    let sql = `select tr.*, p.produk, p.gambar from transactions tr left join product p on tr.productid where tr.userid=${UserIdRedux}`
     mysqldb.query(sql, (err, result) => {
       if (err) res.status(500).send(err)
       res.status(200).send({ getCart: result })
     })
   },
 
-  
+  userTransaction: (req, res) => {
+    var data = req.body.getTocart
+    let sql = `insert into transactions set ?`
+    console.log(data)
+    // mysqldb.query(sql, data, (err, result1) => {
+    //   if (err) {
+    //     return res.status(500).send(err)
+    //   }
+    //   let sql = `select * from transactions`
+    //   mysqldb.query(sql, (err, result2) => {
+    //     if (err) res.status(500).send(err)
+    //     res.status(500).send({ dataCart: result2 })
+    //   })
+    // })
+  }
+
 };
