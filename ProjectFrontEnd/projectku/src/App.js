@@ -65,9 +65,9 @@ class App extends Component {
     if (this.state.loading) {
       return <div>loading...</div>;
     }
-    // {
-    //   this.props.cartProduk(id)
-    // }
+    {
+      this.props.cartProduk(id)
+    }
     return (
       <div>
         <Header />
@@ -116,4 +116,4 @@ const MapStateToProps = state => {
   };
 };
 
-export default connect(MapStateToProps, { userLoginRepeat })(App);
+export default connect(MapStateToProps, { userLoginRepeat,cartProduk })(App);

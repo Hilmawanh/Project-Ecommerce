@@ -10,7 +10,7 @@ router.get('/view-details/:id', AdminController.ViewDetailsRoadbike)
 router.get('/view-details2/:id', AdminController.ViewDetailsMountain)
 router.get('/view-details3/:id', AdminController.ViewDetailDailyBmxEbike)
 router.get('/view-details4/:id', AdminController.ViewDetailGear)
-router.get('/get-prod-category', AdminController.getProdukRoadbikeCategory)
+// router.get('/get-prod-category', AdminController.getProdukRoadbikeCategory)
 router
 router.delete("/delete-prod/:id", AdminController.deleteProduk)
 

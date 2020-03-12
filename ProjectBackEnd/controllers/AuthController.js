@@ -86,27 +86,57 @@ module.exports = {
 
   userGetCart: (req, res) => {
     const UserIdRedux = req.params.id
-    let sql = `select tr.*, p.produk, p.gambar from transactions tr left join product p on tr.productid where tr.userid=${UserIdRedux}`
+    let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=${UserIdRedux}`
     mysqldb.query(sql, (err, result) => {
-      if (err) res.status(500).send(err)
+      if (err) {
+        console.log('error get data cart')
+        return res.status(500).send(err)
+
+      }
+      console.log('berhasil');
+
       res.status(200).send({ getCart: result })
     })
   },
 
   userTransaction: (req, res) => {
     var data = req.body.getTocart
-    let sql = `insert into transactions set ?`
+    let sql = `INSERT INTO transactions SET ?`
     console.log(data)
-    // mysqldb.query(sql, data, (err, result1) => {
-    //   if (err) {
-    //     return res.status(500).send(err)
-    //   }
-    //   let sql = `select * from transactions`
-    //   mysqldb.query(sql, (err, result2) => {
-    //     if (err) res.status(500).send(err)
-    //     res.status(500).send({ dataCart: result2 })
-    //   })
-    // })
+    mysqldb.query(sql, data, (err, result1) => {
+      if (err) {
+        console.log('error')
+        return res.status(500).send(err)
+      }
+      let sql = `select * from transactions`
+      mysqldb.query(sql, (err, result2) => {
+        if (err) {
+          console.log('error')
+          res.status(500).send(err)
+        }
+        console.log('berhasil')
+
+        res.status(500).send({ dataCart: result2 })
+      })
+    })
+  },
+
+  deleteCart: (req, res) => {
+    let sql = `select * from transactions where id=${req.params.id}`
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      if (result.length) {
+        let sql = `delete from transactions where id=${req.params.id}`
+        mysqldb.query(sql, (err, result2) => {
+          if (err) res.status(500).send(err)
+          let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=$`
+          mysqldb.query(sql, (err, result3 => {
+            if (err) res.status(500).send(err)
+            res.status(200).send({ dataCart: result3 })
+          }))
+        })
+      }
+    })
   }
 
 };

@@ -12,16 +12,14 @@ const MenuDetails2 = () => {
     const UserIdRedux = useSelector(state => state.auth.id)
 
     const [GetViewDetailMountain, setGetViewDetailMountain] = useState([])
-    const [getTocart, setGetToCart] = useState([])
+    const [getTocart, setGetToCart] = useState({})
 
     useEffect(() => {
         Axios.get(`${APIURL}admin/view-details2/${detailId}`)
             .then(res => {
-                console.log('GetToCart', getTocart)
+                // console.log('GetToCart', getTocart)
                 const { id, harga } = res.data.detailMountain[0]
-                console.log(res.data.detailMountain)
-            
-                setGetToCart({ ...getTocart, id,harga })
+                setGetToCart({ ...getTocart, productid: id, harga })
                 setGetViewDetailMountain(res.data.detailMountain)
             })
             .catch(err => {
@@ -31,16 +29,25 @@ const MenuDetails2 = () => {
 
     useEffect(() => {
         setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
-    }, [GetViewDetailMountain])
+    }, [GetViewDetailMountain[0]])
 
     const addToCart = () => {
-        Axios.post(`${APIURL}auth/getTransaction`, { getTocart })
+        console.log('getTocart', getTocart);
+        Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
             .then(res => {
-                console.log(res)
+                console.log('berhasil',res)
             })
             .catch(err => {
-                console.log(err)
+                console.log('error post',err)
             })
+    }
+
+    const onJumlahChange = e => {
+        const { name, value } = e.target
+        const total = parseInt(value) * GetViewDetailMountain[0].harga
+        setGetToCart({ ...getTocart, [name]: parseInt(value), total })
+        // console.log('GetViewDetailMountain.harga', GetViewDetailMountain.harga);
+        console.log('GetToCart', getTocart)
     }
 
     const renderViewDetailsMountain = () => {
@@ -77,6 +84,7 @@ const MenuDetails2 = () => {
                                 <FiSmile className='MenuDetailsMenuKananSmile' />
                                 <h6 style={{ color: "green" }}>In Stock</h6>
                             </div>
+                            <input type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} />
                             <button className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
                         </div>
                     </div>
@@ -85,8 +93,10 @@ const MenuDetails2 = () => {
         })
     }
 
-    console.log('UserIdRedux', UserIdRedux)
 
+    if (!UserIdRedux) {
+        return null
+    }
     return (
         <div>
             {renderViewDetailsMountain()}

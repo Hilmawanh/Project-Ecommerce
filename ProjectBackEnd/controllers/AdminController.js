@@ -35,15 +35,15 @@ module.exports = {
     })
   },
 
-  getProdukRoadbikeCategory: (req, res) => {
-    mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=8`, (err, result1) => {
-      if (err) res.status(500).send(err)
-      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=9`, (err, result2) => {
-        if (err) res.status(500).send(err)
-        res.status(200).send({ dataStrattos: result1, dataBend: result2 })
-      })
-    })
-  },
+  // getProdukRoadbikeCategory: (req, res) => {
+  //   mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=8`, (err, result1) => {
+  //     if (err) res.status(500).send(err)
+  //     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=9`, (err, result2) => {
+  //       if (err) res.status(500).send(err)
+  //       res.status(200).send({ dataStrattos: result1, dataBend: result2 })
+  //     })
+  //   })
+  // },
 
   getProdukGear: (req, res) => {
     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=6`, (err, result1) => {
@@ -59,13 +59,7 @@ module.exports = {
     const getDetails = req.params.id
     mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=2 AND p.id=${getDetails}`, (err, result1) => {
       if (err) res.status(500).send(err)
-      mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=8 AND p.id=${getDetails}`, (err, result2) => {
-        if (err) res.status(500).send(err)
-        mysqldb.query(`select p.*,c.category from product p join category c on p.categoryid=c.id where categoryid=9 AND p.id=${getDetails}`, (err, result3) => {
-          if (err) res.status(500).send(err)
-          res.status(200).send({ detailRoadbikeHelios: result1, detailRoadbikeStrattos: result2, detailRoadbikeBend: result3 })
-        })
-      })
+      res.status(200).send({ detailRoadbikeHelios: result1 })
     })
   },
 
@@ -244,5 +238,7 @@ module.exports = {
     })
 
   },
-};
+
+
+}
 

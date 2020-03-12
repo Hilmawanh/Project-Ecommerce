@@ -8,36 +8,31 @@ import { cartProduk } from '../redux/actions'
 
 
 const Cart = () => {
-  const getCart = useSelector(state => state.cartReducers.getCart)
-  const UserIdRedux = useSelector(state => state.auth.id)
+  const getCart = useSelector(state => state.cartReducers.Cart)
+  // const UserIdRedux = useSelector(state => state.auth.id)
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(cartProduk(UserIdRedux))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(cartProduk(UserIdRedux))
+  // }, [])
 
   const renderCart = () => {
-    if (getCart) {
-      return getCart.map((val, index) => {
-        return (
-          <div>
-            <tr>
-              <td><img src={APIURLimage + val.gambar} style={{ width: "100%" }} /></td>
-              <td>{val.produk}</td>
-              <td>{val.harga}</td>
-              <td>{val.jumlah}</td>
-              <td>{val.total}</td>
-            </tr>
-          </div>
-        )
-      })
-
-    } else {
-     return <h2>load</h2>
-    }
-
+    return getCart.map((val, index) => {
+      return (
+        <tr key={index}>
+          <td><img src={APIURLimage + val.gambar} style={{ width: "100px" }} /></td>
+          <td style={{ marginTop: "270px" }}>{val.produk}</td>
+          <td>{val.harga}</td>
+          <td>{val.ukuranproduk}</td>
+          <td>{val.jumlah}</td>
+          <td>{val.total}</td>
+          <td><button style={{ border: "1px solid",borderRadius:"2px" }}>Hapus</button></td>
+        </tr>
+      )
+    })
   }
+  console.log('getcart', getCart);
 
   return (
     <div>
@@ -60,16 +55,24 @@ const Cart = () => {
       <div style={{ marginTop: "60px" }}>
         <Table className="container">
           <thead>
-            <tr>
-              <th>image</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUCT</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRICE</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>QUANTITY</th>
+            <tr >
+              <th></th>
+              <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUK</th>
+              <th style={{ fontFamily: "Roboto", color: "#535353" }}>HARGA</th>
+              <th style={{ fontFamily: "Roboto", color: "#535353" }}>UKURAN</th>
               <th style={{ fontFamily: "Roboto", color: "#535353" }}>TOTAL</th>
+              <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
+              <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
             </tr>
           </thead>
           <tbody>
             {renderCart()}
+
+            {/* <tr>
+              <td>fafafa</td>
+              <td>fafafa</td>
+              <td>fafafa</td>
+            </tr> */}
           </tbody>
         </Table>
 

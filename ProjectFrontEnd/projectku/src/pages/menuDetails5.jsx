@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { FiSmile } from 'react-icons/fi'
 import Axios from 'axios'
@@ -9,19 +10,46 @@ import { useParams } from 'react-router-dom'
 
 const MenuDetails5 = () => {
     const { detailId } = useParams()
-    // State Daily //
-    const [getViewDataEbike, setGetViewEbike] = useState([])
 
-    // State Ebike // 
+    const UserIdRedux = useSelector(state => state.auth.id)
+
+    const [getViewDataEbike, setGetViewEbike] = useState([])
+    const [getTocart, setGetToCart] = useState({})
+
     useEffect(() => {
         Axios.get(`${APIURL}admin/view-details3/${detailId}`)
             .then(res => {
+                const { id, harga } = res.data.detailEbike[0]
+                setGetToCart({ ...getTocart, productid: id, harga })
                 setGetViewEbike(res.data.detailEbike)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
+
+    useEffect(() => {
+        setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
+    }, [getViewDataEbike[0]])
+
+    const addToCart = () => {
+        console.log('getTocart', getTocart);
+        Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
+            .then(res => {
+                console.log('berhasil', res)
+            })
+            .catch(err => {
+                console.log('error post', err)
+            })
+    }
+
+    const onJumlahChange = e => {
+        const { name, value } = e.target
+        const total = parseInt(value) * getViewDataEbike[0].harga
+        setGetToCart({ ...getTocart, [name]: parseInt(value), total })
+        console.log('GetToCart', getTocart)
+    }
+
 
     const renderViewDetailsEbike = () => {
         return getViewDataEbike.map((val, index) => {
@@ -54,7 +82,8 @@ const MenuDetails5 = () => {
                                 <FiSmile className='MenuDetailsMenuKananSmile' />
                                 <h6 style={{ color: "green" }}>In Stock</h6>
                             </div>
-                            <button className='MenuDetailsMenuKananButton'>ADD TO CART</button>
+                            <input style={{ marginTop: "20px" }} type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} /> <br></br>
+                            <button style={{ marginTop: "20px" }} className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
                         </div>
                     </div>
                 </div>
