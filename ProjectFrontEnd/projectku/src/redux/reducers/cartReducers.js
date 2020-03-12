@@ -1,4 +1,4 @@
-import { CART_SUCCESS, CART_FAILED, CART_LOADING } from './../actions/types'
+import { CART_SUCCESS, CART_FAILED, CART_LOADING, DELETE_CART_SUCCESS, DELETE_CART_FAILED, DELETE_CART_LOADING } from './../actions/types'
 
 const INITAL_STATE = {
     Cart: [],

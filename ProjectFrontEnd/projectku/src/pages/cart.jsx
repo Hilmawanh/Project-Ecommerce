@@ -1,17 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { Table } from "reactstrap";
+import Modal from '../components/modal'
 import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
-import { cartProduk } from '../redux/actions'
+import { cartProduk, deleteCart } from '../redux/actions'
 
 
 const Cart = () => {
   const getCart = useSelector(state => state.cartReducers.Cart)
-  // const UserIdRedux = useSelector(state => state.auth.id)
+  const UserIdRedux = useSelector(state => state.auth.id)
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+
+  const [modalDelete, setModalDelete] = useState(false)
+  const [idDelete, setIdDelete] = useState(0)
+
+  const openToggleDelete = index => {
+    setModalDelete(!modalDelete)
+    setIdDelete(index)
+  }
+
+  const deleteData = () => {
+    dispatch(deleteCart(idDelete, UserIdRedux))
+    setModalDelete(!modalDelete)
+  }
+
 
   // useEffect(() => {
   //   dispatch(cartProduk(UserIdRedux))
@@ -27,12 +42,12 @@ const Cart = () => {
           <td>{val.ukuranproduk}</td>
           <td>{val.jumlah}</td>
           <td>{val.total}</td>
-          <td><button style={{ border: "1px solid",borderRadius:"2px" }}>Hapus</button></td>
+          <td><button style={{ border: "1px solid", borderRadius: "2px" }} onClick={() => openToggleDelete(val.id)}>Hapus</button></td>
         </tr>
       )
     })
   }
-  console.log('getcart', getCart);
+  console.log('deleteCart', deleteData);
 
   return (
     <div>
@@ -53,28 +68,25 @@ const Cart = () => {
         <FaRegWindowMinimize className='stripCart' />
       </div>
       <div style={{ marginTop: "60px" }}>
-        <Table className="container">
-          <thead>
-            <tr >
-              <th></th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUK</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>HARGA</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>UKURAN</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>TOTAL</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
-              <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
-            </tr>
-          </thead>
-          <tbody>
-            {renderCart()}
-
-            {/* <tr>
-              <td>fafafa</td>
-              <td>fafafa</td>
-              <td>fafafa</td>
-            </tr> */}
-          </tbody>
-        </Table>
+        <Fragment>
+          <Modal title={'Hapus Cart'} toggle={openToggleDelete} modal={modalDelete} actionfunc={deleteData} btnTitle="delete">Hapus Produk Ini ?</Modal>
+          <Table className="container">
+            <thead>
+              <tr >
+                <th></th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUK</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>HARGA</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>UKURAN</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>TOTAL</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderCart()}
+            </tbody>
+          </Table>
+        </Fragment>
 
         <div className="tableCheckout">
           &nbsp;

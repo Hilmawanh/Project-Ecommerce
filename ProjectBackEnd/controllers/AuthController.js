@@ -127,16 +127,21 @@ module.exports = {
       if (err) res.status(500).send(err)
       if (result.length) {
         let sql = `delete from transactions where id=${req.params.id}`
+        console.log(result)
         mysqldb.query(sql, (err, result2) => {
           if (err) res.status(500).send(err)
-          let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=$`
+          let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=${req.params.userId}`
           mysqldb.query(sql, (err, result3 => {
             if (err) res.status(500).send(err)
-            res.status(200).send({ dataCart: result3 })
+            res.status(200).send({ dataCartDelete: result3 })
           }))
         })
       }
     })
+  },
+
+  userCheckout: (req, res) => {
+    
   }
 
 };

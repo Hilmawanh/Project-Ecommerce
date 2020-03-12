@@ -212,7 +212,6 @@ module.exports = {
   },
 
   deleteProduk: (req, res) => {
-    // console.log(req.params)
     let sql = `select * from product where id=${req.params.id}`
     mysqldb.query(sql, (err, result) => {
       if (err) res.status(500).send(err)
