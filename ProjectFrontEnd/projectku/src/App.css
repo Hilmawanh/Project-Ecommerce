@@ -772,7 +772,7 @@
 
 .tableCheckout {
   width: 35%;
-  height: 300px;
+  height: 200px;
   background-color: #f3f3f3;
   margin-top: 130px;
   margin-left: 789px;
@@ -792,12 +792,13 @@
 .Text-Checkout-2 {
   margin-left: 48px;
   margin-top: 25px;
+  display: flex;
 }
 
 .Text-Checkout-h7 {
   font-family: "Roboto";
   font-weight: bolder;
-  margin-top: 50px;
+  /* margin-top: px; */
 }
 
 .Text-Checkout-3 {

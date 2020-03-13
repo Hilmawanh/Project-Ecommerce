@@ -20,8 +20,8 @@ const MenuDetails4 = () => {
     useEffect(() => {
         Axios.get(`${APIURL}admin/view-details3/${detailId}`)
             .then(res => {
-                const { id, harga ,ukuranproduk} = res.data.detailBmx[0]
-                setGetToCart({ ...getTocart, productid: id, harga ,ukuranproduk})
+                const { id, harga } = res.data.detailBmx[0]
+                setGetToCart({ ...getTocart, productid: id, harga })
                 setGetViewDataBmx(res.data.detailBmx)
             })
             .catch(err => {

@@ -35,10 +35,10 @@ const MenuDetails2 = () => {
         console.log('getTocart', getTocart);
         Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
             .then(res => {
-                console.log('berhasil',res)
+                console.log('berhasil', res)
             })
             .catch(err => {
-                console.log('error post',err)
+                console.log('error post', err)
             })
     }
 
@@ -84,8 +84,8 @@ const MenuDetails2 = () => {
                                 <FiSmile className='MenuDetailsMenuKananSmile' />
                                 <h6 style={{ color: "green" }}>In Stock</h6>
                             </div>
-                            <input type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} />
-                            <button className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
+                            <input style={{ marginTop: "20px" }} type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} /> <br></br>
+                            <button style={{ marginTop: "20px" }} className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
                         </div>
                     </div>
                 </div>

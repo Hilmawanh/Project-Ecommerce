@@ -11,11 +11,13 @@ import { cartProduk, deleteCart } from '../redux/actions'
 const Cart = () => {
   const getCart = useSelector(state => state.cartReducers.Cart)
   const UserIdRedux = useSelector(state => state.auth.id)
+  const totalHarga = useSelector(state => state.cartReducers.dataTotalHarga)
 
   const dispatch = useDispatch()
 
   const [modalDelete, setModalDelete] = useState(false)
   const [idDelete, setIdDelete] = useState(0)
+
 
   const openToggleDelete = index => {
     setModalDelete(!modalDelete)
@@ -27,10 +29,6 @@ const Cart = () => {
     setModalDelete(!modalDelete)
   }
 
-
-  // useEffect(() => {
-  //   dispatch(cartProduk(UserIdRedux))
-  // }, [])
 
   const renderCart = () => {
     return getCart.map((val, index) => {
@@ -47,7 +45,7 @@ const Cart = () => {
       )
     })
   }
-  console.log('deleteCart', deleteData);
+  console.log('totalHarga', totalHarga);
 
   return (
     <div>
@@ -77,8 +75,8 @@ const Cart = () => {
                 <th style={{ fontFamily: "Roboto", color: "#535353" }}>PRODUK</th>
                 <th style={{ fontFamily: "Roboto", color: "#535353" }}>HARGA</th>
                 <th style={{ fontFamily: "Roboto", color: "#535353" }}>UKURAN</th>
+                <th style={{ fontFamily: "Roboto", color: "#535353" }}>JUMLAH</th>
                 <th style={{ fontFamily: "Roboto", color: "#535353" }}>TOTAL</th>
-                <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
                 <th style={{ fontFamily: "Roboto", color: "#535353" }}>ACTION</th>
               </tr>
             </thead>
@@ -90,14 +88,11 @@ const Cart = () => {
 
         <div className="tableCheckout">
           &nbsp;
-        <div className="Text-Checkout-1">
-            <h4 className="Text-Checkout-h4">CART TOTALS</h4>
-          </div>
           <div className="Text-Checkout-2">
-            <h7 className="Text-Checkout-h7">SUBTOTAL</h7>
-          </div>
-          <div className="Text-Checkout-3">
-            <h5 className="Text-Checkout-h5">TOTAL</h5>
+            <h5 className="Text-Checkout-h7">SUBTOTAL  :</h5>
+            <h6 style={{ marginTop: "3px", marginLeft: "10px" }} >
+              {totalHarga}
+            </h6>
           </div>
           <div>
             <button className="button-Checkout">PROCEED TO CHECKOUT -></button>

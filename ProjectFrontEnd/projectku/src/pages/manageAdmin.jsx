@@ -9,7 +9,7 @@ function ManageAdmin() {
     <Tabs>
       <TabList style={{ marginTop: "70px" }}>
         <Tab tabFor="horizontal-tab-one">Manage Product</Tab>
-        <Tab tabFor="horizontal-tab-two">Manage User</Tab>
+        <Tab tabFor="horizontal-tab-two">Manage Pembayaran</Tab>
       </TabList>
 
       <TabPanel tabId="horizontal-tab-one">

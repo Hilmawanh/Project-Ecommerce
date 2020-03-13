@@ -1,4 +1,4 @@
-import { CART_SUCCESS, CART_FAILED, CART_LOADING, DELETE_CART_SUCCESS, DELETE_CART_LOADING, DELETE_CART_FAILED } from './types'
+import { CART_SUCCESS, CART_FAILED, CART_LOADING, DELETE_CART_SUCCESS, DELETE_CART_LOADING, DELETE_CART_FAILED, NOTIFICATION } from './types'
 import { APIURL } from '../../helper/apiurl'
 import Axios from 'axios'
 
@@ -8,7 +8,11 @@ export const cartProduk = () => {
         dispatch({ type: CART_LOADING })
         Axios.get(`${APIURL}auth/getCart/${UserIdRedux}`)
             .then(res => {
-                dispatch({ type: CART_SUCCESS, payload: res.data.getCart })
+                var dataTotalHarga = 0
+                res.data.getCart.forEach(val => {
+                    dataTotalHarga += val.total
+                })
+                dispatch({ type: CART_SUCCESS, payload: { getCart: res.data.getCart,dataTotalHarga } })
             })
             .catch(err => {
                 console.log(err)
@@ -28,5 +32,11 @@ export const deleteCart = (idDelete, UserIdRedux) => {
             .catch(err => {
                 dispatch({ type: DELETE_CART_FAILED })
             })
+    }
+}
+
+export const notifCart = () => {
+    return {
+        type: NOTIFICATION
     }
 }

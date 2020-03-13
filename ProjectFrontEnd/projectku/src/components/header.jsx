@@ -18,6 +18,7 @@ const LogoutSuccess = () => {
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
   const Login = useSelector(state => state.auth.loginStatus);
+  const roleid = useSelector(state => state.auth.roleid)
 
   const toggle = () => setIsOpen(!isOpen);
   console.log(Login);
@@ -77,6 +78,12 @@ const Header = props => {
             </a>
           </div>
         </div>
+
+        {roleid === 1 ? (
+          <NavItem>
+            <Link to={'/manageadmin'} />
+          </NavItem>
+        ) : null}
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

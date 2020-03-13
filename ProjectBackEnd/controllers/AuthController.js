@@ -141,7 +141,13 @@ module.exports = {
   },
 
   userCheckout: (req, res) => {
-    
+    const userId = req.params.userId
+    const totalHarga = req.params.id
+
+    let data = {
+      userId,
+      totalHarga
+    }
   }
 
 };
