@@ -4,20 +4,56 @@ import { FiSmile } from 'react-icons/fi'
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
 
 const MenuDetails7 = () => {
     const { detailId } = useParams()
+
+    const UserIdRedux = useSelector(state => state.auth.id)
+    const loginStatus = useSelector(state => state.auth.loginStatus)
+
     const [getViewDataGear, setGetViewDataGear] = useState([])
+    const [getTocart, setGetToCart] = useState({})
 
     useEffect(() => {
         Axios.get(`${APIURL}admin/view-details4/${detailId}`)
             .then(res => {
+                const { id, harga } = res.data.detailSpareParts[0]
+                setGetToCart({ ...getTocart, productid: id, harga })
                 setGetViewDataGear(res.data.detailSpareParts)
             })
             .catch(err => {
                 console.log(err)
             })
-    })
+    }, [])
+
+    useEffect(() => {
+        setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
+    }, [getViewDataGear[0]])
+
+
+    const addToCart = () => {
+        console.log('getTocart', getTocart);
+        Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
+            .then(res => {
+                console.log('berhasil', res)
+            })
+            .catch(err => {
+                if (loginStatus === false) {
+                    return alert('Anda belum Login, Harap Login terlebih dahulu')
+                }
+                console.log('error post', err)
+            })
+    }
+
+    const onJumlahChange = e => {
+        const { name, value } = e.target
+        const total = parseInt(value) * getViewDataGear[0].harga
+        setGetToCart({ ...getTocart, [name]: parseInt(value), total })
+        // console.log('GetViewDetailMountain.harga', GetViewDetailMountain.harga);
+        console.log('GetToCart', getTocart)
+    }
+
 
     const renderViewDetailsGear = () => {
         return getViewDataGear.map((val, index) => {
@@ -39,7 +75,7 @@ const MenuDetails7 = () => {
                         </div>
                         <div className='MenuDetailsMenuKanan'>
                             <h5>Rp. {val.harga}</h5>
-                            <h6 style={{ marginTop: "30px" }}>{val.deskripsi}</h6>
+                            <h6 style={{ marginTop: "30px", marginRight: "40px" }}>{val.deskripsi}</h6>
                             <div className='MenuDetailsMenuKananSize'>
                                 <h4>Size</h4>
                                 <h6 style={{ marginTop: "6px", marginLeft: "40px" }}>{val.ukuranproduk}</h6>
@@ -50,7 +86,8 @@ const MenuDetails7 = () => {
                                 <FiSmile className='MenuDetailsMenuKananSmile' />
                                 <h6 style={{ color: "green" }}>In Stock</h6>
                             </div>
-                            <button className='MenuDetailsMenuKananButton'>ADD TO CART</button>
+                            <input style={{ marginTop: "20px", border: "1px solid #170a19" }} type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} /> <br></br>
+                            <button style={{ marginTop: "30px" }} className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
                         </div>
                     </div>
                 </div>

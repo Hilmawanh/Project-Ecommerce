@@ -125,7 +125,6 @@ module.exports = {
             fs.unlinkSync("./public" + imagePath);
             return res.status(500).json({ message: "Error on the server", error: err.message });
           }
-
           console.log(results);
           mysqldb.query(
             `select p.*,c.category as categoryBike from product p left join category c on p.categoryid=c.id order by c.id`,

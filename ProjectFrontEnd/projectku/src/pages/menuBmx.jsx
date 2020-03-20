@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 function MenuBmx() {
 
   const [dataBmx, setGetDataProduk] = useState([])
+  const [getTocart, setGetToCart] = useState([])
+
+
 
   useEffect(() => {
     Axios.get(`${APIURL}admin/get-prod`)
@@ -33,7 +36,7 @@ function MenuBmx() {
               <p>{val.deskripsi}</p>
             </center>
             <center>
-              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+              <h5 className="CardTextPrice">Rp.{val.harga}.</h5>
             </center>
           </div>
         </div>
@@ -43,10 +46,11 @@ function MenuBmx() {
 
 
   return (
+
     <div>
       <img
         src="https://images.pexels.com/photos/1580234/pexels-photo-1580234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-        style={{ width: "100%", height: "30pc" }}
+        style={{ width: "100%", height: "32pc" }}
       />
       <div style={{ display: "column" }}>
         <h2 className="CardTextHeader">RAZOR</h2>

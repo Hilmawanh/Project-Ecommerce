@@ -12,7 +12,8 @@ export const cartProduk = () => {
                 res.data.getCart.forEach(val => {
                     dataTotalHarga += val.total
                 })
-                dispatch({ type: CART_SUCCESS, payload: { getCart: res.data.getCart,dataTotalHarga } })
+                dispatch({ type: CART_SUCCESS, payload: { getCart: res.data.getCart, dataTotalHarga, } })
+                dispatch({ type: CART_LOADING })
             })
             .catch(err => {
                 console.log(err)
@@ -35,8 +36,9 @@ export const deleteCart = (idDelete, UserIdRedux) => {
     }
 }
 
-export const notifCart = () => {
+export const notifCart = (dataUser) => {
     return {
-        type: NOTIFICATION
+        type: NOTIFICATION,
+        payload: dataUser
     }
 }

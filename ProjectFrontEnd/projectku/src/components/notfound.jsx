@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Bike from "./../image/bike.png";
 import { Link } from "react-router-dom";
+{/* <a href="">Design vector created by vectorpocket - www.freepik.com</a> */}
 
 class NotFound extends Component {
   state = {};
@@ -11,7 +12,7 @@ class NotFound extends Component {
           src={Bike}
           style={{
             marginLeft: "600px",
-            marginTop: "60px",
+            marginTop: "150px",
             height: "250px",
             marginBottom: "10px"
           }}
@@ -33,7 +34,7 @@ class NotFound extends Component {
             fontSize: "20px"
           }}
         >
-          Mungkin kamu salah jalan atau alamat. Ayo balik lagi!
+          Mungkin kamu salah jalan atau alamat. Ayo belanja lagi!
         </p>
 
         <Link to="/">
@@ -47,7 +48,7 @@ class NotFound extends Component {
               backgroundColor: "#333333",
               fontFamily: "Nunito Sans",
               fontWeight: "bolder",
-              marginBottom: "30px"
+              marginBottom: "100px"
             }}
           >
             Back to Home

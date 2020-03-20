@@ -17,7 +17,7 @@ const MenuMountain = () => {
       .catch(err => {
         console.log(err)
       })
-  })
+  }, [])
 
   const renderProduk = () => {
     return getDataMountain.map((val, index) => {
@@ -47,7 +47,7 @@ const MenuMountain = () => {
     <div style={{ width: "100%" }}>
       <img
         src="https://images.unsplash.com/photo-1536244881128-90b1d3d2549f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1993&q=80"
-        style={{ width: "100%", height: "30pc" }}
+        style={{ width: "100%", height: "32pc" }}
       />
       <h2 className="CardTextHeader">XQUARONE</h2>
       <FaRegWindowMinimize className="StripMountain1" />

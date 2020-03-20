@@ -52,7 +52,7 @@ class Register extends Component {
         type="button"
         name="submit"
         id="submit"
-        className="login100-form-btn mt-2"
+        className="ButtonLogin"
         defaultValue="Register"
         onClick={this.btnRegister}
       />
@@ -65,7 +65,7 @@ class Register extends Component {
     }
     return (
       <div className="container">
-        <Avatar
+        {/* <Avatar
           style={{
             backgroundColor: "#33313b",
             marginLeft: "542px",
@@ -74,7 +74,14 @@ class Register extends Component {
           }}
         >
           <MdDirectionsBike />
-        </Avatar>
+        </Avatar> */}
+        <div>
+          <h4 style={{
+            marginLeft: "400px",
+            marginTop: "160px",
+            marginBottom: "10px"
+          }}>CREATE AN <br /> ACCOUNT</h4>
+        </div>
         <div>
           <input
             className="input-login"

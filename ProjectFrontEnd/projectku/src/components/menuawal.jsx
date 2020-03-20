@@ -7,8 +7,8 @@ class MenuAwal extends Component {
     return (
       <div>
         <img
-          src="https://scontent.fcgk19-1.fna.fbcdn.net/v/t1.0-9/86183357_2711259832323705_6191809778025496576_o.jpg?_nc_cat=110&_nc_sid=da1649&_nc_ohc=Y1KYY2eowwUAX8wCBRe&_nc_ht=scontent.fcgk19-1.fna&oh=fa58f0750a20c0d6c4321351a4605079&oe=5E96768B"
-          style={{ width: "100%", height: "97vh" }}
+          src="https://scontent.fcgk21-1.fna.fbcdn.net/v/t1.0-9/62028208_2223343917781968_2053256450687369216_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_ohc=VmTKFJm0OcMAX-4h31Y&_nc_ht=scontent.fcgk21-1.fna&oh=b6fe05813cbf3ca3582258ae9ae6ee9a&oe=5E9339A0"
+          style={{ width: "100%", height: "104vh" }}
         />
 
         <h1 className="menuAwalText1">SAGAN RACE REPLICA FRAMESETS</h1>

@@ -5,15 +5,18 @@ import { FiSmile } from 'react-icons/fi'
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { useParams } from 'react-router-dom'
+import { Alert } from 'reactstrap';
 
 const MenuDatails = () => {
 
   const { detailId } = useParams()
 
   const UserIdRedux = useSelector(state => state.auth.id)
+  const loginStatus = useSelector(state => state.auth.loginStatus)
 
   const [getViewDetailsHelios, setGetViewDetailsHelios] = useState([])
   const [getTocart, setGetToCart] = useState({})
+  // const [loginStatusLogin, setLoginStatusLogin] = useState(false)
 
   useEffect(() => {
     console.log(detailId)
@@ -29,6 +32,9 @@ const MenuDatails = () => {
   }, [])
 
 
+
+
+
   useEffect(() => {
     setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
   }, [getViewDetailsHelios[0]])
@@ -37,9 +43,14 @@ const MenuDatails = () => {
     console.log('getTocart', getTocart);
     Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
       .then(res => {
-        console.log('berhasil', res)
+        // // alert(res.data.message)
+        alert('asiappp')
+        // alert("Hello! I am an alert box!")
       })
       .catch(err => {
+        if (loginStatus === false) {
+          return alert('Anda belum Login, Harap Login terlebih dahulu')
+        }
         console.log('error post', err)
       })
   }
@@ -75,7 +86,7 @@ const MenuDatails = () => {
             </div>
             <div className='MenuDetailsMenuKanan'>
               <h5>Rp. {val.harga}</h5>
-              <h6 style={{ marginTop: "30px" }}>{val.deskripsi}</h6>
+              <h6 style={{ marginTop: "30px", textAlign: "justify", marginRight: "40px" }}>{val.deskripsi}</h6>
               <div className='MenuDetailsMenuKananSize'>
                 <h4>Size</h4>
                 <h6 style={{ marginTop: "6px", marginLeft: "40px" }}>{val.ukuranproduk}</h6>
@@ -86,8 +97,8 @@ const MenuDatails = () => {
                 <FiSmile className='MenuDetailsMenuKananSmile' />
                 <h6 style={{ color: "green" }}>In Stock</h6>
               </div>
-              <input style={{ marginTop: "20px" }} type="number" name='jumlah' placeholder='jumlah produk' onChange={onJumlahChange} /> <br></br>
-              <button style={{ marginTop: "20px" }} className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
+              <input style={{ marginTop: "20px", border: "1px solid #170a19" }} type="number" name='jumlah' placeholder=' &nbsp;Jumlah Produk...' onChange={onJumlahChange} /> <br></br>
+              <button style={{ marginTop: "30px" }} className='MenuDetailsMenuKananButton' onClick={addToCart}>ADD TO CART</button>
             </div>
           </div>
         </div>

@@ -1,19 +1,21 @@
 .navbar {
-  height: 9vh;
+  height: 8vh;
   /* background-color: rgba(0, 0, 0, 0.8); */
-  background-color: #212529;
+  background-color: #fcfcfc;
 }
 
 .navbar-brand {
   margin-left: 30px;
   font-family: "Oswald";
   letter-spacing: 3px;
-  font-weight: bold;
-  color: #3f4d71;
+  font-weight: bolder;
+  /* color: #3f4d71; */
+  color: black;
 }
 
 .dropbtn {
-  color: white;
+  /* color: white; */
+  color: black;
   border: none;
   font-family: "Nunito Sans";
   font-weight: bolder;
@@ -25,7 +27,7 @@
 }
 
 .dropbtn2 {
-  color: white;
+  /* color: white; */
   border: none;
   font-family: "Nunito Sans";
   font-weight: bolder;
@@ -37,7 +39,7 @@
 }
 
 .dropbtn3 {
-  color: white;
+  /* color: white; */
   border: none;
   font-family: "Nunito Sans";
   font-weight: bolder;
@@ -148,7 +150,7 @@
   z-index: 2;
   position: absolute;
   left: 50px;
-  top: 260px;
+  top: 305px;
   font-size: 15px;
   letter-spacing: 2px;
   color: white;
@@ -161,7 +163,7 @@
   position: absolute;
   left: 50px;
   color: whitesmoke;
-  top: 280px;
+  top: 325px;
   font-size: 50px;
   font-family: "Bebas Neue";
   letter-spacing: 3px;
@@ -171,10 +173,10 @@
   z-index: 2;
   position: absolute;
   left: 204px;
-  top: 405px;
+  top: 450px;
   border: 1px;
   width: 155px;
-  background-color: gray;
+  background-color: #333333;
   height: 50px;
   color: white;
   font-family: "Poppins";
@@ -188,7 +190,7 @@
   z-index: 2;
   position: absolute;
   left: 50px;
-  top: 405px;
+  top: 450px;
   border: 1px;
   height: 50px;
   width: 155px;
@@ -536,15 +538,16 @@
 .card {
   /* box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2); */
   transition: 0.3s;
-  width: 27%;
-  height: 440px;
+  width: 25%;
+  height: 420px;
   margin-top: 20px;
-  margin-left: 68px;
+  margin-left: 90px;
+  margin-bottom: 35px;
   cursor: pointer;
 }
 
 .CardTextHeader {
-  margin-left: 70px;
+  margin-left: 91px;
   margin-top: 20px;
   font-family: "Alata";
   font-weight: bolder;
@@ -579,7 +582,7 @@
 
 .CardTextPrice {
   font-family: "Roboto";
-  font-weight: bolder;
+  /* font-weight: bold; */
   color: black;
 }
 
@@ -666,48 +669,19 @@
 .StripRoadbike1 {
   z-index: 2;
   position: absolute;
-  top: 480px;
-  left: 70px;
+  top: 515px;
+  left: 92px;
   color: #212529;
   width: 50px;
   height: 100px;
 }
 
-.StripRoadbike2 {
-  z-index: 2;
-  position: absolute;
-  top: 1025px;
-  left: 70px;
-  color: #212529;
-  width: 50px;
-  height: 100px;
-}
-
-.StripRoadbike3 {
-  z-index: 2;
-  position: absolute;
-  top: 1570px;
-  left: 70px;
-  color: #212529;
-  width: 50px;
-  height: 100px;
-}
-
-.StripRoadbike4 {
-  z-index: 2;
-  position: absolute;
-  top: 2115px;
-  left: 70px;
-  color: #212529;
-  width: 50px;
-  height: 100px;
-}
 
 .StripMountain1 {
   z-index: 2;
   position: absolute;
-  top: 482px;
-  left: 70px;
+  top: 515px;
+  left: 92px;
   color: #212529;
   width: 50px;
   height: 100px;
@@ -716,8 +690,8 @@
 .StripBmx1 {
   z-index: 2;
   position: absolute;
-  top: 482px;
-  left: 70px;
+  top: 515px;
+  left: 92px;
   color: #212529;
   width: 50px;
   height: 100px;
@@ -726,8 +700,8 @@
 .StripDaily {
   z-index: 2;
   position: absolute;
-  top: 482px;
-  left: 70px;
+  top: 515px;
+  left: 92px;
   color: #212529;
   width: 50px;
   height: 100px;
@@ -736,8 +710,8 @@
 .StripEbike {
   z-index: 2;
   position: absolute;
-  top: 482px;
-  left: 70px;
+  top: 515px;
+  left: 92px;
   color: #212529;
   width: 50px;
   height: 100px;
@@ -767,6 +741,18 @@
 }
 
 /* Menu Sepeda Ended */
+
+
+.ButtonLogin{
+  border: 1px solid;
+  width: 140px;
+  background-color: #333333;
+  color: white;
+  height: 50px;
+  margin-left: 400px;
+  margin-bottom: 40px;
+  font-family: "Roboto";
+}
 
 /* Cart started */
 
@@ -1087,19 +1073,46 @@
 }
 
 .MenuDetailsMenuKananButton{
-  color: #170a19;
-  border: 1px solid;
+  color: white;
+  /* border: 1px #170a19; */
   margin-top: 10px;
+  width: 130px;
+  height: 45px;
+  /* margin-top: 900px; */
+  /* color: #170a19; */
+  border-radius: 3px;
+  background-color: #170a19;
+  font-family: 'Roboto';
 }
 
 .stripCart{
    z-index: 2;
    position: absolute;
    top: 205px;
-   left: 75px;
+   left: 98px;
    color: red;
    width: 50px;
    height: 100px;
+}
+
+
+
+.garis{
+  border-left: 2px solid #212529;
+  height: 40px;
+  margin-left: 420px;
+  z-index: 2;
+  top: 13px;
+  position: absolute;
+}
+
+.garis2{
+  border-left: 2px solid #212529;
+  height: 40px;
+  margin-left: 345px;
+  z-index: 2;
+  /* top: 13px; */
+  position: absolute;
 }
 /* @import url("https://fonts.googleapis.com/css?family=Merriweather|PT+Sans|Roboto&display=swap"); */
 

@@ -8,7 +8,9 @@ router.post("/userRegister", AuthController.userRegister);
 router.get("/userLoginn", AuthController.userLoginn);
 router.get("/userLoginn/:id", AuthController.userLoginn);
 router.get("/getCart/:id", AuthController.userGetCart)
+router.get("/getCheckout/:id", AuthController.getCheckout)
 router.post('/postTransaction', AuthController.userTransaction)
 router.delete("/deleteCart/:id/:userId", AuthController.deleteCart)
+
 
 module.exports = router;

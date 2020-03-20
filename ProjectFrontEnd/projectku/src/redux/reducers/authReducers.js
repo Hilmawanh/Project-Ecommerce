@@ -39,7 +39,7 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case AUTH_LOADING:
-      return { ...state, error: "", loading: true };
+      return { ...INITIAL_STATE, error: "", loading: true };
 
     case USER_LOGIN_SUCCESS:
       return {
@@ -57,6 +57,8 @@ export default (state = INITIAL_STATE, action) => {
 
     case USER_LOGOUT:
       return INITIAL_STATE;
+
+    // case 
 
     default:
       return state;

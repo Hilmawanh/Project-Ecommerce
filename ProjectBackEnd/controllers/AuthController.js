@@ -1,6 +1,8 @@
 const cryptogenerate = require("../helper/crypto");
 const { mysqldb } = require("../connection");
 const { createJWTToken } = require("./../helper/jwt");
+const { uploader } = require('../helper/uplouder')
+const fs = require("fs");
 
 module.exports = {
   userRegister: (req, res) => {
@@ -43,7 +45,7 @@ module.exports = {
 
   userLoginn: (req, res) => {
     const { id } = req.params;
-    const { email, password } = req.query;
+    const { username, password } = req.query;
     if (id) {
       var sql = `select * from users where id=${id}`;
       mysqldb.query(sql, (err, result) => {
@@ -53,7 +55,8 @@ module.exports = {
         });
         console.log(result)
         return res.status(200).send({
-          email: result[0].email,
+          username: result[0].username,
+          roleid: result[0].roleid,
           id: result[0].id,
           status: "success",
           token
@@ -61,21 +64,22 @@ module.exports = {
       });
     } else {
       var hasspasword = cryptogenerate(password);
-      let sql = `select * from users where email='${email}' and password='${hasspasword}'`;
+      let sql = `select * from users where username='${username}' and password='${hasspasword}'`;
 
       mysqldb.query(sql, (err, result) => {
         if (err) res.status(500).send({ status: "error", err });
         if (result.length === 0) {
           return res.status(200).send({
             status: "notmatch",
-            error: "email and password tidak sesuai!"
+            error: "username and password tidak sesuai!"
           });
         }
         const token = createJWTToken({
           userid: result[0].id
         });
         return res.send({
-          email: result[0].email,
+          username: result[0].username,
+          roleid: result[0].roleid,
           id: result[0].id,
           status: "success",
           token
@@ -140,14 +144,20 @@ module.exports = {
     })
   },
 
-  userCheckout: (req, res) => {
-    const userId = req.params.userId
-    const totalHarga = req.params.id
-
-    let data = {
-      userId,
-      totalHarga
-    }
+  getCheckout: (req, res) => {
+    UserIdRedux = req.params.id
+    let sql = `select tr.*, p.produk,p.ukuranproduk,p.harga from transactions tr left join product p on tr.productid=p.id where tr.userid=${UserIdRedux} and tr.status='checkout'`
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      res.status(200).send({ dataCheckOut: result })
+    })
   }
+  ,
+
+
+  userCheckout: (req, res) => {
+    // const {nama,email,alamat,nomor,foto,}
+  },
+
 
 };

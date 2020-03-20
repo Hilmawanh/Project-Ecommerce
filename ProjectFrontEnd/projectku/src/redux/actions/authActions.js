@@ -45,21 +45,21 @@ export const userRegis = ({ username, email, password }) => {
   };
 };
 
-export const userLoginn = ({ email, password }) => {
+export const userLoginn = ({ username, password }) => {
   return dispatch => {
-    console.log(email);
+    console.log(username);
 
     dispatch({ type: AUTH_LOADING });
-    if (email === "" || password === "") {
+    if (username === "" || password === "") {
       dispatch({
         type: AUTH_LOGIN_ERROR,
-        payload: "Email dan password tidak boleh kosong!"
+        payload: "username dan password tidak boleh kosong!"
       });
     } else {
       axios
         .get(APIURL + "auth/userLoginn", {
           params: {
-            email,
+            username,
             password
           }
         })
@@ -83,8 +83,6 @@ export const userLoginn = ({ email, password }) => {
 export const userLoginRepeat = resdata => {
   return dispatch => {
     console.log("resdata");
-    // localStorage.setItem("token", resdata.token);
-    // localStorage.setItem("userid", resdata.id);
     dispatch({ type: USER_LOGIN_SUCCESS, payload: resdata });
   };
 };

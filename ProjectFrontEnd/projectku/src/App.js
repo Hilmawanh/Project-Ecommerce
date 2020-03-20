@@ -1,18 +1,18 @@
 // import React from "react";
 import React, { Component } from "react";
 import Header from "./components/header";
+import Header2 from './components/header2'
 import "./App.css";
 import "./index.css";
 import { APIURL } from "../src/helper/apiurl";
 import { connect } from "react-redux";
-import { userLoginRepeat, cartProduk } from "./redux/actions";
+import { userLoginRepeat, cartProduk, notifCart } from "./redux/actions";
 
 // Tampilan User //
 import Home from "./pages/home";
 import Footer from "./components/footer";
 import MenuAwal from "./components/menuawal";
 import NotFound from "./components/notfound";
-import Marchendise from "./pages/marchendise";
 import { Switch, Route } from "react-router-dom";
 
 import MenuRoadbike from "./pages/menuRoadbike";
@@ -29,16 +29,19 @@ import MenuDetails4 from './pages/menuDetails4'
 import MenuDetails5 from './pages/menuDetails5'
 import MenuDetails6 from './pages/menuDetails6'
 import MenuDetails7 from './pages/menuDetails7'
+import RetailerStore from './pages/retailerStore'
 
 // User Controller //
 import Cart from "./pages/cart";
 import SignIn from "./pages/login";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgotpass";
-
+import CheckOut from './pages/checkout'
+import PaginationTab from './components/pagination'
 // Admin Controller //
 import ManageAdmin from "./pages/manageAdmin";
 import axios from "axios";
+
 
 class App extends Component {
   state = {
@@ -68,8 +71,12 @@ class App extends Component {
     {
       this.props.cartProduk(id)
     }
+    // {
+    //   this.props.notifCart(this.props.cartProduk.length)
+    // }
     return (
       <div>
+        {/* <Header2 /> */}
         <Header />
         <Switch>
           <Route path={"/"} exact>
@@ -78,9 +85,10 @@ class App extends Component {
           </Route>
 
           {/* Tampilan User */}
-          <NotFound exact path={"/not-found"} component={NotFound} />
+          <Route exact path="/ganemu" component={NotFound} />
+          {/* <Route exact path="/*" component={NotFound} /> */}
+
           <Route exact path={"/cart"} component={Cart} />
-          <Route exact path={"/marchendise"} component={Marchendise} />
           <Route exact path={"/menuroadbike"} component={MenuRoadbike} />
           <Route exact path={"/menumountain"} component={MenuMountain} />
           <Route exact path={"/menubmx"} component={MenuBmx} />
@@ -95,6 +103,11 @@ class App extends Component {
           <Route exact path={"/menu-details5/:detailId"} component={MenuDetails5} />
           <Route exact path={"/menu-details6/:detailId"} component={MenuDetails6} />
           <Route exact path={"/menu-details7/:detailId"} component={MenuDetails7} />
+          <Route exact path={'/cart/checkout'} component={CheckOut} />
+          <Route exact path={'/pagination'} component={PaginationTab} />
+          <Route exact path={'/retailerStore'} component={RetailerStore} />
+
+
 
           {/* User Controller */}
           <Route exact path={"/login"} component={SignIn} />
@@ -116,4 +129,4 @@ const MapStateToProps = state => {
   };
 };
 
-export default connect(MapStateToProps, { userLoginRepeat,cartProduk })(App);
+export default connect(MapStateToProps, { userLoginRepeat, cartProduk, notifCart })(App);
