@@ -3,6 +3,7 @@ import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { Link } from 'react-router-dom'
+import NumberFormat from 'react-number-format'
 
 
 const MenuApparels = () => {
@@ -33,7 +34,7 @@ const MenuApparels = () => {
               <p>{val.deskripsi}</p>
             </center>
             <center>
-              <h5 className="CardTextPrice">Rp.{val.harga}</h5>
+              <h5><NumberFormat value={val.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /></h5>
             </center>
           </div>
         </div>
@@ -61,17 +62,16 @@ const MenuApparels = () => {
           </h2>
         <FaRegWindowMinimize
           style={{
-
             zIndex: "2",
             position: "absolute",
             top: "205px",
-            left: "75px",
+            left: "95px",
             color: "red",
             width: "50px",
             height: "100px"
           }}
         />
-        <div style={{ display: "flex" }}>
+        <div className='row' style={{ width: "100%", marginLeft: '1px' }}>
           {renderProdukGear()}
         </div>
       </div>

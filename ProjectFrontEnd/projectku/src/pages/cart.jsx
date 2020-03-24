@@ -7,6 +7,7 @@ import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { Link, Redirect } from 'react-router-dom'
 import { cartProduk, deleteCart } from '../redux/actions'
+import NumberFormat from "react-number-format";
 
 
 
@@ -14,8 +15,9 @@ const Cart = () => {
   const getCart = useSelector(state => state.cartReducers.Cart)
   const UserIdRedux = useSelector(state => state.auth.id)
   const totalHarga = useSelector(state => state.cartReducers.dataTotalHarga)
+  const Cart = useSelector(state => state.cartReducers.Cart)
   const roleid = useSelector(state => state.auth.roleid)
-  // const loading = useSelector(state => state.cartReducers.loading)
+  const loading = useSelector(state => state.auth.loading)
   // const { loading } = useSelector(state => state.cartReducers)
 
   const dispatch = useDispatch()
@@ -23,6 +25,7 @@ const Cart = () => {
   const [modalDelete, setModalDelete] = useState(false)
   const [idDelete, setIdDelete] = useState(0)
   // const [loading, setloading] = useState(true)
+  const [redirectCheckout, setRedirectChekout] = useState(false)
 
 
   const openToggleDelete = index => {
@@ -34,6 +37,31 @@ const Cart = () => {
     dispatch(deleteCart(idDelete, UserIdRedux))
     setModalDelete(!modalDelete)
   }
+
+  const onCheckout = () => {
+    for (var e = 0; e < Cart.length; e++) {
+      var data = {
+        id: Cart[e].id,
+        userid: Cart[e].userid,
+        productid: Cart[e].productid,
+        harga: Cart[e].harga,
+        jumlah: Cart[e].jumlah,
+        total: Cart[e].total,
+        status: 'checkout'
+      }
+      console.log(data)
+      var UserIdRedux = data.id
+      Axios.put(`${APIURL}auth/checkoutCart/${UserIdRedux}`, { data })
+        .then(res => {
+          dispatch(cartProduk())
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    setRedirectChekout(true)
+  }
+
 
 
   if (getCart.length === 0) {
@@ -71,10 +99,10 @@ const Cart = () => {
           <tr key={index}>
             <td><img src={APIURLimage + val.gambar} style={{ width: "100px" }} /></td>
             <td style={{ marginTop: "270px" }}>{val.produk}</td>
-            <td>{val.harga}</td>
+            <td><NumberFormat value={val.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /></td>
             <td>{val.ukuranproduk}</td>
             <td>{val.jumlah}</td>
-            <td>{val.total}</td>
+            <td><NumberFormat value={val.total} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /></td>
             <td><button style={{ border: "1px solid", borderRadius: "2px" }} onClick={() => openToggleDelete(val.id)}>Hapus</button></td>
           </tr>
         )
@@ -82,6 +110,13 @@ const Cart = () => {
     }
   }
 
+  if (redirectCheckout === true) {
+    return <Redirect to={'/cart/checkout'} />
+  }
+
+  if (loading) {
+    return <div>Loading</div>
+  }
 
   return (
     <div>
@@ -127,13 +162,13 @@ const Cart = () => {
           <div className="Text-Checkout-2">
             <h5 className="Text-Checkout-h7">SUBTOTAL  :</h5>
             <h6 style={{ marginTop: "3px", marginLeft: "10px" }} >
-              {totalHarga}
+              <NumberFormat value={totalHarga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} />
             </h6>
           </div>
           <div>
-            <Link to='/cart/checkout'>
-              <button className="button-Checkout">PROCEED TO CHECKOUT -></button>
-            </Link>
+
+            <button onClick={onCheckout} className="button-Checkout">PROCEED TO CHECKOUT -></button>
+
           </div>
         </div>
       </div>
@@ -142,3 +177,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

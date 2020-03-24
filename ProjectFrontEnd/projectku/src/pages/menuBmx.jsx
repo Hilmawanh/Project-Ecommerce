@@ -3,6 +3,7 @@ import { FaRegWindowMinimize } from "react-icons/fa";
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { Link } from 'react-router-dom'
+import NumberFormat from "react-number-format";
 
 function MenuBmx() {
 
@@ -12,7 +13,7 @@ function MenuBmx() {
 
 
   useEffect(() => {
-    Axios.get(`${APIURL}admin/get-prod`)
+    Axios.get(`${APIURL}admin/get-prod-bmx`)
       .then(res => {
         setGetDataProduk(res.data.dataBmx)
       })
@@ -36,7 +37,7 @@ function MenuBmx() {
               <p>{val.deskripsi}</p>
             </center>
             <center>
-              <h5 className="CardTextPrice">Rp.{val.harga}.</h5>
+            <h5><NumberFormat value={val.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /></h5>
             </center>
           </div>
         </div>

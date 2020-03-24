@@ -33,7 +33,7 @@ function ManageAdmin() {
       </h5>
       <div>
         <NavLink href='/' onClick={LogoutSuccess}>
-          <button style={{ marginLeft: "670px", marginTop: "40px", border: "1px solid red", backgroundColor: "blue" }}>Logout</button>
+          <button style={{ marginLeft: "670px", marginTop: "40px", border: "1px solid blue", backgroundColor: "" }}>Logout</button>
         </NavLink>
       </div>
       <Tabs>

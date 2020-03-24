@@ -9,6 +9,8 @@ import {
   AUTH_REGISTER
 } from "./types";
 import { APIURL } from "./../../helper/apiurl";
+import { cartProduk } from "./cartActios";
+
 
 export const userRegis = ({ username, email, password }) => {
   return dispatch => {
@@ -18,7 +20,9 @@ export const userRegis = ({ username, email, password }) => {
         type: AUTH_LOGIN_ERROR,
         payload: "Semua form diatas wajib diisi!"
       });
-    } else {
+
+    }
+    else {
       axios
         .post(APIURL + "auth/userRegister", {
           username,
@@ -82,9 +86,24 @@ export const userLoginn = ({ username, password }) => {
 
 export const userLoginRepeat = resdata => {
   return dispatch => {
-    console.log("resdata");
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: resdata });
-  };
+    var id = localStorage.getItem("userid");
+    if (id) {
+      axios
+        .get(`${APIURL}auth/userLoginn/${id}`)
+        .then(res => {
+          // this.props.userLoginRepeat(res.data);
+          // this.props.cartProduk()
+          dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
+          // dispatch(cartProduk())
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    // this.props.notifCart()
+    // this.setState({ loading: false });
+    // { this.props.loading }
+  }
 };
 
 export const userLogout = () => {

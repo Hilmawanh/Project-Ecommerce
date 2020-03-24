@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 import { FiShoppingCart } from "react-icons/fi";
 import { MdNotificationsNone, MdSearch } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { FiLogIn, FiLogOut, FiUser } from "react-icons/fi";
 import { Link, Redirect } from "react-router-dom";
-import { connect, useSelector } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Badge } from '@material-ui/core'
 import Indo from '../image/inde.png'
+import { cartProduk } from '../redux/actions'
 
 
 const LogoutSuccess = () => {
@@ -21,8 +22,10 @@ const Header = props => {
   const Login = useSelector(state => state.auth.loginStatus);
   const roleid = useSelector(state => state.auth.roleid)
   const username = useSelector(state => state.auth.username)
-  const notif = useSelector(state => state.notifReducers)
+  const notif = useSelector(state => state.cartReducers.notif)
+  // console.log(notif, 'notif')
 
+  const dispatch = useDispatch()
   const toggle = () => setIsOpen(!isOpen);
   console.log(Login);
 
@@ -36,21 +39,45 @@ const Header = props => {
         <NavbarBrand style={{ color: "white", fontFamily: "Roboto", fontSize: "12px", marginLeft: "34px" }} href="/"> 2001/5/04 </NavbarBrand>
         <Nav >
 
+
+
+          <NavItem style={{ marginLeft: "1094px" }}>
+            <NavLink>
+              <MdSearch
+                style={{
+                  color: "white",
+                  fontSize: 25,
+                  marginTop: "5px"
+                }}
+              />
+            </NavLink>
+          </NavItem>
+
+          <div style={{
+            borderLeft: " 2px solid gray",
+            height: "30px",
+            zIndex: "2",
+            position: "absolute",
+            top: "2px",
+            left: "1300px"
+          }}></div>
+
+
           {Login ? (
-            <NavItem style={{ marginLeft: "1143px" }}>
+            <NavItem >
               <NavLink href='/' style={{ width: "100%" }} onClick={LogoutSuccess} >
                 <button style={{ height: "34px", width: "90px", border: "1px", backgroundColor: "#333333", color: "white" }}>
                   Logout
-                                 </button>
+                </button>
               </NavLink>
             </NavItem>
 
           ) : (
-              <NavItem style={{ marginLeft: "1143px" }}>
+              <NavItem style={{ marginLeft: "" }}>
                 <NavLink href="/login">
                   <button style={{ height: "34px", width: "90px", border: "1px", backgroundColor: "black", color: "white" }}>
                     Login
-                            </button>
+                  </button>
                 </NavLink>
               </NavItem>
             )}
@@ -61,8 +88,6 @@ const Header = props => {
       <Navbar light expand="md">
         <NavbarBrand href="/" style={{ fontSize: "28px", color: "black", marginRight: "429px" }}>
           BROMEYO
-{/* <i className='france flag'>{indo}</i> */}
-          {/* <img src={Indo} style={{ fontSize: "100px" }} /> */}
         </NavbarBrand>
 
         <div className="dropdown">
@@ -107,43 +132,36 @@ const Header = props => {
         </div>
 
         <Nav>
-          {Login ? (<NavItem className="dropdown">
 
-            <div>
-              {/* <div className='garis2'></div> */}
-              <MdSearch
-                className='dropbtn'
-                style={{
-                  color: "black",
-                  fontSize: 25,
-                  marginTop: "9px",
-                  marginLeft: "355px",
-                  border: "none", cursor: "pointer", zIndex: "1"
-                }}
-              />
-            </div>
-            <div className='dropdown-content' style={{ display: "none", position: "absolute", zIndex: "1", minWidth: "200px" }}>
-              <a href="">dada</a>
-            </div>
-          </NavItem>
+
+          {Login ? (
+            <NavItem >
+              <Link to='/notification'>
+                <MdNotificationsNone
+                  style={{
+                    color: "black",
+                    fontSize: 25,
+                    marginTop: "9px",
+                    marginLeft: "355px"
+                  }}
+                />
+              </Link>
+            </NavItem>
           ) : (
-              <div>
-                {/* <div className='garis'></div> */}
-                <NavItem style={{ marginLeft: "435px" }}>
-                  <Link>
-                    <MdSearch
-                      style={{
-                        color: "black",
-                        fontSize: 25,
-                        marginRight: "11px"
-                      }}
-                    />
-                  </Link>
-                </NavItem>
-              </div>
+              < NavItem >
+                <Link to='/notification'>
+                  <MdNotificationsNone
+                    style={{
+                      color: "black",
+                      fontSize: 25,
+                      marginTop: "9px",
+                      marginLeft: "445px"
+                    }}
+                  />
+                </Link>
+              </NavItem>
+            )}
 
-            )
-          }
 
 
           {Login ? (
@@ -154,15 +172,17 @@ const Header = props => {
                 </Badge>
               </NavLink>
             </NavItem>
-          ) : null}
+          ) : (
+              <NavItem style={{ marginRight: "2px" }}>
+                <NavLink href="/cart">
+                  <Badge badgeContent={notif} color="secondary">
+                    <FiShoppingCart style={{ color: "black", fontSize: 23 }} />
+                  </Badge>
+                </NavLink>
+              </NavItem>
+            )}
 
-          {/* {
-              Login === 1 ? (
-                <NavItem>
-                  <Link to={'/manageadmin'} />
-                </NavItem>
-              ) : null
-            } */}
+
 
 
 
@@ -172,19 +192,8 @@ const Header = props => {
               <FiUser style={{ color: "black", fontSize: 23, marginTop: "8px" }} />
               <h6 style={{ marginTop: "11px" }}> &nbsp; :  {username}</h6>
             </NavItem>
-          ) : (
-              <NavItem >
-                <Link>
-                  <MdNotificationsNone
-                    className="mr-10 ml-2"
-                    style={{
-                      color: "black",
-                      fontSize: 25
-                    }}
-                  />
-                </Link>
-              </NavItem>
-            )}
+          ) : null
+          }
 
 
           {/* {Login ? (

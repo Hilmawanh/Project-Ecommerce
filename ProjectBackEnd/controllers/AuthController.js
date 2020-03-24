@@ -15,7 +15,7 @@ module.exports = {
         return res.status(500).send({ status: "error", err });
       }
       if (results.length > 0) {
-        console.log(results);
+        // console.log(results);rs
         return res.status(200).send({ status: "error", message: "username has been taken" });
       } else {
         var hashpassword = cryptogenerate(password);
@@ -53,7 +53,7 @@ module.exports = {
         const token = createJWTToken({
           userid: result[0].id
         });
-        console.log(result)
+        // console.log(result)
         return res.status(200).send({
           username: result[0].username,
           roleid: result[0].roleid,
@@ -90,14 +90,14 @@ module.exports = {
 
   userGetCart: (req, res) => {
     const UserIdRedux = req.params.id
-    let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=${UserIdRedux}`
+    let sql = `select tr.*, p.produk, p.gambar,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid=${UserIdRedux} and tr.status='cart'`
     mysqldb.query(sql, (err, result) => {
       if (err) {
         console.log('error get data cart')
         return res.status(500).send(err)
 
       }
-      console.log('berhasil');
+      // console.log('berhasil');
 
       res.status(200).send({ getCart: result })
     })
@@ -118,7 +118,7 @@ module.exports = {
           console.log('error')
           res.status(500).send(err)
         }
-        console.log('berhasil')
+        // console.log('berhasil')
 
         res.status(500).send({ dataCart: result2 })
       })
@@ -144,8 +144,27 @@ module.exports = {
     })
   },
 
+  userCartCheckout: (req, res) => {
+    console.log(req.body.data)
+    let sql = `UPDATE transactions SET status = 'checkout' WHERE id = ${req.body.data.id};`
+    var UserIdRedux = req.body.data.id
+    // let sql = `UPDATE transactions SET ? where id = '${UserIdRedux}' and status = 'checkout' `
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      res.status(200).send({ checkoutCart: result })
+    })
+  },
+
+  userCancelCheckout: (req, res) => {
+    let sql = `UPDATE transactions SET status = 'cart' WHERE id = ${req.body.data.id};`
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      res.status(200).send({ checkoutCartCancel: result })
+    })
+  },
+
   getCheckout: (req, res) => {
-    UserIdRedux = req.params.id
+    const UserIdRedux = req.params.id
     let sql = `select tr.*, p.produk,p.ukuranproduk,p.harga from transactions tr left join product p on tr.productid=p.id where tr.userid=${UserIdRedux} and tr.status='checkout'`
     mysqldb.query(sql, (err, result) => {
       if (err) res.status(500).send(err)
@@ -155,9 +174,66 @@ module.exports = {
   ,
 
 
-  userCheckout: (req, res) => {
-    // const {nama,email,alamat,nomor,foto,}
+  userTransaksi: (req, res) => {
+    const path = "/product/image";
+    const upload = uploader(path, "product").fields([{ name: "image" }]);
+    upload(req, res, err => {
+      if (err) {
+        console.log('error  server upload')
+        return res.status(500).json({ message: "Upload post picture Failde", error: err.message })
+      }
+      const { image } = req.files;
+      const imagePath = image ? path + "/" + image[0].filename : null;
+      const data = JSON.parse(req.body.data);
+      const transaksiId = JSON.parse(req.body.transaksiId)
+      const dataCart = JSON.parse(req.body.dataCart)
+      //JSON.parse() untuk mengubah string JSON menjadi javascript object.
+
+      try {
+        console.log(dataCart)
+        // Siapkan Data Array of Array
+        const dataArr = []
+        const { nama, email, alamat, nomor } = data
+        for (let i = 0; i < transaksiId.length; i++) {
+          dataArr.push([nama, email, alamat, nomor, imagePath, parseInt(transaksiId[i]), dataCart[i].productid, dataCart[i].jumlah, dataCart[i].total]) // parseint ubah string jadi integer
+        }
+
+        // Query untuk input data ke table Transaksi Detail
+        const sqlDetail = `INSERT INTO transactiondetail (nama,email,alamat,nomor,foto,idtransaksi,productid,jumlah,totalHarga) VALUES ?;`
+
+        mysqldb.query(sqlDetail, [dataArr], (err, result) => {
+          if (err) res.status(500).send(err)
+          console.log(result)
+          // Query untuk update table transaksi 
+          let sqlTransaksi = ''
+
+          // Lopping for sql detail
+          for (let i = 0; i < transaksiId.length; i++) {
+            let id = parseInt(transaksiId[i])
+            sqlTransaksi += `UPDATE transactions SET status = 'isPayment' WHERE id = ${id};`
+          }
+
+          mysqldb.query(sqlTransaksi, (err2, result2) => {
+            if (err2) res.status(500).send(err2)
+            res.status(200).send({ result2, updateStatus: true })
+          })
+        })
+      } catch (err) {
+        // console.log(err.message);
+        return res.status(500).json({ message: "There's an error on the server. Please contact the administrator.", error: err.message });
+      }
+    })
   },
+
+  userHistory: (req, res) => {
+    const UserIdRedux = req.params.id
+    let sql = `select tr.*, p.produk,p.ukuranproduk from transactions tr left join product p on tr.productid=p.id where tr.userid='${UserIdRedux}' and tr.status='Confirm';`
+
+    mysqldb.query(sql, (err, result) => {
+      if (err) res.status(500).send(err)
+      return res.status(200).send({ dataHistory: result })
+    })
+  }
 
 
 };

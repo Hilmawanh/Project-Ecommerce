@@ -28,6 +28,19 @@ class Register extends Component {
     }
   };
 
+  renderErrorUsername = () => {
+    if (this.props.username.length > 0) {
+      return (
+        <p
+          className="alert alert-danger"
+          style={{ width: "30%", marginLeft: "400px" }}
+        >
+          <h5>Username has been taken</h5>
+        </p>
+      )
+    }
+  }
+
   renderErrorRegister = () => {
     if (this.props.loginError.length > 0) {
       return (
@@ -117,6 +130,7 @@ class Register extends Component {
           style={{ marginLeft: "390px" }}
         />
         <div>{this.renderError()}</div>
+        {/* <div>{this.renderErrorUsername()}</div> */}
         <div>{this.renderErrorRegister()}</div>
         <div className="container-login100-form-btn">{this.renderButton()}</div>
       </div>

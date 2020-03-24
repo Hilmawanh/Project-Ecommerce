@@ -5,13 +5,13 @@ const INITAL_STATE = {
     loading: true,
     message: "",
     dataTotalHarga: 0,
-    // notif: 0
+    notif: 0
 }
 
 export default (state = INITAL_STATE, action) => {
     switch (action.type) {
         case CART_SUCCESS:
-            return { ...state, Cart: action.payload.getCart, dataTotalHarga: action.payload.dataTotalHarga, message: "Cart Berhasil di tambahkan" }
+            return { ...state, Cart: action.payload.getCart, dataTotalHarga: action.payload.dataTotalHarga, message: "Cart Berhasil di tambahkan", notif: action.payload.totalCart }
         case CART_LOADING:
             return { ...state, loading: false }
         case CART_FAILED:

@@ -6,8 +6,14 @@ import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { useParams } from 'react-router-dom'
 import { Alert } from 'reactstrap';
+import { cartProduk, AddCartProduk } from '../redux/actions'
+import NumberFormat from "react-number-format";
 
 const MenuDatails = () => {
+  // Set Dispatch
+
+  const dispatch = useDispatch()
+
 
   const { detailId } = useParams()
 
@@ -16,10 +22,9 @@ const MenuDatails = () => {
 
   const [getViewDetailsHelios, setGetViewDetailsHelios] = useState([])
   const [getTocart, setGetToCart] = useState({})
-  // const [loginStatusLogin, setLoginStatusLogin] = useState(false)
 
   useEffect(() => {
-    console.log(detailId)
+    console.log(detailId, 'detailId')
     Axios.get(`${APIURL}admin/view-details/${detailId}`)
       .then(res => {
         const { id, harga } = res.data.detailRoadbikeHelios[0]
@@ -31,28 +36,18 @@ const MenuDatails = () => {
       })
   }, [])
 
-
-
-
-
   useEffect(() => {
-    setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
+    setGetToCart({ ...getTocart, userid: UserIdRedux, status: 'cart' })
   }, [getViewDetailsHelios[0]])
 
   const addToCart = () => {
-    console.log('getTocart', getTocart);
-    Axios.post(`${APIURL}auth/postTransaction`, { getTocart })
-      .then(res => {
-        // // alert(res.data.message)
-        alert('asiappp')
-        // alert("Hello! I am an alert box!")
-      })
-      .catch(err => {
-        if (loginStatus === false) {
-          return alert('Anda belum Login, Harap Login terlebih dahulu')
-        }
-        console.log('error post', err)
-      })
+    dispatch(AddCartProduk(getTocart))
+    if (loginStatus === true) {
+      return alert('Berhasil tambah ke Cart')
+    }
+    if (loginStatus === false) {
+      return alert('Anda belum Login, Harap Login terlebih dahulu')
+    }
   }
 
   const onJumlahChange = e => {
@@ -85,7 +80,7 @@ const MenuDatails = () => {
               />
             </div>
             <div className='MenuDetailsMenuKanan'>
-              <h5>Rp. {val.harga}</h5>
+              <h5>  <NumberFormat value={val.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /> </h5>
               <h6 style={{ marginTop: "30px", textAlign: "justify", marginRight: "40px" }}>{val.deskripsi}</h6>
               <div className='MenuDetailsMenuKananSize'>
                 <h4>Size</h4>

@@ -5,7 +5,7 @@ import { FiSmile } from 'react-icons/fi'
 import Axios from 'axios'
 import { APIURL, APIURLimage } from '../helper/apiurl'
 import { useParams } from 'react-router-dom'
-
+import NumberFormat from "react-number-format";
 
 const MenuDetails3 = () => {
     const { detailId } = useParams()
@@ -29,7 +29,7 @@ const MenuDetails3 = () => {
     }, [])
 
     useEffect(() => {
-        setGetToCart({ ...getTocart, userid: UserIdRedux, status: 0 })
+        setGetToCart({ ...getTocart, userid: UserIdRedux, status: 'cart' })
     }, [getViewDataDaily[0]])
 
     const addToCart = () => {
@@ -39,6 +39,9 @@ const MenuDetails3 = () => {
                 console.log('berhasil', res)
             })
             .catch(err => {
+                if (loginStatus === true) {
+                    return alert('Berhasil tambah ke Cart')
+                }
                 if (loginStatus === false) {
                     return alert('Anda belum Login, Harap Login terlebih dahulu')
                 }
@@ -72,7 +75,7 @@ const MenuDetails3 = () => {
                             />
                         </div>
                         <div className='MenuDetailsMenuKanan'>
-                            <h5>Rp. {val.harga}</h5>
+                            <h5><NumberFormat value={val.harga} displayType={"text"} thousandSeparator={true} prefix={"Rp."} className="CardTextPrice" /></h5>
                             <h6 style={{ marginTop: "30px", marginRight: "40px" }}>{val.deskripsi}</h6>
                             <div className='MenuDetailsMenuKananSize'>
                                 <h4>Size</h4>
