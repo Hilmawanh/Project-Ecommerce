@@ -29,7 +29,3 @@ class MenuAwal extends Component {
 }
 
 export default MenuAwal;
-
-// https://pbs.twimg.com/media/EPTnPYdWAAIx0mb?format=jpg&name=large
-
-// https://pbs.twimg.com/media/D3zhrQeX4AQ5gr3?format=jpg&name=4096x4096

@@ -193,37 +193,38 @@ module.exports = {
         console.log(dataCart)
         // Siapkan Data Array of Array
         const dataArr = []
-        const { nama, email, alamat, nomor } = data
+        const { nama, email, alamat, nomor, 
+      } = data
+      for (let i = 0; i < transaksiId.length; i++) {
+        dataArr.push([nama, email, alamat, nomor, imagePath, parseInt(transaksiId[i]), dataCart[i].productid, dataCart[i].jumlah, dataCart[i].total]) // parseint ubah string jadi integer
+      }
+
+      // Query untuk input data ke table Transaksi Detail
+      const sqlDetail = `INSERT INTO transactiondetail (nama,email,alamat,nomor,foto,idtransaksi,productid,jumlah,totalHarga) VALUES ?;`
+
+      mysqldb.query(sqlDetail, [dataArr], (err, result) => {
+        if (err) res.status(500).send(err)
+        console.log(result)
+        // Query untuk update table transaksi 
+        let sqlTransaksi = ''
+
+        // Lopping for sql detail
         for (let i = 0; i < transaksiId.length; i++) {
-          dataArr.push([nama, email, alamat, nomor, imagePath, parseInt(transaksiId[i]), dataCart[i].productid, dataCart[i].jumlah, dataCart[i].total]) // parseint ubah string jadi integer
+          let id = parseInt(transaksiId[i])
+          sqlTransaksi += `UPDATE transactions SET status = 'isPayment' WHERE id = ${id};`
         }
 
-        // Query untuk input data ke table Transaksi Detail
-        const sqlDetail = `INSERT INTO transactiondetail (nama,email,alamat,nomor,foto,idtransaksi,productid,jumlah,totalHarga) VALUES ?;`
-
-        mysqldb.query(sqlDetail, [dataArr], (err, result) => {
-          if (err) res.status(500).send(err)
-          console.log(result)
-          // Query untuk update table transaksi 
-          let sqlTransaksi = ''
-
-          // Lopping for sql detail
-          for (let i = 0; i < transaksiId.length; i++) {
-            let id = parseInt(transaksiId[i])
-            sqlTransaksi += `UPDATE transactions SET status = 'isPayment' WHERE id = ${id};`
-          }
-
-          mysqldb.query(sqlTransaksi, (err2, result2) => {
-            if (err2) res.status(500).send(err2)
-            res.status(200).send({ result2, updateStatus: true })
-          })
+        mysqldb.query(sqlTransaksi, (err2, result2) => {
+          if (err2) res.status(500).send(err2)
+          res.status(200).send({ result2, updateStatus: true })
         })
-      } catch (err) {
-        // console.log(err.message);
-        return res.status(500).json({ message: "There's an error on the server. Please contact the administrator.", error: err.message });
-      }
-    })
-  },
+      })
+    } catch (err) {
+      // console.log(err.message);
+      return res.status(500).json({ message: "There's an error on the server. Please contact the administrator.", error: err.message });
+    }
+  })
+},
 
   userHistory: (req, res) => {
     const UserIdRedux = req.params.id

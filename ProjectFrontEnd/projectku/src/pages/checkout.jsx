@@ -165,11 +165,11 @@ const CheckOut = () => {
                 <br />
                 <h6 style={{ fontWeight: "bolder" }}>Transactions*</h6>
                 <div style={{ width: "47%" }}>
-                    <CustomInput type='file'
+                <CustomInput type='file'
                         className="form-control"
                         name='foto'
-                        onChange={imageTransaksi}
-                    />
+                        style={{}}
+                />
                 </div>
                 <br />
                 <button style={{ marginTop: "20px", width: "140px", border: "1px solid", height: "50px", backgroundColor: "#212529", color: "white" }} onClick={beliProduk}>

@@ -3,6 +3,7 @@ import { Table, Button, CustomInput } from "reactstrap";
 import { APIURL, APIURLimage } from "../helper/apiurl";
 import Modal from "../components/modal";
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function ManageProduct() {
   const [dataproduct, setdataproduct] = useState([])
@@ -14,6 +15,10 @@ function ManageProduct() {
   const [modaldelete, setModaldelete] = useState(false);
   const [modaladd, setmodaladd] = useState(false);
   const [modalEdit, setModalEdit] = useState(false)
+
+  const [page, setPage] = useState(1)
+  const [pager, setPager] = useState({})
+
   const [addimagefile, setaddimagefile] = useState({
     addImageFileName: "Select Image....",
     addImageFile: undefined
@@ -24,6 +29,8 @@ function ManageProduct() {
     editImageFile: undefined
   });
 
+
+
   const toggleadd = () => setmodaladd(!modaladd);
 
   const toggleedit = () => setModalEdit(!modalEdit)
@@ -32,17 +39,33 @@ function ManageProduct() {
 
   useEffect(() => {
     console.log('didmount')
-    Axios.get(`${APIURL}admin/get-prod`)
+    Axios.get(`${APIURL}admin/get-prod/${page}`)
       .then(res => {
         console.log(res.data)
-        setdataproduct(res.data.dataProduk)
+        setdataproduct(res.data.pageOfData)
         setdatacategory(res.data.dataCategory)
-        setDataEditBackend(res.data.dataEdit)
+        setDataEditBackend(res.data.sqlEdit)
+        setPager(res.data.pager)
       })
       .catch(err => {
         console.log(err)
       })
   }, [])
+
+  useEffect(() => {
+    console.log('didmount')
+    Axios.get(`${APIURL}admin/get-prod/${page}`)
+      .then(res => {
+        console.log(res.data)
+        setdataproduct(res.data.pageOfData)
+        setdatacategory(res.data.dataCategory)
+        setDataEditBackend(res.data.sqlEdit)
+        setPager(res.data.pager)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [page])
 
   // ===== Add Data Produk ===== // 
   const addData = () => {
@@ -62,7 +85,7 @@ function ManageProduct() {
     formdata.append("data", JSON.stringify(addDataProduct));
     Axios.post(`${APIURL}admin/add-prod`, formdata, Headers)
       .then(res => {
-        setdataproduct(res.data.dataProduk)
+        setdataproduct(res.data.pageOfData)
         setdatacategory(res.data.dataCategory)
         setmodaladd(!modaladd)
       })
@@ -105,9 +128,9 @@ function ManageProduct() {
     Axios.put(`${APIURL}admin/edit-prod/${editDataProduk.id}`, formdata, Headers)
       .then(res => {
         console.log("masuk", res)
-        // setEditDataProduk(res.data.dataProduk)
+        // setEditDataProduk(res.data.dataPdataProdukroduk)
         // setEditCategory(res.data.dataCategory)
-        setdataproduct(res.data.dataProduk)
+        setdataproduct(res.data.pageOfData)
         setdatacategory(res.data.dataCategory)
         setModalEdit(!modalEdit)
       })
@@ -145,7 +168,8 @@ function ManageProduct() {
       .then(() => {
         Axios.get(`${APIURL}admin/get-prod`)
           .then(res => {
-            setdataproduct(res.data.dataProduk)
+            setdataproduct(res.data.pageOfData)
+            setdatacategory(res.data.dataCategory)
             setModaldelete(false)
           })
           .catch(err => {
@@ -193,86 +217,112 @@ function ManageProduct() {
 
 
   return (
-    <Fragment>
-      <div style={{ textAlign: "center", marginTop: "30px", marginBottom: "40px" }}>
-        <button className='ButtonManageProduct' outline onClick={toggleadd}>
-          Add Product
+    <div>
+      <Fragment>
+        <div style={{ textAlign: "center", marginTop: "30px", marginBottom: "40px" }}>
+          <button className='ButtonManageProduct' outline onClick={toggleadd}>
+            Add Product
         </button>
-      </div>
+        </div>
 
-      <Modal title="Add Product" toggle={toggleadd} modal={modaladd} actionfunc={addData} btnTitle='Save'>
-        <input style={{ marginBottom: "10px" }} type='text' name='produk' placeholder='Nama Produk' className='form-control' onChange={onChangeAddData} />
-        <input style={{ marginBottom: "10px" }} type='text' name='deskripsi' placeholder='Deskripsi' className='form-control' onChange={onChangeAddData} />
-        <input style={{ marginBottom: "10px" }} type='text' name='harga' placeholder='Harga' className='form-control' onChange={onChangeAddData} />
-        <CustomInput type='file'
-          label={addimagefile.addImageFileName}
-          id="addImagePost"
-          className="form-control"
-          onChange={onAddImageFileChange} />
+        <Modal title="Add Product" toggle={toggleadd} modal={modaladd} actionfunc={addData} btnTitle='Save'>
+          <input style={{ marginBottom: "10px" }} type='text' name='produk' placeholder='Nama Produk' className='form-control' onChange={onChangeAddData} />
+          <input style={{ marginBottom: "10px" }} type='text' name='deskripsi' placeholder='Deskripsi' className='form-control' onChange={onChangeAddData} />
+          <input style={{ marginBottom: "10px" }} type='text' name='harga' placeholder='Harga' className='form-control' onChange={onChangeAddData} />
+          <CustomInput type='file'
+            label={addimagefile.addImageFileName}
+            id="addImagePost"
+            className="form-control"
+            onChange={onAddImageFileChange} />
 
-        <input style={{ marginBottom: "10px", marginTop: "10px" }} type='text' name='stock' placeholder='Jumlah Produk' className='form-control' onChange={onChangeAddData} />
-        <input style={{ marginBottom: "10px" }} type='text' name='ukuranproduk' placeholder='Ukuran Product' className='form-control' onChange={onChangeAddData} />
-        <select name='categoryid' className='form-control' onChange={onChangeAddData} >
-          <option hidden>Pilih Category</option>
-          {datacategory.map((val, index) => {
-            return (
-              <option key={index} value={val.id}>
-                {val.category}
-              </option>
-            )
-          })}
-        </select>
+          <input style={{ marginBottom: "10px", marginTop: "10px" }} type='text' name='stock' placeholder='Jumlah Produk' className='form-control' onChange={onChangeAddData} />
+          <input style={{ marginBottom: "10px" }} type='text' name='ukuranproduk' placeholder='Ukuran Product' className='form-control' onChange={onChangeAddData} />
+          <select name='categoryid' className='form-control' onChange={onChangeAddData} >
+            <option hidden>Pilih Category</option>
+            {datacategory.map((val, index) => {
+              return (
+                <option key={index} value={val.id}>
+                  {val.category}
+                </option>
+              )
+            })}
+          </select>
+        </Modal>
+
+        <Modal title={`Edit produk ${editDataProduk.produk}`} toggle={toggleedit} modal={modalEdit} actionfunc={editData} btnTitle='Save'>
+          <input style={{ marginBottom: "10px" }} name='produk' type='text' className='form-control' value={editDataProduk.produk} onChange={onChangeEditData} />
+          <input style={{ marginBottom: "10px" }} name='deskripsi' type='text' className='form-control' value={editDataProduk.deskripsi} onChange={onChangeEditData} />
+          <input style={{ marginBottom: "10px" }} name='harga' type='text' className='form-control' value={editDataProduk.harga} onChange={onChangeEditData} />
+          <CustomInput type="file"
+            label={editimagefile.editimagefilename}
+            id="editImagePost"
+            className="form-control"
+            onChange={onEditImageFileChange} />
+
+          <input style={{ marginBottom: "10px", marginTop: "10px" }} type='text' name='stock' className='form-control' value={editDataProduk.stock} onChange={onChangeEditData} />
+          <input style={{ marginBottom: "10px" }} type='text' name='ukuranproduk' className='form-control' value={editDataProduk.ukuranproduk} onChange={onChangeEditData} />
+          <select style={{ marginBottom: "10px" }} type='text' name='categoryid' className='form-control' value={editDataProduk.categoryid} onChange={onChangeEditData}  >
+            <option hidden>Edit Category Sepeda</option>
+            {datacategory.map((val, index) => {
+              return (
+                <option key={index} value={val.id}>
+                  {val.category}
+                </option>
+              )
+            })}
+          </select>
+        </Modal>
+
+        <Modal title={"Delete Produk"} toggle={toggleDelete} modal={modaldelete} actionfunc={deleteData} btnTitle='Delete'  >
+          Delete Produk Ini ?????
       </Modal>
 
-      <Modal title={`Edit produk ${editDataProduk.produk}`} toggle={toggleedit} modal={modalEdit} actionfunc={editData} btnTitle='Save'>
-        <input style={{ marginBottom: "10px" }} name='produk' type='text' className='form-control' value={editDataProduk.produk} onChange={onChangeEditData} />
-        <input style={{ marginBottom: "10px" }} name='deskripsi' type='text' className='form-control' value={editDataProduk.deskripsi} onChange={onChangeEditData} />
-        <input style={{ marginBottom: "10px" }} name='harga' type='text' className='form-control' value={editDataProduk.harga} onChange={onChangeEditData} />
-        <CustomInput type="file"
-          label={editimagefile.editimagefilename}
-          id="editImagePost"
-          className="form-control"
-          onChange={onEditImageFileChange} />
+        <Table style={{ width: "90%", marginLeft: "80px" }} responsive >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th style={{ width: "8%" }}>Produk</th>
+              <th>Deskripsi</th>
+              <th>Harga</th>
+              <th>Gambar</th>
+              <th>Jumlah Product</th>
+              <th>Ukuran Product</th>
+              <th>Category Sepeda</th>
+              <th style={{ width: "11%" }}> Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderProduct()}
+          </tbody>
+        </Table>
+      </Fragment>
+      {
+        pager.pages && pager.pages.length &&
+        <ul className="pagination" style={{ marginLeft: "545px", marginTop: "40px", marginBottom: "60PX" }}>
+          <li className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+            <Link style={{ backgroundColor: "#212529", color: "white" }} to={{ search: `?page=1` }} className="page-link" onClick={() => setPage(pager.startPage)}>First</Link>
+          </li>
+          <li className={`page-item previous-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+            <Link style={{ backgroundColor: "#212529", color: "white" }} to={{ search: `?page=${pager.currentPage - 1}` }} className="page-link" onClick={() => setPage(pager.currentPage - 1)}>Previous</Link>
+          </li>
+          {pager.pages.map(page =>
+            <li key={page} className={`page-item number-item ${pager.currentPage === page ? 'active' : ''}`}>
+              <Link style={{ backgroundColor: "#333333", color: "white" }} to={{ search: `?page=${page}` }} className="page-link" onClick={() => setPage(page)}>{page}</Link>
+            </li>
+          )}
+          <li className={`page-item next-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+            <Link style={{ backgroundColor: "#212529", color: "white" }} to={{ search: `?page=${pager.currentPage + 1}` }} className="page-link" onClick={() => setPage(pager.currentPage + 1)}>Next</Link>
+          </li>
+          <li className={`page-item last-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+            <Link style={{ backgroundColor: "#212529", color: "white" }} to={{ search: `?page=${pager.totalPages}` }} className="page-link" onClick={() => setPage(pager.totalPages)}>Last</Link>
+          </li>
+        </ul>
+      }
+    </div>
 
-        <input style={{ marginBottom: "10px", marginTop: "10px" }} type='text' name='stock' className='form-control' value={editDataProduk.stock} onChange={onChangeEditData} />
-        <input style={{ marginBottom: "10px" }} type='text' name='ukuranproduk' className='form-control' value={editDataProduk.ukuranproduk} onChange={onChangeEditData} />
-        <select style={{ marginBottom: "10px" }} type='text' name='categoryid' className='form-control' value={editDataProduk.categoryid} onChange={onChangeEditData}  >
-          <option hidden>Edit Category Sepeda</option>
-          {datacategory.map((val, index) => {
-            return (
-              <option key={index} value={val.id}>
-                {val.category}
-              </option>
-            )
-          })}
-        </select>
-      </Modal>
-
-      <Modal title={"Delete Produk"} toggle={toggleDelete} modal={modaldelete} actionfunc={deleteData} btnTitle='Delete'  >
-        Delete Produk Ini ?????
-      </Modal>
-
-      <Table style={{ marginBottom: "170px", width: "90%", marginLeft: "80px" }} responsive >
-        <thead>
-          <tr>
-            <th>No</th>
-            <th style={{ width: "8%" }}>Produk</th>
-            <th>Deskripsi</th>
-            <th>Harga</th>
-            <th>Gambar</th>
-            <th>Jumlah Product</th>
-            <th>Ukuran Product</th>
-            <th>Category Sepeda</th>
-            <th style={{ width: "11%" }}> Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderProduct()}
-        </tbody>
-      </Table>
-
-    </Fragment>
   );
 }
 
 export default ManageProduct;
+
+

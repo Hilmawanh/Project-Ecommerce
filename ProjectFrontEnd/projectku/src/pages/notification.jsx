@@ -3,11 +3,13 @@ import { Table } from 'reactstrap';
 import { useSelector } from 'react-redux'
 import Axios from 'axios'
 import { APIURL } from '../helper/apiurl'
+import { FaRegWindowMinimize } from "react-icons/fa";
 
 const Notification = () => {
     // const [count, setCount] = useState(0);
     const [getHistory, setGetHistory] = useState([])
     const UserIdRedux = useSelector(state => state.auth.id)
+    const Login = useSelector(state => state.auth.loginStatus);
 
     useEffect(() => {
         Axios.get(`${APIURL}auth/getHistory/${UserIdRedux}`)
@@ -17,16 +19,17 @@ const Notification = () => {
             .catch(err => {
                 console.log(err)
             })
-    })
+    }, [])
 
     const renderHistory = () => {
-        return getHistory.map((val) => {
+        return getHistory.map((val, index) => {
             return (
                 <tr>
-                    <th scope="row">1</th>
+
                     <td>{val.produk}</td>
                     <td>{val.harga}</td>
                     <td>{val.jumlah}</td>
+                    <td>{val.tanggal}</td>
                 </tr>
             )
         })
@@ -34,17 +37,31 @@ const Notification = () => {
 
     return (
         <div>
+            <div style={{ display: "column" }}>
+                <div style={{ width: "100%", height: "20pc", backgroundColor: "#eaeaea" }} />
+                <h2
+                    className="CardTextHeader"
+                    style={{
+                        zIndex: "2",
+                        position: "absolute",
+                        top: "200px",
+                        left: "5px",
+                        width: "50px",
+                        height: "100px"
+                    }}>
+                    NOTIF
+          </h2>
+                <FaRegWindowMinimize className='stripCart' />
+            </div>
 
-
-            <h5 style={{ zIndex: "2", position: "absolute", top: "125px", marginLeft: "160px" }}>HISTORY</h5>
-            <Table style={{ marginTop: "150px", marginBottom: "200px" }} className='container'>
+            <Table style={{ marginTop: "100px", marginBottom: "200px" }} className='container'>
 
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Produk</th>
                         <th>Harga</th>
                         <th>jumlah</th>
+                        <th>tanggal</th>
                     </tr>
                 </thead>
                 <tbody>

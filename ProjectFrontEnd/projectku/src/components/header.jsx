@@ -23,6 +23,9 @@ const Header = props => {
   const roleid = useSelector(state => state.auth.roleid)
   const username = useSelector(state => state.auth.username)
   const notif = useSelector(state => state.cartReducers.notif)
+  const loading = useSelector(state => state.auth.loading)
+  const loginError = useSelector(state => state.auth.loginError)
+  const error = useSelector(state => state.auth.error)
   // console.log(notif, 'notif')
 
   const dispatch = useDispatch()
@@ -113,6 +116,8 @@ const Header = props => {
           </div>
         </div>
 
+
+
         <div class="dropdown">
           <h2 className="dropbtn2">GEAR</h2>
           <div class="dropdown-content2">
@@ -161,9 +166,6 @@ const Header = props => {
                 </Link>
               </NavItem>
             )}
-
-
-
           {Login ? (
             <NavItem style={{ marginRight: "2px" }}>
               <NavLink href="/cart">
@@ -181,11 +183,6 @@ const Header = props => {
                 </NavLink>
               </NavItem>
             )}
-
-
-
-
-
           {Login ? (
             <NavItem style={{ color: "black", display: "flex" }}>
               {/* <h7 style={{ color: "white", marginTop: "228px" }}>Halo : {username}</h7> */}
@@ -194,8 +191,6 @@ const Header = props => {
             </NavItem>
           ) : null
           }
-
-
           {/* {Login ? (
             <NavItem>
               <NavLink href="/" onClick={LogoutSuccess}>

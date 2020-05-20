@@ -4,7 +4,7 @@ const { AdminController } = require("../controllers");
 
 router.post("/add-prod", AdminController.addNewProduk);
 router.put("/edit-prod/:id", AdminController.editProduk)
-router.get("/get-prod", AdminController.getProdukSepeda)
+router.get("/get-prod/:page", AdminController.getProdukSepeda)
 // router.get("/get-prod/:page", AdminController.getProdukSepeda)
 router.get('/get-prod-mountain/:page', AdminController.getProdukMountain)
 router.get('/get-prod-roadbike/:page', AdminController.getProdRoadbike)

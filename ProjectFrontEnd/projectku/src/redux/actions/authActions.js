@@ -22,6 +22,7 @@ export const userRegis = ({ username, email, password }) => {
       });
 
     }
+    
     else {
       axios
         .post(APIURL + "auth/userRegister", {

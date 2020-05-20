@@ -5,35 +5,68 @@ const paginate = require('jw-paginate')
 
 module.exports = {
   getProdukSepeda: (req, res) => {
-    let sql = `select p.*,c.category from product p join category c on p.categoryid=c.id`
-    mysqldb.query(sql, (err, result) => {
-      if (err) res.status(500).send(err)
-
-      let sqlCat = `select * from category`
-      mysqldb.query(sqlCat, (err, result2) => {
-        if (err) res.status(500).send(err)
-
-        let sqlEdit = `select p.* from product p left join category c on p.categoryid=c.id order by c.id`
-        mysqldb.query(sqlEdit, (err, result3) => {
-          if (err) res.status(500).send(err)
-          return res.status(200).send({ dataProduk: result, dataCategory: result2, dataEdit: result3 })
-        })
-      })
-    })
-  },
-
-
-  getProdukMountain: (req, res) => {
-    const sqlCount = `SELECT COUNT(*) as count FROM product p JOIN category c on c.id = p.categoryid where c.id=1;`
-    // const sqlCount = 3
-    console.log('object')
+    const sqlCount = `SELECT COUNT(*) as count FROM product`
     let dataCount
     mysqldb.query(sqlCount, (err, result) => {
       if (err) res.status(500).send(err)
       dataCount = result[0].count
       //trigger pindah page
       const page = parseInt(req.params.page)
-      const pageSize = 7
+      const pageSize = 6
+      const pager = paginate(dataCount, page, pageSize)
+
+      let offset
+      if (page === 1) {
+        offset = 0
+      } else {
+        offset = pageSize * (page - 1)
+      }
+
+      let sql = `select p.*,c.category from product p join category c on p.categoryid=c.id LIMIT ? OFFSET ?`
+      mysqldb.query(sql, [pageSize, offset], (err1, result1) => {
+        if (err1) res.status(500).send(err1)
+        // console.log(result1, 'result1')
+
+        let sqlCat = `select * from category`
+        mysqldb.query(sqlCat, (err2, result2) => {
+          if (err2) res.status(500).send(err2)
+          let sqlEdit = `select p.* from product p left join category c on p.categoryid=c.id order by c.id`
+          mysqldb.query(sqlEdit, (err3, result3) => {
+            if (err3) res.status(500).send(err3)
+            const pageOfData = result1
+            return res.status(200).send({ pageOfData, pager, dataCategory: result2, sqlEdit: result3 })
+          })
+        })
+      })
+    })
+
+    // let sql = `select p.*,c.category from product p join category c on p.categoryid=c.id`
+    // mysqldb.query(sql, (err, result) => {
+    //   if (err) res.status(500).send(err)
+
+    //   let sqlCat = `select * from category`
+    //   mysqldb.query(sqlCat, (err, result2) => {
+    //     if (err) res.status(500).send(err)
+
+    //     let sqlEdit = `select p.* from product p left join category c on p.categoryid=c.id order by c.id`
+    //     mysqldb.query(sqlEdit, (err, result3) => {
+    //       if (err) res.status(500).send(err)
+    //       return res.status(200).send({ dataProduk: result, dataCategory: result2, dataEdit: result3 })
+    //     })
+    //   })
+    // })
+  },
+
+
+  getProdukMountain: (req, res) => {
+    const sqlCount = `SELECT COUNT(*) as count FROM product p JOIN category c on c.id = p.categoryid where c.id=1;`
+    let dataCount
+    mysqldb.query(sqlCount, (err, result) => {
+      if (err) res.status(500).send(err)
+      dataCount = result[0].count
+      //trigger pindah page
+      const page = parseInt(req.params.page)
+      const pageSize = 5
       const pager = paginate(dataCount, page, pageSize)
 
       // Untuk limit database
@@ -56,7 +89,7 @@ module.exports = {
   },
 
   getProdRoadbike: (req, res) => {
-    const sqlCount = `SELECT COUNT(*) as count FROM product p JOIN category c on c.id = p.categoryid where c.id=1;`
+    const sqlCount = `SELECT COUNT(*) as count FROM product p JOIN category c on c.id = p.categoryid where c.id=2;`
     let dataCount
     mysqldb.query(sqlCount, (err, result) => {
       if (err) res.status(500).send(err)
@@ -83,7 +116,6 @@ module.exports = {
         return res.status(200).send({ pageOfData, pager })
       })
     })
-
   },
 
   getProdukDaily: (req, res) => {
@@ -202,7 +234,7 @@ module.exports = {
               if (err) res.status(500).send(err);
               mysqldb.query(`select * from category`, (err, result2) => {
                 if (err) res.status(500).send(err);
-                res.status(200).send({ dataProduk: result1, dataCategory: result2 });
+                res.status(200).send({ pageOfData: result1, dataCategory: result2 });
               });
             }
           );
@@ -263,7 +295,7 @@ module.exports = {
                 if (err) res.status(500).send(err, "error")
                 mysqldb.query(`select * from category`, (err, result2) => {
                   if (err) res.status(500).send(err, 'error');
-                  res.status(200).send({ dataProduk: result1, dataCategory: result2 })
+                  res.status(200).send({ pageOfData: result1, dataCategory: result2 })
                 })
               })
             })
@@ -293,7 +325,7 @@ module.exports = {
             if (err) res.status(500).send(err)
             mysqldb.query(`select * from category`, (err, result3) => {
               if (err) res.status(500).send(err)
-              res.status(200).send({ dataProduk: result2, dataCategory: result3 })
+              res.status(200).send({ pageOfData: result2, dataCategory: result3 })
             })
           })
         })
