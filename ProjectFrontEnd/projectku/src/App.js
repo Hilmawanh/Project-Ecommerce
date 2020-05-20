@@ -97,7 +97,7 @@ const App = () => {
         {/* Admin Controller */}
         <Route exact path={"/manageadmin"} component={ManageAdmin} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
